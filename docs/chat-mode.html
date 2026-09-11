@@ -1131,6 +1131,8 @@
 
     .chat-gate__feature { display: flex; gap: var(--sp-3); align-items: flex-start; padding-right: var(--sp-1); }
     .chat-gate__feature + .chat-gate__feature { margin-top: var(--sp-5); }
+
+    .chat-gate__feature:last-of-type { margin-bottom: var(--sp-8); }
     .chat-gate__icon {
       flex: 0 0 32px; width: 32px; height: 32px; border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
@@ -1143,9 +1145,9 @@
     .chat-gate__feature-title { font-size: 20px; line-height: 25px; font-weight: 600; color: var(--s-text-primary); margin: calc((32px - 25px) / 2) 0 0; }
     .chat-gate__feature-text { font-size: 16px; line-height: 24px; color: var(--s-text-secondary); margin: 0; }
 
-    .chat-gate__actions { margin-top: var(--sp-8); display: flex; flex-direction: row; align-items: center; justify-content: flex-start; gap: var(--sp-4); flex-wrap: wrap; }
-    .chat-gate__actions .pro-gate-cta { width: auto; max-width: none; height: 44px; padding: 0 22px; font-size: 16px; }
-    .chat-gate__actions .pro-gate-link { font-size: 16px; }
+    .chat-gate__actions { margin-top: auto; display: flex; flex-direction: column; align-items: stretch; gap: var(--sp-4); }
+    .chat-gate__actions .pro-gate-cta { width: 100%; max-width: none; height: 44px; padding: 0 22px; font-size: 16px; }
+    .chat-gate__actions .pro-gate-link { font-size: 16px; text-align: center; }
     .chat-gate__band {
       display: grid; place-items: center; padding: var(--sp-2);
       background: var(--s-surface-primary);
@@ -1158,9 +1160,6 @@
     @media (max-width: 540px) {
       .chat-gate { padding: var(--sp-4) var(--sp-4) var(--sp-6); }
       .chat-gate__copy { padding: var(--sp-6) var(--sp-4); }
-      .chat-gate__actions { flex-direction: column; align-items: stretch; }
-      .chat-gate__actions .pro-gate-cta { width: 100%; }
-      .chat-gate__actions .pro-gate-link { text-align: left; }
     }
 
     body.chat-gate-active[data-mode="natural"] #omni-btn-natural.active,
@@ -6197,7 +6196,7 @@
         </div>
         <div class="chat-gate__band" id="chat-gate-band">
 <svg id="wa-anim-chat-gate" viewBox="0 0 640 800" xmlns="http://www.w3.org/2000/svg" role="img"
-     aria-label="Wolfram|Alpha Pro Chat Mode answers 'what is the sum of the first three perfect cubes?' with a verified 36, step-by-step working and an answer card, with 'and the first four cubes?' typed as the next turn.">
+     aria-label="Wolfram|Alpha Pro Chat Mode answers 'what is the sum of the first three perfect cubes?' with a verified 36, step-by-step working and an answer card, the prompt echoed in the composer.">
 <style>
   #wa-anim-chat-gate {
     --window-bg: #FFFFFF;
@@ -6393,7 +6392,8 @@
 
   #wa-anim-chat-gate .input-face { fill: var(--window-bg); stroke: var(--input-border); stroke-width: 2; }
   #wa-anim-chat-gate .input-halo { fill: none; stroke: var(--input-ring); stroke-width: 3; }
-  #wa-anim-chat-gate .eq-text  { fill: var(--text); font-size: 24px; font-weight: 600; }
+
+  #wa-anim-chat-gate .eq-text  { fill: var(--text); font-size: 23px; font-weight: 600; }
   #wa-anim-chat-gate .send-btn { animation: wch-send 12s infinite ease-out;
                             transform-box: fill-box; transform-origin: 50% 50%; }
   #wa-anim-chat-gate .send-face { fill: var(--teal-btn); animation: wch-send-fill 12s infinite ease-out; }
@@ -6505,7 +6505,7 @@
         </g>
       </g>
 
-      <g class="answer-presentation" transform="translate(-143 -187.325) scale(1.25)">
+      <g class="answer-presentation" transform="translate(-48.8 -82.86) scale(1.1)">
       <g class="g-answer">
         <rect class="a-card" x="216" y="670" width="272" height="158.6" rx="14.4"/>
         <rect class="a-ring" x="215.5" y="669.5" width="273" height="159.6" rx="14.9"/>
@@ -6514,8 +6514,7 @@
               d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/>
         <text class="a-label" x="271.2" y="720.7">Answer</text>
         <rect class="a-well" x="235.7" y="747.1" width="233" height="61.9" rx="7.2"/>
-        <text class="a-value" x="249.6" y="783.7">36</text>
-      </g>
+        <text class="a-value" x="249.6" y="789">36</text>      </g>
       </g>
 
       <g class="g-cursor">
@@ -6530,7 +6529,7 @@
   <g transform="translate(0 688) scale(1.3)">
   <rect class="input-halo" x="21.5" y="1.5" width="449" height="67" rx="15.5"/>
   <rect class="input-face" x="24" y="4" width="444" height="62" rx="14"/>
-  <text class="eq-text" x="43" y="43">and the first four cubes?</text>
+  <text class="eq-text" x="43" y="43">sum of the first three perfect cubes?</text>
   <g class="send-btn">
     <rect class="send-face" x="415" y="15" width="40" height="40" rx="10"/>
     <path class="send-glyph" transform="translate(424 24) scale(0.91667)" d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
@@ -6653,12 +6652,10 @@
   <script>
     (function(){ var q=new URLSearchParams(location.search); if(q.get('nonav')) document.body.classList.add('nonav'); if(q.get('theme')==='dark') document.body.classList.add('dark');
       document.body.setAttribute('data-pro', q.get('pro')==='false' || q.get('pro')==='0' ? 'false' : 'true');
-      /* pages/nav/nav.html drives this page's theme when it hosts it as a mockup */
+
       window.addEventListener('message', function(e){ if(e.data && e.data.theme) document.body.classList.toggle('dark', e.data.theme==='dark'); }); })();
     const MATH_ICON_BASE = "https://raw.githubusercontent.com/colettewz/wa-math-input-icons/main/";
-    /* Math tab icons inlined as data URIs — the remote fetch made the tray
-       icons pop in late on first math-mode switch. Falls back to the repo
-       for any icon not in the map. */
+
     const MATH_ICON_DATA = {
       "photo-input-camera.svg": "data:image/svg+xml,%3Csvg width=%2224%22 height=%2224%22 viewBox=%220 0 24 24%22 fill=%22none%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cpath d=%22M12 10C11.2044 10 10.4413 10.3161 9.87868 10.8787C9.31607 11.4413 9 12.2044 9 13C9 13.7956 9.31607 14.5587 9.87868 15.1213C10.4413 15.6839 11.2044 16 12 16C12.7956 16 13.5587 15.6839 14.1213 15.1213C14.6839 14.5587 15 13.7956 15 13C15 12.2044 14.6839 11.4413 14.1213 10.8787C13.5587 10.3161 12.7956 10 12 10ZM20 5H16.83L15.59 3.65C15.4036 3.44539 15.1767 3.28191 14.9235 3.16999C14.6704 3.05807 14.3968 3.00017 14.12 3H9.88C9.32 3 8.78 3.24 8.4 3.65L7.17 5H4C2.9 5 2 5.9 2 7V19C2 20.1 2.9 21 4 21H20C21.1 21 22 20.1 22 19V7C22 5.9 21.1 5 20 5ZM12 18C9.24 18 7 15.76 7 13C7 10.24 9.24 8 12 8C14.76 8 17 10.24 17 13C17 15.76 14.76 18 12 18Z%22 fill=%22%236C5694%22/%3E%3C/svg%3E",
       "favorites.svg": "data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 class=%22sc-8848da46-1 iPkfYx _gHdu%22 viewBox=%220 0 20 20%22%3E%3Cpath class=%22mainColor%22 d=%22M6.09,15a1.45,1.45,0,0,1,.06-.56L7.27,11,4.43,8.88a1.39,1.39,0,0,1-.37-.41A.54.54,0,0,1,4,8a.59.59,0,0,1,.27-.33,1.17,1.17,0,0,1,.53-.1l3.47,0L9.36,4.16a1.18,1.18,0,0,1,.26-.49.51.51,0,0,1,.76,0,1.18,1.18,0,0,1,.26.49L11.7,7.63l3.48,0a1.15,1.15,0,0,1,.52.1A.63.63,0,0,1,16,8a.54.54,0,0,1,0,.43,1.16,1.16,0,0,1-.37.41L12.74,11l1.11,3.45a1.14,1.14,0,0,1,.06.56.56.56,0,0,1-.21.37.49.49,0,0,1-.41.1,1.2,1.2,0,0,1-.48-.24L10,13.09,7.19,15.25a1.2,1.2,0,0,1-.48.24.5.5,0,0,1-.41-.1A.66.66,0,0,1,6.09,15%22 fill=%22%23777%22 fill-rule=%22evenodd%22/%3E%3C/svg%3E",
@@ -6784,7 +6781,6 @@
     }
     buildMathKeyboard();
 
-    /* ═══ APP STATE ═══ */
     let currentMode = 'natural', isChatActive = false, isDarkMode = false;
     const body = document.body, input = document.getElementById('main-input'),
       nlTabsContainer = document.getElementById('sub-tabs-container'),
@@ -6815,14 +6811,11 @@
   </button>
 `;
 
-    /* Math/photo modes: same slot + spacing as the NL icons (right side of the
-       pills row), built from the mkTabs icon set with tooltip labels. */
     const mkTabLabels = { camera: 'Photo input', fav: 'Favorites', matrix: 'Matrices', trig: 'Trigonometry', sym: 'Greek symbols', logs: 'Logarithms' };
     const mathTabsConfig = mkTabs.map(tab => {
       const icon = `<div class="math-tab-icon" style="-webkit-mask:url('${mathIconUrl(tab.icon)}') center/contain no-repeat; mask:url('${mathIconUrl(tab.icon)}') center/contain no-repeat;"></div>`;
       const label = mkTabLabels[tab.id] || tab.id;
-      /* every tray icon is a clickable open-tab: camera opens Photo Input, the
-         rest open the Math Input Keyboard placeholder */
+
       return `<button type="button" class="m-tab${tab.id === 'camera' ? ' camera-tab' : ''}" data-mk="${tab.id}" data-tip="${label}" aria-label="${label}" onclick="activateMathTab(this, '${tab.id}')">${icon}</button>`;
     }).join('') + `
   <button type="button" class="m-tab" data-tip="More" aria-label="More options" onclick="toggleMathMore(event)">
@@ -6852,7 +6845,7 @@
       const mk = document.getElementById('math-keyboard-panel');
       const wasActive = chip.classList.contains('active');
       document.querySelectorAll('.m-tab').forEach(c => c.classList.remove('active'));
-      if (wasActive) {                         // re-click the open tab → close
+      if (wasActive) {
         mk.style.display = 'none';
         mk.classList.remove('upload-active');
         return;
@@ -6877,7 +6870,7 @@
         tools.innerHTML = toolsConfig[currentMode];
       }
     }
-    updateTools(); // Render submit button on page load
+    updateTools();
 
     let activeNLPanel = null;
     function toggleNLPanel(panelId) {
@@ -6919,27 +6912,24 @@
 
     function fillExample(txt) { resetNLPlaceholders(); input.value = txt; input.focus(); closeAutocomplete(); }
 
-    // ═══ AUTOCOMPLETE ═══
     var acDropdown = document.getElementById('ac-dropdown');
     var acSuggestions = document.getElementById('ac-suggestions');
     var acPreview = document.getElementById('ac-preview');
     var acAssumptions = document.getElementById('ac-assumptions');
     var inputContainer = document.querySelector('.input-container');
 
-    // Demo autocomplete data — focused on 3 key examples: blue jay, 2+2, france
     var BIRD_IMG = 'https://raw.githubusercontent.com/colettewz/calculator-images/main/blue-jay.jpg';
     var FRANCE_IMG = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/France_in_Europe_%28-rivers_-mini_map%29.svg/250px-France_in_Europe_%28-rivers_-mini_map%29.svg.png';
 
-    // Per-assumption preview data — keyed by assumption pill text
     var ASSUMPTION_PREVIEWS = {
-      // Blue Jay assumptions
+
       'blue jay': { title: 'blue jay', facts: '<b>scientific name:</b> Cyanocitta cristata<br><b>max. recorded lifespan:</b> 26.3 years<br><b>length:</b> 9.8 to 11.8 inches<br><b>weight:</b> 2.5 to 3.5 ounces' },
       'Blue Jay (bird)': { title: 'Blue Jay (bird)', facts: '<b>family:</b> Corvidae<br><b>habitat:</b> deciduous & mixed forests<br><b>diet:</b> omnivore — nuts, seeds, insects<br><b>wingspan:</b> 13 to 17 inches' },
       'Toronto Blue Jays': { title: 'Toronto Blue Jays', facts: '<b>sport:</b> baseball (MLB)<br><b>league:</b> American League East<br><b>stadium:</b> Rogers Centre<br><b>World Series:</b> 1992, 1993' },
       'blue jay diet': { title: 'blue jay diet', facts: '<b>primary foods:</b> acorns, nuts, seeds<br><b>also eats:</b> insects, caterpillars, beetles<br><b>foraging:</b> ground and tree canopy<br><b>caching:</b> stores food for winter' },
       'blue jay call': { title: 'blue jay call', facts: '<b>primary call:</b> loud "jay jay" alarm<br><b>mimic:</b> imitates hawk calls<br><b>purpose:</b> territorial defense<br><b>frequency:</b> 1–5 kHz range' },
       'blue jay habitat': { title: 'blue jay habitat', facts: '<b>range:</b> eastern & central North America<br><b>preferred:</b> oak & beech forests<br><b>nesting:</b> 10–25 ft in trees<br><b>migration:</b> partially migratory' },
-      // France assumptions
+
       'France': { title: 'France', facts: '<b>population:</b> 64.8 million people<br><b>life expectancy:</b> 82.8 years<br><b>capital:</b> Paris<br><b>area:</b> 212935 square miles<br><b>GDP:</b> $2.783 trillion per year' },
       'France religious adherents': { title: 'France religious adherents', facts: '<b>Christian:</b> 51%<br><b>unaffiliated:</b> 40%<br><b>Muslim:</b> 6%<br><b>Buddhist:</b> 1%<br><b>other:</b> 2%' },
       'France economy': { title: 'France economy', facts: '<b>GDP:</b> $2.783 trillion per year<br><b>GDP per capita:</b> $40964<br><b>unemployment:</b> 7.1%<br><b>inflation:</b> 2.3%' },
@@ -6950,7 +6940,7 @@
     };
 
     var AC_DATA = {
-      // ── Blue Jay ──
+
       'b': {
         suggestions: ['<b>b</b>lue jay', '<b>b</b>oiling point of water', '<b>b</b>itcoin price', '<b>b</b>MI calculator', '<b>b</b>inomial theorem', '<b>b</b>ody mass index', '<b>b</b>inary to decimal'],
         preview: { title: 'blue jay', label: 'blue jay (animal)', img: BIRD_IMG, facts: '<b>scientific name:</b> Cyanocitta cristata<br><b>max. recorded lifespan:</b> 26.3 years<br><b>length:</b> 9.8 to 11.8 inches<br><b>weight:</b> 2.5 to 3.5 ounces' },
@@ -6960,13 +6950,11 @@
       'blue': { suggestions: ['<b>blue</b> jay', '<b>blue</b> whale', '<b>blue</b> origin'], preview: { title: 'blue jay', label: 'blue jay (animal)', img: BIRD_IMG, facts: '<b>scientific name:</b> Cyanocitta cristata<br><b>max. recorded lifespan:</b> 26.3 years<br><b>length:</b> 9.8 to 11.8 inches<br><b>weight:</b> 2.5 to 3.5 ounces' }, assumptions: ['blue jay', 'Blue Jay (bird)', 'Toronto Blue Jays', 'blue jay diet', 'blue jay call', 'blue jay habitat'] },
       'blue jay': { suggestions: ['<b>blue jay</b>', '<b>blue jay</b> wingspan', '<b>blue jay</b> habitat', '<b>blue jay</b> diet'], preview: { title: 'blue jay', label: 'blue jay (animal)', img: BIRD_IMG, facts: '<b>scientific name:</b> Cyanocitta cristata<br><b>max. recorded lifespan:</b> 26.3 years<br><b>length:</b> 9.8 to 11.8 inches<br><b>weight:</b> 2.5 to 3.5 ounces' }, assumptions: ['blue jay', 'Blue Jay (bird)', 'Toronto Blue Jays', 'blue jay diet', 'blue jay call', 'blue jay habitat'] },
 
-      // ── 2+2 (instant math) ──
       '2+2': {
         instant: '= 4',
         suggestions: ['<b>2+2</b>', '<b>2+2</b>i', '<b>2+2</b>=5', '<b>2+2</b>/3', '<b>2+2</b>*2'],
       },
 
-      // ── France (summary box with assumptions) ──
       'f': {
         suggestions: ['<b>f</b>rance', '<b>f</b>actorial', '<b>f</b>ibonacci sequence', '<b>f</b>ourier transform', '<b>f</b>irst derivative'],
         preview: { title: 'France', label: 'France (country)', img: FRANCE_IMG, facts: '<b>population:</b> 64.8 million people<br><b>life expectancy:</b> 82.8 years<br><b>capital:</b> Paris<br><b>area:</b> 212935 square miles<br><b>GDP:</b> $2.783 trillion per year' },
@@ -6986,7 +6974,7 @@
 
     function openAutocomplete(query) {
       var q = query.toLowerCase().trim();
-      // Find best matching key
+
       var match = null;
       var keys = Object.keys(AC_DATA);
       for (var i = q.length; i >= 1; i--) {
@@ -6998,13 +6986,11 @@
       var html = '';
       var isMobileView = window.innerWidth <= 768;
 
-      // Build instant result (if math)
       if (match.instant) {
         var parts = match.instant.split('=');
         var resultVal = (parts[1] || '').trim();
         html += '<div class="ac-instant"><span class="ac-instant-arrow">\u21B3</span> = <b>' + resultVal + '</b></div>';
 
-        // Desktop: vertical suggestion list. Mobile: orange suggestion pills.
         if (!isMobileView && match.suggestions) {
           for (var si = 0; si < match.suggestions.length; si++) {
             html += '<div class="ac-item" onclick="selectSuggestion(\'' + match.suggestions[si].replace(/<[^>]*>/g, '').replace(/'/g, "\\'") + '\')">' + match.suggestions[si] + '</div>';
@@ -7014,7 +7000,6 @@
         acSuggestions.innerHTML = html;
         acPreview.style.display = 'none';
 
-        // Mobile: show suggestions as orange pills
         if (isMobileView && match.suggestions) {
           acAssumptions.classList.add('has-items');
           var mathPills = '';
@@ -7034,7 +7019,6 @@
         return;
       }
 
-      // Desktop/tablet: vertical suggestion list
       if (!isMobileView) {
         for (var s = 0; s < match.suggestions.length; s++) {
           html += '<div class="ac-item" onclick="selectSuggestion(\'' + match.suggestions[s].replace(/<[^>]*>/g, '').replace(/'/g, "\\'") + '\')">' + match.suggestions[s] + '</div>';
@@ -7044,17 +7028,16 @@
         acSuggestions.innerHTML = '';
       }
 
-      // Mobile: show suggestions as horizontal scrollable orange pills
       if (isMobileView) {
         acDropdown.classList.add('mobile-tabs');
         acAssumptions.classList.add('has-items');
         var pillsHtml = '';
-        // Use assumptions if available, otherwise use suggestions as pills
+
         var pillSource = match.assumptions || match.suggestions.map(function (s) { return s.replace(/<[^>]*>/g, ''); });
         for (var pi = 0; pi < pillSource.length; pi++) {
           var pillText = typeof pillSource[pi] === 'string' ? pillSource[pi].replace(/<[^>]*>/g, '') : pillSource[pi];
           var isFirst = pi === 0 && match.assumptions;
-          // Bold the portion matching the user's typed query
+
           var boldedText = pillText;
           var matchIdx = pillText.toLowerCase().indexOf(q.toLowerCase());
           if (matchIdx !== -1 && q.length > 0) {
@@ -7064,14 +7047,14 @@
           pillsHtml += '<button class="ac-assumption-tab' + (isFirst ? '' : '') + '" data-pill-text="' + pillText.replace(/"/g, '&quot;') + '" onclick="selectSuggestion(\'' + pillText.replace(/'/g, "\\'") + '\')">' + '<span class="ac-tab-label">' + boldedText + '</span>' + hamburger + '</button>';
         }
         acAssumptions.innerHTML = pillsHtml;
-        // Re-init scroll-snap observer if in snap mode
+
         if (snapPreviewEnabled) {
           acAssumptions.classList.add('snap-preview');
           initPillObserver();
         }
       } else {
         acDropdown.classList.remove('mobile-tabs');
-        // Desktop: show assumptions only if present (hidden by CSS on desktop anyway)
+
         if (match.assumptions) {
           acAssumptions.classList.add('has-items');
           var ahtml = '';
@@ -7085,7 +7068,6 @@
         }
       }
 
-      // Build preview
       if (match.preview) {
         currentPreviewData = match.preview;
         acPreview.style.display = 'flex';
@@ -7110,10 +7092,7 @@
       inputContainer.classList.remove('ac-open');
     }
 
-    // ── Scroll-snap preview mode toggle ──
-    // When ON: no hamburger icons, scrolling pills to center auto-shows preview
-    // When OFF: hamburger icons visible, tap hamburger to preview (legacy)
-    var snapPreviewEnabled = false; // default to hamburger mode
+    var snapPreviewEnabled = false;
 
     function setSnapPreviewMode(enabled) {
       snapPreviewEnabled = enabled;
@@ -7133,12 +7112,12 @@
         entries.forEach(function (entry) {
           var tab = entry.target;
           if (entry.isIntersecting && entry.intersectionRatio >= 0.8) {
-            // Mark this pill as in-view and show its preview
+
             acAssumptions.querySelectorAll('.ac-assumption-tab').forEach(function (t) {
               t.classList.remove('in-view');
             });
             tab.classList.add('in-view');
-            // Show preview for this pill's text if we have preview data
+
             if (typeof currentPreviewData !== 'undefined' && currentPreviewData) {
               showPreviewForPill(tab);
             }
@@ -7148,7 +7127,7 @@
         root: acAssumptions,
         threshold: 0.8
       });
-      // Observe all current pills
+
       acAssumptions.querySelectorAll('.ac-assumption-tab').forEach(function (tab) {
         pillObserver.observe(tab);
       });
@@ -7169,26 +7148,26 @@
       if (!pill || !acBorderDiv) { acBorderDiv.style.clipPath = ''; return; }
       var borderRect = acBorderDiv.getBoundingClientRect();
       var pillRect = pill.getBoundingClientRect();
-      // Calculate pill edges relative to border div
+
       var left = pillRect.left - borderRect.left;
       var right = pillRect.right - borderRect.left;
       var w = borderRect.width;
-      // Clip path: full width except a gap where the pill is
+
       acBorderDiv.style.clipPath = 'polygon(0 0, ' + left + 'px 0, ' + left + 'px 100%, ' + right + 'px 100%, ' + right + 'px 0, ' + w + 'px 0, ' + w + 'px 100%, 0 100%)';
     }
 
     function toggleHamburgerPreview(pill) {
       var wasOpen = pill.classList.contains('menu-open');
-      // Close all open menus first
+
       acAssumptions.querySelectorAll('.ac-assumption-tab.menu-open').forEach(function (t) {
         t.classList.remove('menu-open');
       });
       if (wasOpen) {
-        // Closing — hide preview, restore border
+
         acPreview.style.display = 'none';
         updateBorderGap(null);
       } else {
-        // Opening — show preview for this pill, cut border gap
+
         pill.classList.add('menu-open');
         showPreviewForPill(pill);
         updateBorderGap(pill);
@@ -7213,12 +7192,10 @@
       }
     }
 
-    // Apply snap mode on page load
     if (snapPreviewEnabled) {
       acAssumptions.classList.add('snap-preview');
     }
 
-    // Enable mouse wheel horizontal scrolling on the pills row
     acAssumptions.addEventListener('wheel', function (e) {
       if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
         e.preventDefault();
@@ -7232,7 +7209,6 @@
       handleSubmit();
     }
 
-    // Listen to input changes
     input.addEventListener('input', function () {
       var val = this.value.trim();
       if (val.length > 0 && currentMode === 'natural') {
@@ -7242,21 +7218,19 @@
       }
     });
 
-    // Close on click outside
     document.addEventListener('click', function (e) {
       if (!e.target.closest('.input-container')) {
         closeAutocomplete();
       }
     });
 
-    // Close on escape
     input.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') closeAutocomplete();
     });
 
     let nlResultsShowing = false;
 
-    let chatLeaveMode = 'confirm'; // 'confirm' (Option 1) or 'immediate' (Option 2)
+    let chatLeaveMode = 'confirm';
     let pendingMode = null;
 
     function showLeaveBanner(mode) {
@@ -7275,7 +7249,6 @@
       setMode(mode);
     }
 
-    /* ── Per-Mode Placeholder (desktop + mobile) ── */
     var placeholders = {
       natural: { full: 'Ask anything or enter a calculation...', short: 'What do you want to know?' },
       chat: { full: 'Ask anything', short: 'Ask anything' },
@@ -7289,7 +7262,7 @@
     }
 
     function setMode(mode) {
-      // Guard: Chat is a Pro feature — non-Pro users get the gate popover, not the mode
+
       if (mode === 'chat' && document.body.getAttribute('data-pro') === 'false') {
         closeMobilePicker();
         if (document.body.classList.contains('chat-gate-active')) closeChatProGate();
@@ -7297,20 +7270,19 @@
         return;
       }
       closeChatProGate();
-      // Guard: if chat has messages, check leave behavior
+
       if (isChatActive && mode !== 'chat') {
         const hasMessages = chatStream && chatStream.children.length > 0;
         if (hasMessages && chatLeaveMode === 'confirm') {
           showLeaveBanner(mode);
           return;
         }
-        // Option 2 (immediate) or empty chat — reset chat state
+
         resetChat(true);
       }
       currentMode = mode;
       body.setAttribute('data-mode', mode);
 
-      // Sync mobile icon picker (icon + label)
       var mobileIcon = document.getElementById('omni-mobile-icon');
       if (mobileIcon) {
         mobileIcon.className = 'mode-icon mask-' + (mode === 'natural' ? 'nl' : mode);
@@ -7324,7 +7296,6 @@
         b.classList.toggle('active', b.dataset.mode === mode);
       });
 
-      // Omni v2 Active states
       document.querySelectorAll('.omni-tab-btn').forEach(function (b) { b.classList.remove('active'); });
       var btn = document.getElementById('omni-btn-' + mode);
       if (btn) btn.classList.add('active');
@@ -7350,8 +7321,6 @@
       if (input) input.placeholder = getPlaceholder(mode);
       updateTools();
 
-      // Photo mode: show math tray with camera/upload tab auto-selected
-      // Math mode: open the keyboard tray automatically (the aω tab)
       if (mode === 'math') {
         var symTab = document.querySelector('#sub-tabs-container .m-tab[data-mk="sym"]');
         if (symTab) symTab.click();
@@ -7364,9 +7333,6 @@
 
     setMode('natural');
 
-    /* Assembly relocation: in chat the input lives just before the footer so
-       position:sticky can pin it (see body.chat-active #interaction-assembly).
-       Restored to its homepage slot on exit. */
     var assemblyHomeAnchor = (function () {
       var a = document.getElementById('interaction-assembly');
       var marker = document.createComment('assembly-home');
@@ -7387,10 +7353,6 @@
       measureDock();
     }).observe(document.body, { attributes: true, attributeFilter: ['class'] });
 
-    /* --dock-h = how much of the viewport bottom the docked composer owns
-       (its own height + the gap under it). Feeds html{scroll-padding-bottom},
-       so scrollIntoView() lands rows above the dock rather than beneath it.
-       Cleared outside chat so the homepage keeps a 0 scroll padding. */
     function measureDock() {
       var root = document.documentElement;
       if (!document.body.classList.contains('chat-active')) {
@@ -7408,54 +7370,11 @@
     }
     window.addEventListener('resize', measureDock);
 
-    /* ═══════════════════════════════════════════════════════════════════════
-       SCROLL OWNERSHIP  (rewritten 2026-07-29 — replaces the chatSticky /
-       turnUserScrolled pair, which was the source of the finicky feel)
-
-       ONE owner, TWO states, and the user always wins:
-
-         'follow'  we hold the end of the conversation parked just above the
-                   dock. Content growth re-parks it INSTANTLY.
-         'free'    the user moved the page. Nothing touches scrollY again until
-                   they ask for it — jump button, or sending a message.
-
-       WHY THE OLD VERSION FELT FINICKY, and what each fix is:
-
-       a) TWO owners fought. A ResizeObserver bottom-pin and a top-anchor each
-          cleared the other's flag, so which one won depended on event order.
-          → One owner. One target function. No flag handshake.
-       b) SMOOTH SCROLL DURING GROWTH. A smooth scroll is a browser-owned
-          animation to a fixed target. If content grows while it runs, the
-          target is already stale on arrival — so it landed wrong, then a
-          double-rAF fired a second one. That visible double-move IS the
-          finickiness. → Growth re-parks with behavior:'auto'. Smooth is only
-          ever used for a single discrete user-requested jump.
-       c) USER INTENT WAS UNDER-DETECTED. Only wheel + touchmove released the
-          pin, so dragging the scrollbar or pressing PageDown got you yanked
-          back. → wheel, touchstart/move, every scroll key, AND a scroll-event
-          backstop that compares against the position we last set ourselves.
-       d) THE BROWSER WAS A THIRD OWNER. Native scroll anchoring re-adjusts
-          scrollY when content changes above the viewport. → overflow-anchor is
-          off on the stream; we are the only thing that moves the page.
-
-       HOW THE TEXT ENTERS THE FRAME (the claude.ai motion): on send, the new
-       user row jumps to the top of the viewport and the answer renders
-       DOWNWARD into a frame that does not move. The frame only starts moving
-       once the answer outgrows it. Both halves are the SAME invariant — park
-       the conversation's end above the dock — because #chat-turn-spacer keeps
-       the page tall enough for the row to reach the top. While the spacer is
-       absorbing growth, parking the end holds the frame still; once the answer
-       exhausts the spacer, parking the end follows the text. One rule, so
-       there is no state that can disagree with itself.
-       ═══════════════════════════════════════════════════════════════════════ */
-    var TURN_TOP = 84;            /* header + breathing room */
-    var scrollMode = 'follow';    /* 'follow' | 'free' */
+    var TURN_TOP = 84;
+    var scrollMode = 'follow';
     var lastUserRow = null;
-    var progY = -1;               /* the scrollY we last set — anything else is the user */
+    var progY = -1;
 
-    /* CSS is the single source of truth for the dock's numbers — these read them
-       rather than duplicating them. FOOTER_REACH_FALLBACK only applies if the
-       custom property is missing entirely; keep it equal to the CSS value. */
     var FOOTER_REACH_FALLBACK = 560;
     function rootPx(name, fallback) {
       var v = getComputedStyle(document.documentElement).getPropertyValue(name);
@@ -7465,9 +7384,7 @@
     function maxScrollY() {
       return Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
     }
-    /* The resting position: the end of the conversation, with the composer
-       docked and --dock-footer-reach of scroll still held in reserve below.
-       That reserve is what the user has to spend to reach the footer. */
+
     function chatAnchorTarget() {
       return Math.max(0, Math.round(maxScrollY() - footerReach()));
     }
@@ -7479,31 +7396,26 @@
     function turnSpacer() {
       var s = document.getElementById('chat-turn-spacer');
       if (!s) { s = document.createElement('div'); s.id = 'chat-turn-spacer'; s.setAttribute('aria-hidden', 'true'); }
-      chatStream.appendChild(s);   /* (re)append so it is always the last element */
+      chatStream.appendChild(s);
       return s;
     }
-    /* Holds the page tall enough that (1) the newest user row can reach
-       TURN_TOP, and (2) --dock-footer-reach of scroll remains past that point.
-       Shrinks to 0 as the answer grows, which is what turns "still frame" into
-       "follow the text" with no branch anywhere. */
+
     function sizeTurnSpacer() {
       if (!lastUserRow || !lastUserRow.isConnected) return;
       var s = turnSpacer();
-      s.style.height = '0px';       /* measure the thread's true height first */
+      s.style.height = '0px';
       var f = document.getElementById('global-footer');
       var reach = footerReach();
       var footerH = f ? f.offsetHeight : 0;
       var rowTop = lastUserRow.getBoundingClientRect().top;
       var footTop = f ? f.getBoundingClientRect().top : chatStream.getBoundingClientRect().bottom;
-      /* want: row at TURN_TOP  ⇒  reach px of scroll still left below it */
+
       var want = reach + window.innerHeight - footerH - TURN_TOP;
       var h = Math.max(0, Math.round(want - (footTop - rowTop)));
-      /* write only real changes — re-run as pod images land (content grows,
-         spacer shrinks), and the guard lets the ResizeObserver loop settle */
+
       if (Math.abs(h - (parseFloat(s.style.height) || 0)) > 1) s.style.height = h + 'px';
     }
 
-    /* The one motion. smooth=true only for a discrete user-requested jump. */
     function chatScrollBottom(smooth) {
       if (!document.body.classList.contains('chat-active')) return;
       scrollMode = 'follow';
@@ -7515,24 +7427,21 @@
       if (scrollMode !== 'free') { scrollMode = 'free'; updateJumpBtn(); }
     }
 
-    /* ── user intent: any of these means hands off ── */
     ['wheel', 'touchstart', 'touchmove'].forEach(function (ev) {
       window.addEventListener(ev, releaseScroll, { passive: true });
     });
     var SCROLL_KEYS = { PageUp: 1, PageDown: 1, Home: 1, End: 1, ArrowUp: 1, ArrowDown: 1, ' ': 1, Spacebar: 1 };
     window.addEventListener('keydown', function (e) {
-      /* typing in the composer is not scrolling */
+
       if (e.target && /^(INPUT|TEXTAREA)$/.test(e.target.tagName)) return;
       if (SCROLL_KEYS[e.key]) releaseScroll();
     });
-    /* backstop for everything else (scrollbar drag, find-in-page, a11y tools):
-       if the page moved and it wasn't us, it was them. */
+
     window.addEventListener('scroll', function () {
       if (scrollMode === 'follow' && Math.abs(Math.round(window.scrollY) - progY) > 2) releaseScroll();
       updateJumpBtn();
     }, { passive: true });
 
-    /* ── content growth: re-park instantly, never smoothly ── */
     if (window.ResizeObserver) new ResizeObserver(function () {
       if (!document.body.classList.contains('chat-active')) return;
       sizeTurnSpacer();
@@ -7543,10 +7452,6 @@
       if (scrollMode === 'follow') chatScrollBottom(false);
     });
 
-    /* ── jump-to-bottom affordance (claude.ai / ChatGPT) ──
-       The counterpart to "the user always wins": once they are 'free' nothing
-       re-parks the page, so they need one tap back. OFF for now (Colette,
-       2026-07-29) — set CHAT_JUMP_BTN = true to enable; nothing else to change. */
     var CHAT_JUMP_BTN = false;
     function updateJumpBtn() {
       var btn = document.getElementById('chat-jump-btn');
@@ -7559,7 +7464,7 @@
     }
 
     function getChatButton() {
-      // Find the visible chat button based on active variant
+
       const candidates = [
         { id: 'omni-btn-chat', variant: 'v2' },
         { id: 'omniv3-btn-chat', variant: 'v3' },
@@ -7574,7 +7479,6 @@
 
     function positionTooltipAtChatBtn() { positionPopoverAt(tooltip, getChatButton()); }
 
-    /* Chat Pro gate — the panel under the composer (see .chat-gate). */
     function getChatGateAnchor() {
       var btn = getChatButton();
       if (btn) return btn;
@@ -7591,10 +7495,8 @@
       if (anchor) anchor.classList.add('gate-open');
       syncChatGateTheme();
     }
-    /* Thumbs rating: one per answer, toggles off on a second click. Confirms INLINE in
-       the row, not in the bottom toast — the toast is fixed to the viewport and a rating
-       belongs beside the answer it rates. */
-    var CHECK_16 = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>';
+
+    var CHECK_16 = '<svg viewBox="0 0 18 18" fill="currentColor" aria-hidden="true"><path d="M4 9.5L5.75 7.75L7.5 9.5L12.25 5L14 6.75L7.5 13L4 9.5Z"/></svg>';
     function rateChat(btn, dir) {
       var bar = btn.closest('.bot-action-bar');
       var wasOn = btn.getAttribute('aria-pressed') === 'true';
@@ -7613,7 +7515,7 @@
       note._t = setTimeout(function () {
         note.classList.remove('show');
         note._t = setTimeout(function () { note.hidden = true; }, 200);
-      }, 2000);
+      }, 3000);
     }
     function closeChatProGate() {
       if (!document.body.classList.contains('chat-gate-active')) return;
@@ -7627,18 +7529,18 @@
     function positionPopoverAt(tooltip, btn) {
       if (!tooltip || !btn) return;
       const r = btn.getBoundingClientRect();
-      // Position below the button, left-aligned with button's left edge
+
       const top = r.bottom + 10;
       let left = r.left;
       const tooltipW = Math.min(280, window.innerWidth - 32);
-      // Keep tooltip on screen
+
       if (left + tooltipW > window.innerWidth - 16) {
         left = window.innerWidth - tooltipW - 16;
       }
       if (left < 16) left = 16;
       tooltip.style.top = top + 'px';
       tooltip.style.left = left + 'px';
-      // Point arrow at center of the button
+
       const arrowLeft = (r.left + r.width / 2) - left;
       tooltip.style.setProperty('--arrow-left', Math.max(16, Math.min(arrowLeft, tooltipW - 16)) + 'px');
     }
@@ -7667,8 +7569,7 @@
     let idleTimer;
     function resetIdleTimer() {
       clearTimeout(idleTimer);
-      // idle pill disabled for this prototype (Colette 2026-07-07)
-      // if (isChatActive) idleTimer = setTimeout(showIdleMessage, 15000);
+
     }
     function showIdleMessage() {
       if (!isChatActive) return;
@@ -7687,11 +7588,7 @@
       showToast('New chat started');
       updateTools();
       resetNLPlaceholders();
-      /* An empty thread has no content, so there is no scroll range for the
-         sticky composer to pin over and it would collapse upward with the
-         footer riding under it. Hold the page height with the spacer: one
-         viewport of thread + the footer reach, which is exactly the geometry a
-         fresh chat entry produces. */
+
       var s = turnSpacer();
       var f = document.getElementById('global-footer');
       var a = document.getElementById('interaction-assembly');
@@ -7703,13 +7600,11 @@
     }
     function showToast(msg) { toast.innerText = msg; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 2000); }
 
-    // Nav dropdown toggle (reusable for any nav dropdown)
     function toggleNavDropdown(btn) {
       var wrap = btn.closest('.nav-dropdown-wrap');
       var dropdown = wrap.querySelector('.nav-dropdown');
       var isOpen = dropdown.classList.contains('open');
 
-      // Close all other dropdowns first
       document.querySelectorAll('.nav-dropdown.open').forEach(function (d) {
         d.classList.remove('open');
         d.closest('.nav-dropdown-wrap').querySelector('.nav-item').classList.remove('open');
@@ -7726,7 +7621,6 @@
       }
     }
 
-    // Close dropdown when clicking outside
     document.addEventListener('click', function (e) {
       if (!e.target.closest('.nav-dropdown-wrap')) {
         document.querySelectorAll('.nav-dropdown.open').forEach(function (d) {
@@ -7765,15 +7659,7 @@
         updateTools();
         history.pushState({ view: 'chat' }, '');
       }
-      /* Claude/GPT standard: the sent message rides to the TOP of the viewport
-         and the answer fills downward into a still frame. INSTANT, not smooth —
-         the user just pressed send, so an immediate reposition reads as "the app
-         responded", while a 300ms animation whose target is about to change is
-         the exact thing that feels finicky. Sending always re-arms follow: you
-         asked for this turn, so you want to see it.
-         Entry runs it twice: the class change relocates the composer and hides
-         the hub, so the first park is measured against a layout that is about to
-         change. Two rAFs later it is settled and the correction is invisible. */
+
       chatScrollBottom(false);
       if (entering) requestAnimationFrame(function () {
         requestAnimationFrame(function () { chatScrollBottom(false); });
@@ -7785,10 +7671,7 @@
       setTimeout(() => {
         removeLoading(loadId);
         addBotResponse();
-        /* the ResizeObserver already re-parks on growth; this covers the swap of
-           the typing row for the answer. Guarded, because chatScrollBottom()
-           re-arms follow — calling it unguarded would yank a user who scrolled
-           away while the answer was loading. */
+
         if (scrollMode === 'follow') chatScrollBottom(false);
       }, 1500);
 
@@ -7813,14 +7696,13 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Browser back button support
     window.addEventListener('popstate', function (e) {
       const state = e.state;
       if (!state || state.view === 'home') {
         goHome(true);
       }
     });
-    // Set initial home state
+
     history.replaceState({ view: 'home' }, '');
 
     function showNLResults(query) {
@@ -7828,7 +7710,6 @@
       const hub = document.getElementById('subject-hub');
       const helper = document.getElementById('helper-text');
 
-      // Hide hub and helper text
       hub.style.display = 'none';
       helper.style.display = 'none';
       resetNLPlaceholders();
@@ -7837,13 +7718,11 @@
       body.classList.add('results-active');
       history.pushState({ view: 'results' }, '');
 
-      // Build results — use blue jay example data for demo
       const isBlueJay = query.toLowerCase().includes('blue jay') || query.toLowerCase().includes('bluejay');
 
       container.innerHTML = buildResultsHTML(query, isBlueJay);
       container.classList.add('active');
 
-      // Scroll to top of results
       window.scrollTo({ top: container.offsetTop - 80, behavior: 'smooth' });
     }
 
@@ -7853,7 +7732,7 @@
       if (isBlueJay) {
         html += buildBlueJayResults();
       } else {
-        // Generic placeholder results
+
         html += `
           <div class="wa-assume-bar">
             Assuming "${query}" refers to a general query. | <a href="#">Use as a topic instead</a>
@@ -8009,8 +7888,7 @@
     </div>
   `;
       chatStream.appendChild(row);
-      /* keep the spacer last in the stream and re-sized; the ResizeObserver
-         re-parks the scroll, so this row must not scroll anything itself */
+
       sizeTurnSpacer();
     }
 
@@ -8024,14 +7902,10 @@
 
     input.addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSubmit(); } });
 
-    /* ?seed=<query> arrives on an ANSWERED thread instead of the empty home state. The rating
-       row only exists under a bot answer, so a review or handoff link has to land with one on
-       screen. `?seed=gold` is the shorthand the thumbs review URL uses. Review affordance only:
-       the bare URL still opens the home state, which is the real default. */
     window.addEventListener('load', function () {
       var seed = new URLSearchParams(location.search).get('seed');
       if (!seed) return;
-      if (seed === '1' || seed === 'true' || seed === 'gold') seed = 'gold price';
+      if (seed === '1' || seed === 'true' || seed === 'gold') seed = 'what is the current price of gold per ounce in usd and euros?';
       setMode('chat');
       input.value = seed;
       handleSubmit();
@@ -8066,7 +7940,6 @@
 
       chatStream.appendChild(row);
 
-      // Clamp checking after appending
       if (content.scrollHeight > content.clientHeight) {
         const expandBtn = document.createElement('button');
         expandBtn.className = 'expand-text-btn';
@@ -8083,7 +7956,7 @@
         };
         bub.appendChild(expandBtn);
       }
-      /* no scroll here — handleSubmit anchors the new turn to the top (GPT-style) */
+
     }
 
     function copyUserChat(btn) {
@@ -8137,14 +8010,11 @@
       const icon = el.querySelector('.sc-plus svg, .sc-minus svg');
 
       if (card.style.display === 'none' || card.style.display === '') {
-        /* Hand scroll ownership to the user FIRST. Opening a card is a request to
-           read THIS card, so the growth it causes must not re-park the page —
-           release before the mutation fires the ResizeObserver, not after. */
+
         releaseScroll();
         card.style.display = 'flex';
-        el.classList.add('open');   /* reveals the open-in-new icon */
-        /* bring the opened results into view (works for link text, + or » — all paths land
-           here): pin the link's own line just under the header so the results start at top */
+        el.classList.add('open');
+
         requestAnimationFrame(function () {
           var anchor = el.closest('p') || card;
           anchor.style.scrollMarginTop = '84px';
@@ -8162,7 +8032,7 @@
         }
       } else {
         card.style.display = 'none';
-        el.classList.remove('open');   /* hides the open-in-new icon again */
+        el.classList.remove('open');
         if (icon) {
           icon.parentElement.classList.remove('sc-minus');
           icon.parentElement.classList.add('sc-plus');
@@ -8186,7 +8056,7 @@
       <span class="mode-icon mask-chat" style="width: 20px; height: 20px;"></span>
     </div>
     <div class="bubble">
-      <p>The current price of gold is approximately <span class="inline-verified">$4671.71</span><span class="verified-check"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle class="vc-circle" cx="9" cy="9" r="9"/><path class="vc-tick" d="M13.8191 6.78906L7.95195 13.8457L4.25175 10.2402L5.64824 8.80859L7.79765 10.9023L12.2811 5.50977L13.8191 6.78906Z"/></svg></span> per ounce, which is equivalent to about <span class="inline-verified">€4025.25</span><span class="verified-check"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle class="vc-circle" cx="9" cy="9" r="9"/><path class="vc-tick" d="M13.8191 6.78906L7.95195 13.8457L4.25175 10.2402L5.64824 8.80859L7.79765 10.9023L12.2811 5.50977L13.8191 6.78906Z"/></svg></span> in euros.</p>
+      <p>The current price of gold is approximately <span class="inline-verified">$4671.71</span><span class="verified-check"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle class="vc-circle" cx="9" cy="9" r="9"/><path class="vc-tick" d="M4 9.5L5.75 7.75L7.5 9.5L12.25 5L14 6.75L7.5 13L4 9.5Z"/></svg></span> per ounce, which is equivalent to about <span class="inline-verified">€4025.25</span><span class="verified-check"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle class="vc-circle" cx="9" cy="9" r="9"/><path class="vc-tick" d="M4 9.5L5.75 7.75L7.5 9.5L12.25 5L14 6.75L7.5 13L4 9.5Z"/></svg></span> in euros.</p>
       <p>For further details, you can check the <span onclick="toggleRichCard(this, event, '${r1_id}')" class="inline-source">current price of gold per ounce<span class="source-controls"><span class="sc-plus"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg></span><a href="https://www.wolframalpha.com/input?i=current+price+of+gold+per+ounce" target="_blank" onclick="event.stopPropagation()" class="sc-pop" style="color:inherit; text-decoration:none;"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7zM19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7z"/></svg></a></span></span></p>
 
       <div id="${r1_id}" class="wa-rich-card" style="display: none;">
@@ -8277,8 +8147,8 @@
         </div>
       </div>
 
-      <p>Additionally, another source indicates the price as <span class="inline-verified">$5126</span><span class="verified-check"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle class="vc-circle" cx="9" cy="9" r="9"/><path class="vc-tick" d="M13.8191 6.78906L7.95195 13.8457L4.25175 10.2402L5.64824 8.80859L7.79765 10.9023L12.2811 5.50977L13.8191 6.78906Z"/></svg></span> per troy ounce. You can find more information on this in the <span onclick="toggleRichCard(this, event, '${r2_id}')" class="inline-source">gold price in USD<span class="source-controls"><span class="sc-plus"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg></span><a href="https://www.wolframalpha.com/input?i=gold+price+in+usd" target="_blank" onclick="event.stopPropagation()" class="sc-pop" style="color:inherit; text-decoration:none;"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7zM19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7z"/></svg></a></span></span></p>
-      
+      <p>Additionally, another source indicates the price as <span class="inline-verified">$5126</span><span class="verified-check"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle class="vc-circle" cx="9" cy="9" r="9"/><path class="vc-tick" d="M4 9.5L5.75 7.75L7.5 9.5L12.25 5L14 6.75L7.5 13L4 9.5Z"/></svg></span> per troy ounce. You can find more information on this in the <span onclick="toggleRichCard(this, event, '${r2_id}')" class="inline-source">gold price in USD<span class="source-controls"><span class="sc-plus"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg></span><a href="https://www.wolframalpha.com/input?i=gold+price+in+usd" target="_blank" onclick="event.stopPropagation()" class="sc-pop" style="color:inherit; text-decoration:none;"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7zM19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7z"/></svg></a></span></span></p>
+
       <div id="${r2_id}" class="wa-rich-card" style="display: none;">
         <div class="wa-rc-section">
           <div class="wa-rc-header">Input interpretation:</div>
@@ -8339,7 +8209,7 @@
       </div>
 
       <p>Please note that gold prices can fluctuate frequently, so it's always good to check for the most current rates.</p>
-      
+
       <div class="bot-action-bar">
         <span class="bot-action-tip" data-tip="Copy"><button class="bot-action-btn" aria-label="Copy" onclick="copyChat(this)">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M4 2a2 2 0 0 0-2 2v11h2V4h9V2H4zm5 5a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2H9zm0 2h9v11H9V9z"/></svg>
@@ -8360,16 +8230,10 @@
     </div>
   `;
       chatStream.appendChild(row);
-      /* the answer fills DOWNWARD into the still frame; re-sizing the spacer is
-         what lets the frame start following once the answer outgrows it */
+
       sizeTurnSpacer();
       resetIdleTimer();
     }
-
-    /* Omni Input Logic — `switchDesign()`, `toggleOmniDropdown()` and the outside-click
-       handler were DELETED 2026-08-27 with variants v1/v3/v4 (Colette: "retire all the
-       losers"). switchDesign existed only to swap between four candidate input designs and
-       had ZERO callers; with one design left there is nothing to switch. */
 
     const inputMenuItems = {
       natural: [
@@ -8431,7 +8295,6 @@
       }
     }
 
-    // Close input menu on outside click
     document.addEventListener('click', (e) => {
       const menu = document.getElementById('input-menu');
       const btn = document.getElementById('omni-plus-action');
@@ -8441,15 +8304,8 @@
       }
     });
 
-    /* ═══════════════════════════════════════════════════════════════════
-       NEW CHAT BUTTON — injects the outlined-box "New chat" button (Wolfram
-       chat-bubble + plus icon, drawn as a stroke) to the left of Send, with a
-       "New chat" hover tooltip. Shown only in an active chat (see CSS above).
-       ═══════════════════════════════════════════════════════════════════ */
     (function initNewChat() {
-      /* Stroke is 1.3333 of this 16 viewBox = the 2dp MD3 weight on a 24 grid, and it
-         SCALES with the icon (no non-scaling-stroke, which pinned it to 1.6 screen px
-         and read thin beside the 2.0 glyphs). Miter joins — BIBLE § ICONS rule 1. */
+
       var ICON = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3333" stroke-linecap="butt" stroke-linejoin="miter"><path d="M3.9 2.67H12.1A1.9 1.9 0 0 1 14 4.57V10A1.9 1.9 0 0 1 12.1 11.9H10.7L10.2 14.3Q10 14.6 9.7 14.2L8.5 11.9H3.9A1.9 1.9 0 0 1 2 10V4.57A1.9 1.9 0 0 1 3.9 2.67Z"/><path d="M5.3 7.3H10.7M8 4.6V10"/></svg>';
       var topRow = document.querySelector('.input-top-row');
       if (!topRow) return;
@@ -8468,7 +8324,7 @@
   </script>
 
   <script>
-    /* ── Mobile Nav ── */
+
     function toggleMobileNav() {
       const menu = document.getElementById('nav-mobile-menu');
       menu.classList.toggle('open');
@@ -8483,7 +8339,7 @@
       const btn = document.getElementById('nav-hamburger');
       if (menu && btn && !menu.contains(e.target) && !btn.contains(e.target)) {
         menu.classList.remove('open');
-        // Also close APPS sub-menu
+
         var appsSub = document.getElementById('nav-mobile-apps-sub');
         var appsBtn = menu.querySelector('.nav-item.open');
         if (appsSub) appsSub.classList.remove('open');
@@ -8491,7 +8347,6 @@
       }
     });
 
-    /* ── Mobile Picker ── */
     function toggleMobilePicker() {
       document.getElementById('omni-mobile').classList.toggle('open');
     }
@@ -8499,24 +8354,21 @@
       document.getElementById('omni-mobile').classList.remove('open');
     }
 
-    /* ── Pill Layout Toggles ── */
-    // Toggle pill dividers: "clean" (no dividers) or "divided" (with dividers)
     function setPillLayout(layout) {
       var wrapper = document.getElementById('omni-v2');
       if (wrapper) wrapper.setAttribute('data-pill-layout', layout);
     }
-    // Toggle photo label visibility: true (show text) or false (icon only)
+
     function setPhotoLabel(show) {
       var wrapper = document.getElementById('omni-v2');
       if (wrapper) wrapper.setAttribute('data-photo-label', show ? 'true' : 'false');
-      // Update dev panel active states
+
       var offBtn = document.getElementById('photo-label-off');
       var onBtn = document.getElementById('photo-label-on');
       if (offBtn) offBtn.classList.toggle('active', !show);
       if (onBtn) onBtn.classList.toggle('active', !!show);
     }
 
-    // Close picker on outside click
     document.addEventListener('click', function (e) {
       const picker = document.getElementById('omni-mobile');
       if (picker && !picker.contains(e.target)) {
@@ -8524,30 +8376,26 @@
       }
     });
 
-    // placeholder mobile listener (definition moved above setMode)
     mobileQuery.addEventListener('change', function () {
       var inp = document.getElementById('main-input');
       if (inp) inp.placeholder = getPlaceholder(currentMode);
     });
-    // Set correct placeholder on initial load
+
     if (mobileQuery.matches) {
       var inp = document.getElementById('main-input');
       if (inp) inp.placeholder = getPlaceholder(currentMode);
     }
 
-    /* ── Tab Layout Toggle (2 options) ── */
     function setTabOrder(layout) {
-      // Update dev panel active state
+
       document.querySelectorAll('#dev-panel [id^="tab-order-"]').forEach(b => b.classList.remove('active'));
       var activeBtn = document.getElementById('tab-order-' + layout);
       if (activeBtn) activeBtn.classList.add('active');
 
-      // Set data attribute for CSS-driven divider visibility
       var v2 = document.getElementById('omni-v2');
       if (v2) v2.setAttribute('data-pill-layout', layout);
     }
 
-    /* ── Feedback Icon Toggle ── (both variants now resolve to the custom bubble — 2026-07-10) */
     const feedbackIconMd3 = '<span class="mode-icon mask-feedback" style="width: 16px; height: 16px;"></span>';
     const feedbackIconGithub = '<span class="mode-icon mask-feedback" style="width: 14px; height: 14px;"></span>';
 
@@ -8563,7 +8411,6 @@
       });
     }
 
-    /* ── Chat Leave Behavior Toggle ── */
     function setChatLeave(mode) {
       document.querySelectorAll('#dev-panel [id^="chat-exit-"]').forEach(b => b.classList.remove('active'));
       document.getElementById('chat-exit-' + mode).classList.add('active');
@@ -8579,8 +8426,7 @@
   </script>
 
   <script>
-    // Classic is the ONLY input-field layout (SW review 2026-07-10 — toggle removed).
-    // Pills row moves below the field, tool tab-bar joins that row (icons right).
+
     (function () {
       var row = document.querySelector('.input-bottom-row');
       var cont = document.querySelector('.input-container');
