@@ -106,6 +106,8 @@
   --shadow-xl:0 8px 16px -4px rgba(0,0,0,.08), 0 34px 68px -16px rgba(0,0,0,.16);
   --card-shadow:0 8px 24px rgba(0,0,0,.06), 0 2px 6px rgba(0,0,0,.04);
 
+  --shadow-plate:0 0 15px 4px rgba(0,0,0,.12);
+
   --z-nav:50; --z-menu:60; --z-top:100;
 
   --ease:cubic-bezier(.4,0,.2,1);
@@ -164,6 +166,7 @@ body.dark, [data-theme="dark"] {
   --s-overlay-hover:#3D3D3D; --s-overlay-press:#444444;
   --s-hint-surface:#3A3320; --s-hint-border:#5C4E23; --s-hint-icon:#F0B94A; --s-hint-text:#E6D6A6; --s-hint-strong:#F5E9C2;
   --card-shadow:0 8px 24px rgba(0,0,0,.25), 0 2px 6px rgba(0,0,0,.12);
+  --shadow-plate:0 0 15px 4px rgba(0,0,0,.42);
 
   --s-cat-math:#CBB3FF; --s-cat-sci:#00B373;
 }
@@ -532,13 +535,9 @@ body.dark .wa-nav__logo .is-dark,  [data-theme="dark"] .wa-nav__logo .is-dark  {
       max-width: var(--measure-lede); margin: 0 auto;
     }
 
-    .offline__actions { display: flex; align-items: center; justify-content: center; gap: var(--sp-4); flex-wrap: wrap; margin-top: var(--sp-8); }
-    .offline__link { font-weight: 600; white-space: nowrap; padding: 0 var(--sp-3); }
-    .offline__link:active { color: var(--s-text-link-press); }
+    .offline__actions { display: flex; justify-content: center; margin-top: var(--sp-8); }
     @media (max-width: 480px) {
-      .offline__actions { flex-direction: column; align-items: stretch; gap: var(--sp-2); }
       .offline__actions .btn { width: 100%; }
-      .offline__link { text-align: center; }
     }
   </style>
 </head>
@@ -669,7 +668,6 @@ body.dark .wa-nav__logo .is-dark,  [data-theme="dark"] .wa-nav__logo .is-dark  {
       <p class="lede">We apologize for any inconvenience this may cause and hope to have it available again soon.</p>
       <div class="offline__actions">
         <a class="btn btn--lg btn--primary" href="https://www.wolframalpha.com/">Go to Wolfram|Alpha</a>
-        <a class="offline__link" href="https://www.wolframalpha.com/contact-us">Contact us &raquo;</a>
       </div>
     </section>
   </main>
@@ -712,7 +710,7 @@ body.dark .wa-nav__logo .is-dark,  [data-theme="dark"] .wa-nav__logo .is-dark  {
     </footer>
 
   <script>
-    /* ── Theme — the wa-pro-theme key every page shares; 'auto' follows the OS. ── */
+
     (function () {
       var root = document.documentElement;
       var mq = window.matchMedia('(prefers-color-scheme: dark)');
@@ -731,7 +729,6 @@ body.dark .wa-nav__logo .is-dark,  [data-theme="dark"] .wa-nav__logo .is-dark  {
       resolve(); mark();
     })();
 
-    /* ── Nav behaviour — the nav.html driver, minus its doc controls. ── */
     (function () {
       var nav = document.getElementById('nav'); if (!nav) return;
       nav.dataset.user = 'out';
