@@ -1,0 +1,138 @@
+<svg id="limit-with-hints" viewBox="0 0 533 400" xmlns="http://www.w3.org/2000/svg" role="img"
+     aria-label="Wolfram|Alpha Pro Step-by-Step Solution panel: hint">
+<style>
+  #limit-with-hints {
+    --bar: #F96932; --on-bar: #FFFFFF; --panel: #FFFFFF; --band: #F5F5F5;
+    --ink: #535353; --step: #4AA5C7; --rule: #EBEBEB; --link: #F96932;
+    --chip: #EFEFEF; --chip-ink: #777777; --btn-edge: #CACACA; --press: #CB1000;   /* surface/action PRESS */
+    --callout: #FFF7EE; --callout-edge: #F6D3B3;
+  }
+  [data-theme="dark"] #limit-with-hints, [data-theme="pro-dark"] #limit-with-hints {
+    --bar: #FFA32C; --on-bar: #282828; --panel: #333333; --band: #3D3D3D;
+    --ink: #EBEBEB; --step: #92C7DD; --rule: #444444; --link: #FFA32C;
+    --chip: #3D3D3D; --chip-ink: #CECECE; --btn-edge: #555555; --press: #FF9415;
+    --callout: #3F3A33; --callout-edge: #8A6533;   /* #333333 + 8% / 45% of #FFA32C */
+  }
+  #limit-with-hints .p-ink, #limit-with-hints .m-ink { fill: var(--ink); }
+  #limit-with-hints .p-rule { stroke: var(--rule); stroke-width: 1; }
+  #limit-with-hints .p-step { fill: var(--step); font: 700 16px 'Source Sans Pro', sans-serif; letter-spacing: .06em; }
+  #limit-with-hints .p-more { fill: var(--link); font: 400 14px 'Source Sans Pro', sans-serif; }
+  #limit-with-hints .p-fade0 { stop-color: var(--panel); stop-opacity: 0; }
+  #limit-with-hints .p-fade1 { stop-color: var(--panel); stop-opacity: 1; }
+  #limit-with-hints .p-tog { fill: var(--link); }
+  #limit-with-hints .p-tog-mark { fill: var(--panel); }
+  #limit-with-hints .p-results { fill: var(--ink); font: 400 18px 'Source Sans Pro', sans-serif; }
+  /* Lexia italic is the PRODUCT's own header face (Colette 2026-09-01). No Lexia file
+     exists in the repo, so this run stays a live text element and falls back to a slab
+     serif off-machine — the one part of the plate that is not self-contained.
+     NB: never write an angle-bracketed tag name in here. A strict XML parse reads it as
+     an unclosed tag inside the style block; browsers cope, checkers do not. */
+  #limit-with-hints .p-title { fill: var(--on-bar); font: italic 400 23px Lexia, 'Roboto Slab', Georgia, serif; }
+  #limit-with-hints .p-mark { fill: var(--on-bar); }
+  #limit-with-hints .p-chip { fill: var(--chip); }
+  #limit-with-hints .p-chip-t { fill: var(--chip-ink); font: 400 16px 'Source Sans Pro', sans-serif; }
+  #limit-with-hints .p-chip-b { font-weight: 700; }
+  #limit-with-hints .p-btn { fill: var(--panel); stroke: var(--btn-edge); stroke-width: 1; }
+  #limit-with-hints .p-btn-t { fill: var(--link); font: 400 15px 'Source Sans Pro', sans-serif; }
+  #limit-with-hints .p-caret { fill: var(--link); }
+  #limit-with-hints .p-cell { fill: none; stroke: var(--rule); stroke-width: 1.2; }
+  #limit-with-hints .p-pod-title { fill: var(--step); font: 400 14px 'Source Sans Pro', sans-serif; }
+  #limit-with-hints .p-pod-btn { fill: var(--panel); stroke: var(--btn-edge); stroke-width: 1; }
+  #limit-with-hints .p-pod-btn-t { fill: var(--link); font: 400 14px 'Source Sans Pro', sans-serif; }
+  #limit-with-hints .p-pod-btn--on { fill: var(--press); }   /* PRESSED: the action ramp's press step */
+  #limit-with-hints .p-pod-btn--on-t { fill: var(--on-bar); font: 600 14px 'Source Sans Pro', sans-serif; }
+  #limit-with-hints .p-pod-chk { fill: var(--on-bar); }
+  #limit-with-hints .p-callout { fill: var(--callout); stroke: var(--callout-edge); stroke-width: 1; }
+  #limit-with-hints .p-callout-h { fill: var(--link); font: 700 12px 'Source Sans Pro', sans-serif; letter-spacing: .06em; }
+  #limit-with-hints .p-menu { fill: var(--panel); stroke: var(--link); stroke-width: 1; }
+  #limit-with-hints .p-menu-t { fill: var(--ink); font: 400 15px 'Source Sans Pro', sans-serif; }
+</style>
+
+<defs><path id="limit-with-hints-f378" d="M264 993Q268 993 275.5 994.0Q283 995 287 995Q398 995 488 642Q498 603 504 582Q607 790 703.5 891.5Q800 993 895 993Q944 993 978.0 959.5Q1012 926 1012 879Q1012 842 986.5 813.0Q961 784 911 764L823 844Q753 825 685.0 738.5Q617 652 549 493Q554 476 564 442Q665 88 780 88Q796 88 822.5 93.5Q849 99 889 111V47Q816 18 758.0 3.0Q700 -12 659 -12Q518 -12 424 391L422 399Q320 185 225.0 84.5Q130 -16 31 -16Q-27 -16 -61.5 14.0Q-96 44 -96 94Q-96 135 -70.0 162.0Q-44 189 4 199L98 111Q174 151 249.5 252.0Q325 353 383 494Q339 647 302.5 731.0Q266 815 227 850L57 872V922Z"/><path id="limit-with-hints-f232" d="M289 162H905L942 336H1034V0H86V129Q534 493 662.5 660.0Q791 827 791 985Q791 1130 718.5 1212.0Q646 1294 518 1294Q470 1294 425.0 1282.0Q380 1270 336 1245V1026Q314 1011 291.0 1003.0Q268 995 244 995Q191 995 160.0 1026.0Q129 1057 129 1110Q129 1225 256.5 1312.0Q384 1399 563 1399Q758 1399 873.5 1293.5Q989 1188 989 1012Q989 850 848.5 673.0Q708 496 289 162Z"/><path id="limit-with-hints-f22b" d="M795 1221H913V670H1452V553H913V0H795V553H254V670H795Z"/><path id="limit-with-hints-f235" d="M207 1374H940V1214H334V805Q392 821 447.0 829.5Q502 838 553 838Q756 838 878.5 730.0Q1001 622 1001 444Q1001 240 850.0 111.0Q699 -18 455 -18Q305 -18 203.5 38.5Q102 95 102 174Q102 222 135.5 252.5Q169 283 221 283Q230 283 242.0 281.5Q254 280 271 276L352 100Q386 88 420.5 82.0Q455 76 489 76Q632 76 722.5 167.5Q813 259 813 403Q813 559 708.5 635.0Q604 711 387 711Q330 711 285.5 708.0Q241 705 207 698Z"/><path id="limit-with-hints-f236" d="M297 696Q295 674 294.0 647.5Q293 621 293 571Q293 331 371.0 202.5Q449 74 596 74Q724 74 806.5 179.0Q889 284 889 446Q889 602 808.0 695.0Q727 788 594 788Q509 788 434.5 765.0Q360 742 297 696ZM907 1462V1343H901Q655 1343 502.0 1201.5Q349 1060 301 786Q381 848 469.5 879.5Q558 911 649 911Q834 911 954.5 784.5Q1075 658 1075 465Q1075 257 932.5 116.0Q790 -25 580 -25Q365 -25 233.5 137.0Q102 299 102 567Q102 961 316.5 1199.5Q531 1438 907 1462Z"/><path id="limit-with-hints-f23d" d="M254 477H1452V360H254ZM254 860H1452V743H254Z"/><path id="limit-with-hints-f228" d="M791 1470V1384Q585 1348 488.0 1153.5Q391 959 391 582Q391 216 489.0 23.0Q587 -170 791 -205V-291Q518 -259 367.5 -30.5Q217 198 217 584Q217 978 365.5 1207.0Q514 1436 791 1470Z"/><path id="limit-with-hints-f229" d="M63 1470Q340 1436 488.5 1207.0Q637 978 637 584Q637 198 486.5 -30.5Q336 -259 63 -291V-205Q267 -170 365.0 23.0Q463 216 463 582Q463 959 366.0 1153.5Q269 1348 63 1384Z"/><path id="limit-with-hints-f233" d="M649 723Q817 711 912.5 623.0Q1008 535 1008 393Q1008 214 862.5 95.5Q717 -23 489 -23Q322 -23 203.0 46.0Q84 115 84 203Q84 247 117.0 277.0Q150 307 199 307Q216 307 231.0 304.5Q246 302 260 297L324 123Q365 98 408.5 86.0Q452 74 498 74Q636 74 727.5 166.5Q819 259 819 397Q819 520 740.5 586.5Q662 653 516 653Q488 653 460.5 651.0Q433 649 408 645V766Q415 766 429.0 765.0Q443 764 451 764Q603 764 685.5 833.0Q768 902 768 1028Q768 1149 697.0 1221.5Q626 1294 508 1294Q453 1294 405.0 1279.5Q357 1265 313 1235V1042Q295 1029 274.5 1022.5Q254 1016 229 1016Q180 1016 149.5 1046.5Q119 1077 119 1126Q119 1236 245.0 1317.5Q371 1399 551 1399Q734 1399 844.0 1305.0Q954 1211 954 1055Q954 935 876.0 850.5Q798 766 649 723Z"/><path id="limit-with-hints-f23a" d="M326 242Q380 242 418.5 203.5Q457 165 457 111Q457 57 418.5 19.5Q380 -18 326 -18Q271 -18 234.0 19.0Q197 56 197 111Q197 166 234.5 204.0Q272 242 326 242ZM326 985Q380 985 418.5 947.5Q457 910 457 856Q457 802 418.0 763.5Q379 725 326 725Q272 725 234.5 763.5Q197 802 197 856Q197 911 234.0 948.0Q271 985 326 985Z"/><path id="limit-with-hints-f26c" d="M57 0V74L178 84L213 117V1370H55V1434L305 1507H383V117L420 84L537 74V0Z"/><path id="limit-with-hints-f269" d="M307 995H387V117L422 84L532 74V0H72V74L180 84L215 117V858H72V922ZM315 1450Q365 1450 399.5 1415.0Q434 1380 434 1331Q434 1282 399.5 1248.0Q365 1214 315 1214Q266 1214 231.5 1248.0Q197 1282 197 1331Q197 1381 231.5 1415.5Q266 1450 315 1450Z"/><path id="limit-with-hints-f26d" d="M930 868Q1048 938 1135.0 972.0Q1222 1006 1282 1006Q1406 1006 1475.0 925.5Q1544 845 1544 700V694V117L1581 84L1690 74V0H1243V74L1339 84L1376 117V659Q1376 768 1331.0 819.0Q1286 870 1192 870Q1145 870 1087.5 853.5Q1030 837 961 803V117L997 84L1094 74V0H657V74L756 84L791 117V659Q791 767 746.5 818.5Q702 870 610 870Q560 870 502.5 853.5Q445 837 377 803V117L412 84L510 74V0H61V74L172 84L207 117V858H61V922L299 995H377V883Q484 946 563.5 976.0Q643 1006 705 1006Q780 1006 837.5 971.0Q895 936 930 868Z"/><path id="limit-with-hints-f22212" d="M254 670H1452V551H254Z"/><linearGradient id="limit-with-hints-fade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="p-fade0"/><stop offset="1" class="p-fade1"/></linearGradient></defs>
+<rect class="p-panel" x="0" y="0" width="533" height="400" fill="var(--panel)"/>
+<rect x="0" y="0" width="533" height="52" fill="var(--bar)"/>
+<g class="p-mark" transform="translate(26 13) scale(1.15)"><path d="M20.5879 2V10.1963C20.5351 10.1784 20.1624 9.93359 20.1104 9.93359C19.8566 9.93072 19.6078 10.0041 19.3965 10.1445V2.88086H4.60938V3.76074H5.47949V5.52246H4.60938V7.2832H5.47949V9.04492H4.60938V10.8057H5.47949V12.5664H4.60938V14.3281H5.47949V16.0898H4.60938V17.8496H5.47949V19.6113H4.60938V20.4912H10.6211L11.5244 21.3721H3.73926V19.6104H2V17.8496H3.73926V16.0889H2V14.3281H3.73926V12.5664H2V10.8057H3.73926V9.04492H2V7.2832H3.73926V5.52246H2V3.76074H3.73926V2H20.5879Z"/><path d="M20.2666 15.667V21.3721H14.3525L15.2656 20.4912H19.3975L19.3965 16.5039L20.2666 15.667Z"/><path d="M20.1895 10.8037C20.2709 10.82 20.3464 10.8605 20.4062 10.9199L21.876 12.3379C21.915 12.3746 21.9465 12.4186 21.9678 12.4678C21.989 12.517 22 12.5704 22 12.624C21.9999 12.6774 21.9889 12.7302 21.9678 12.7793C21.9465 12.8285 21.915 12.8734 21.876 12.9102L13.2393 21.249C13.1596 21.3244 13.053 21.3647 12.9434 21.3623C12.8311 21.3649 12.7216 21.3247 12.6387 21.249L8.20996 16.9775C8.17097 16.94 8.14036 16.8945 8.11914 16.8447C8.09796 16.7949 8.08695 16.7416 8.08691 16.6875C8.08691 16.6332 8.09785 16.5792 8.11914 16.5293C8.1404 16.4795 8.1709 16.434 8.20996 16.3965L9.68066 14.9795C9.76068 14.9039 9.8675 14.8621 9.97754 14.8643L10.0605 14.8711C10.1424 14.8853 10.2191 14.9227 10.2812 14.9795L12.9434 17.5508L19.8057 10.9199C19.8855 10.8407 19.9939 10.7959 20.1064 10.7959L20.1895 10.8037Z"/><path d="M15.9521 13.4473L15.0391 14.3281H10.8379C10.6033 14.1164 10.2989 13.9923 9.97754 13.9922C9.66167 13.9952 9.35728 14.1151 9.12402 14.3281H7.21973V13.4473H15.9521Z"/><path d="M17.6572 10.8057V11.6865H7.21973V10.8057H17.6572Z"/><path d="M17.6572 8.16406V9.04492H7.21973V8.16406H17.6572Z"/><path d="M17.6572 5.52246V6.40234H7.21973V5.52246H17.6572Z"/></g>
+<text class="p-title" x="64" y="35">Wolfram|Alpha Step-by-step solution</text>
+<rect x="0" y="52" width="533" height="52" fill="var(--band)"/>
+<text class="p-results" x="26" y="84">Limit:</text>
+<rect class="p-btn" x="415.4" y="63" width="91.6" height="30" rx="4"/><text class="p-btn-t" x="429.4" y="83">Hide hints</text>
+
+
+<text class="p-step" x="26" y="128">STEP 2</text>
+<line class="p-rule" x1="26" y1="138.5" x2="507" y2="138.5"/>
+<rect class="p-chip" x="26" y="160" width="481" height="41" rx="4"/>
+<text class="p-chip-t" x="40" y="185"><tspan class="p-chip-b">Hint:</tspan> Factor the numerator and denominator.</text>
+      <g class="m-ink"><use href="#limit-with-hints-f378" transform="translate(28.4 235.4) scale(0.00781 -0.00781)"/> <use href="#limit-with-hints-f232" transform="translate(36.0 228.7) scale(0.00547 -0.00547)"/></g>
+      <g class="m-ink"><use href="#limit-with-hints-f22b" transform="translate(47.4 235.4) scale(0.00781 -0.00781)"/></g>
+      <g class="m-ink"><use href="#limit-with-hints-f235" transform="translate(65.8 235.4) scale(0.00781 -0.00781)"/></g>
+      <g class="m-ink"><use href="#limit-with-hints-f378" transform="translate(77.0 235.4) scale(0.00781 -0.00781)"/></g>
+      <g class="m-ink"><use href="#limit-with-hints-f22b" transform="translate(89.7 235.4) scale(0.00781 -0.00781)"/></g>
+      <g class="m-ink"><use href="#limit-with-hints-f236" transform="translate(108.2 235.4) scale(0.00781 -0.00781)"/></g>
+      <g class="m-ink"><use href="#limit-with-hints-f378" transform="translate(52.7 258.3) scale(0.00781 -0.00781)"/></g>
+      <g class="m-ink"><use href="#limit-with-hints-f22b" transform="translate(65.4 258.3) scale(0.00781 -0.00781)"/></g>
+      <g class="m-ink"><use href="#limit-with-hints-f232" transform="translate(83.9 258.3) scale(0.00781 -0.00781)"/></g>
+      <rect x="26.0" y="242.13" width="93.5" height="0.88" class="m-ink"/>
+      <g class="m-ink"><use href="#limit-with-hints-f23d" transform="translate(124.6 247.3) scale(0.00781 -0.00781)"/></g>
+      <g transform="translate(0 230.60) scale(1 1.037) translate(0 -230.60)"><g class="m-ink"><use href="#limit-with-hints-f228" transform="translate(145.4 235.4) scale(0.00781 -0.00781)"/></g></g>
+      <g class="m-ink"><use href="#limit-with-hints-f378" transform="translate(152.7 235.4) scale(0.00781 -0.00781)"/></g>
+      <g class="m-ink"><use href="#limit-with-hints-f22b" transform="translate(165.5 235.4) scale(0.00781 -0.00781)"/></g>
+      <g class="m-ink"><use href="#limit-with-hints-f232" transform="translate(183.9 235.4) scale(0.00781 -0.00781)"/></g>
+      <g transform="translate(0 230.60) scale(1 1.037) translate(0 -230.60)"><g class="m-ink"><use href="#limit-with-hints-f229" transform="translate(193.5 235.4) scale(0.00781 -0.00781)"/></g></g>
+      <g transform="translate(0 230.60) scale(1 1.037) translate(0 -230.60)"><g class="m-ink"><use href="#limit-with-hints-f228" transform="translate(202.4 235.4) scale(0.00781 -0.00781)"/></g></g>
+      <g class="m-ink"><use href="#limit-with-hints-f378" transform="translate(209.7 235.4) scale(0.00781 -0.00781)"/></g>
+      <g class="m-ink"><use href="#limit-with-hints-f22b" transform="translate(222.5 235.4) scale(0.00781 -0.00781)"/></g>
+      <g class="m-ink"><use href="#limit-with-hints-f233" transform="translate(240.9 235.4) scale(0.00781 -0.00781)"/></g>
+      <g transform="translate(0 230.60) scale(1 1.037) translate(0 -230.60)"><g class="m-ink"><use href="#limit-with-hints-f229" transform="translate(250.5 235.4) scale(0.00781 -0.00781)"/></g></g>
+      <g class="m-ink"><use href="#limit-with-hints-f378" transform="translate(181.2 258.3) scale(0.00781 -0.00781)"/></g>
+      <g class="m-ink"><use href="#limit-with-hints-f22b" transform="translate(194.0 258.3) scale(0.00781 -0.00781)"/></g>
+      <g class="m-ink"><use href="#limit-with-hints-f232" transform="translate(212.4 258.3) scale(0.00781 -0.00781)"/></g>
+      <rect x="143.0" y="242.13" width="116.5" height="0.88" class="m-ink"/>
+      <g class="m-ink"><use href="#limit-with-hints-f23a" transform="translate(259.5 247.3) scale(0.00781 -0.00781)"/></g>
+      <g class="m-ink"><use href="#limit-with-hints-f26c" transform="translate(30.0 312.0) scale(0.00977 -0.00977)"/><use href="#limit-with-hints-f269" transform="translate(35.7 312.0) scale(0.00977 -0.00977)"/><use href="#limit-with-hints-f26d" transform="translate(41.3 312.0) scale(0.00977 -0.00977)"/></g>
+      <g class="m-ink"><use href="#limit-with-hints-f378" transform="translate(26.0 331.5) scale(0.00605 -0.00605)"/> <path d="M32.9 327.3H40.8V325.8L44.3 327.8L40.8 329.8V328.2H32.9Z"/><use href="#limit-with-hints-f22212" transform="translate(44.9 331.5) scale(0.00605 -0.00605)"/><use href="#limit-with-hints-f232" transform="translate(55.3 331.5) scale(0.00605 -0.00605)"/></g>
+      <g transform="translate(0 291.08) scale(1 1.037) translate(0 -291.08)"><g class="m-ink"><use href="#limit-with-hints-f228" transform="translate(70.8 297.0) scale(0.00977 -0.00977)"/></g></g>
+      <g class="m-ink"><use href="#limit-with-hints-f378" transform="translate(79.9 297.0) scale(0.00977 -0.00977)"/></g>
+      <g class="m-ink"><use href="#limit-with-hints-f22b" transform="translate(95.8 297.0) scale(0.00977 -0.00977)"/></g>
+      <g class="m-ink"><use href="#limit-with-hints-f232" transform="translate(118.9 297.0) scale(0.00977 -0.00977)"/></g>
+      <g transform="translate(0 291.08) scale(1 1.037) translate(0 -291.08)"><g class="m-ink"><use href="#limit-with-hints-f229" transform="translate(130.8 297.0) scale(0.00977 -0.00977)"/></g></g>
+      <g transform="translate(0 291.08) scale(1 1.037) translate(0 -291.08)"><g class="m-ink"><use href="#limit-with-hints-f228" transform="translate(142.0 297.0) scale(0.00977 -0.00977)"/></g></g>
+      <g class="m-ink"><use href="#limit-with-hints-f378" transform="translate(151.1 297.0) scale(0.00977 -0.00977)"/></g>
+      <g class="m-ink"><use href="#limit-with-hints-f22b" transform="translate(167.0 297.0) scale(0.00977 -0.00977)"/></g>
+      <g class="m-ink"><use href="#limit-with-hints-f233" transform="translate(190.1 297.0) scale(0.00977 -0.00977)"/></g>
+      <g transform="translate(0 291.08) scale(1 1.037) translate(0 -291.08)"><g class="m-ink"><use href="#limit-with-hints-f229" transform="translate(202.0 297.0) scale(0.00977 -0.00977)"/></g></g>
+      <g class="m-ink"><use href="#limit-with-hints-f378" transform="translate(115.5 325.6) scale(0.00977 -0.00977)"/></g>
+      <g class="m-ink"><use href="#limit-with-hints-f22b" transform="translate(131.4 325.6) scale(0.00977 -0.00977)"/></g>
+      <g class="m-ink"><use href="#limit-with-hints-f232" transform="translate(154.5 325.6) scale(0.00977 -0.00977)"/></g>
+      <rect x="67.8" y="305.49" width="145.6" height="1.10" class="m-ink"/>
+<text class="p-step" x="26" y="391.5671875">STEP 3</text>
+<line class="p-rule" x1="26" y1="402.1" x2="507" y2="402.1"/>
+<rect class="p-chip" x="26" y="423.5671875" width="481" height="41" rx="4"/>
+<text class="p-chip-t" x="40" y="448.5671875"><tspan class="p-chip-b">Hint:</tspan> Cancel terms.</text>
+      <g transform="translate(0 491.53) scale(1 1.037) translate(0 -491.53)"><g class="m-ink"><use href="#limit-with-hints-f228" transform="translate(28.4 496.3) scale(0.00781 -0.00781)"/></g></g>
+      <g class="m-ink"><use href="#limit-with-hints-f378" transform="translate(35.7 496.3) scale(0.00781 -0.00781)"/></g>
+      <g class="m-ink"><use href="#limit-with-hints-f22b" transform="translate(48.5 496.3) scale(0.00781 -0.00781)"/></g>
+      <g class="m-ink"><use href="#limit-with-hints-f232" transform="translate(66.9 496.3) scale(0.00781 -0.00781)"/></g>
+      <g transform="translate(0 491.53) scale(1 1.037) translate(0 -491.53)"><g class="m-ink"><use href="#limit-with-hints-f229" transform="translate(76.5 496.3) scale(0.00781 -0.00781)"/></g></g>
+      <g transform="translate(0 491.53) scale(1 1.037) translate(0 -491.53)"><g class="m-ink"><use href="#limit-with-hints-f228" transform="translate(85.4 496.3) scale(0.00781 -0.00781)"/></g></g>
+      <g class="m-ink"><use href="#limit-with-hints-f378" transform="translate(92.7 496.3) scale(0.00781 -0.00781)"/></g>
+      <g class="m-ink"><use href="#limit-with-hints-f22b" transform="translate(105.4 496.3) scale(0.00781 -0.00781)"/></g>
+      <g class="m-ink"><use href="#limit-with-hints-f233" transform="translate(123.9 496.3) scale(0.00781 -0.00781)"/></g>
+      <g transform="translate(0 491.53) scale(1 1.037) translate(0 -491.53)"><g class="m-ink"><use href="#limit-with-hints-f229" transform="translate(133.4 496.3) scale(0.00781 -0.00781)"/></g></g>
+      <g class="m-ink"><use href="#limit-with-hints-f378" transform="translate(64.2 519.2) scale(0.00781 -0.00781)"/></g>
+      <g class="m-ink"><use href="#limit-with-hints-f22b" transform="translate(76.9 519.2) scale(0.00781 -0.00781)"/></g>
+      <g class="m-ink"><use href="#limit-with-hints-f232" transform="translate(95.4 519.2) scale(0.00781 -0.00781)"/></g>
+      <rect x="26.0" y="503.06" width="116.5" height="0.88" class="m-ink"/>
+      <g class="m-ink"><use href="#limit-with-hints-f23d" transform="translate(147.6 508.3) scale(0.00781 -0.00781)"/></g>
+      <g class="m-ink"><use href="#limit-with-hints-f378" transform="translate(166.1 508.3) scale(0.00781 -0.00781)"/></g>
+      <g class="m-ink"><use href="#limit-with-hints-f22b" transform="translate(178.8 508.3) scale(0.00781 -0.00781)"/></g>
+      <g class="m-ink"><use href="#limit-with-hints-f233" transform="translate(197.3 508.3) scale(0.00781 -0.00781)"/></g>
+      <g class="m-ink"><use href="#limit-with-hints-f23a" transform="translate(206.2 508.3) scale(0.00781 -0.00781)"/></g>
+      <g class="m-ink"><use href="#limit-with-hints-f26c" transform="translate(30.0 565.3) scale(0.00977 -0.00977)"/><use href="#limit-with-hints-f269" transform="translate(35.7 565.3) scale(0.00977 -0.00977)"/><use href="#limit-with-hints-f26d" transform="translate(41.3 565.3) scale(0.00977 -0.00977)"/></g>
+      <g class="m-ink"><use href="#limit-with-hints-f378" transform="translate(26.0 584.7) scale(0.00605 -0.00605)"/> <path d="M32.9 580.6H40.8V579.1L44.3 581.0L40.8 583.0V581.5H32.9Z"/><use href="#limit-with-hints-f22212" transform="translate(44.9 584.7) scale(0.00605 -0.00605)"/><use href="#limit-with-hints-f232" transform="translate(55.3 584.7) scale(0.00605 -0.00605)"/></g>
+      <g transform="translate(0 559.30) scale(1 1.037) translate(0 -559.30)"><g class="m-ink"><use href="#limit-with-hints-f228" transform="translate(67.8 565.3) scale(0.00977 -0.00977)"/></g></g>
+      <g class="m-ink"><use href="#limit-with-hints-f378" transform="translate(76.9 565.3) scale(0.00977 -0.00977)"/></g>
+      <g class="m-ink"><use href="#limit-with-hints-f22b" transform="translate(92.8 565.3) scale(0.00977 -0.00977)"/></g>
+      <g class="m-ink"><use href="#limit-with-hints-f233" transform="translate(115.9 565.3) scale(0.00977 -0.00977)"/></g>
+      <g transform="translate(0 559.30) scale(1 1.037) translate(0 -559.30)"><g class="m-ink"><use href="#limit-with-hints-f229" transform="translate(127.8 565.3) scale(0.00977 -0.00977)"/></g></g>
+<rect class="p-fade" x="0" y="344" width="533" height="56" fill="url(#limit-with-hints-fade)"/>
+</svg>

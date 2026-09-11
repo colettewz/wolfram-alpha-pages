@@ -1,0 +1,125 @@
+<svg id="show-hints" viewBox="0 0 533 400" xmlns="http://www.w3.org/2000/svg" role="img"
+     aria-label="Wolfram|Alpha Pro Step-by-Step Solution panel: plain">
+<style>
+  #show-hints {
+    --bar: #F96932; --on-bar: #FFFFFF; --panel: #FFFFFF; --band: #F5F5F5;
+    --ink: #535353; --step: #4AA5C7; --rule: #EBEBEB; --link: #F96932;
+    --chip: #EFEFEF; --chip-ink: #777777; --btn-edge: #CACACA; --press: #CB1000;   /* surface/action PRESS */
+    --callout: #FFF7EE; --callout-edge: #F6D3B3;
+  }
+  [data-theme="dark"] #show-hints, [data-theme="pro-dark"] #show-hints {
+    --bar: #FFA32C; --on-bar: #282828; --panel: #333333; --band: #3D3D3D;
+    --ink: #EBEBEB; --step: #92C7DD; --rule: #444444; --link: #FFA32C;
+    --chip: #3D3D3D; --chip-ink: #CECECE; --btn-edge: #555555; --press: #FF9415;
+    --callout: #3F3A33; --callout-edge: #8A6533;   /* #333333 + 8% / 45% of #FFA32C */
+  }
+  #show-hints .p-ink, #show-hints .m-ink { fill: var(--ink); }
+  #show-hints .p-rule { stroke: var(--rule); stroke-width: 1; }
+  #show-hints .p-step { fill: var(--step); font: 700 16px 'Source Sans Pro', sans-serif; letter-spacing: .06em; }
+  #show-hints .p-more { fill: var(--link); font: 400 14px 'Source Sans Pro', sans-serif; }
+  #show-hints .p-fade0 { stop-color: var(--panel); stop-opacity: 0; }
+  #show-hints .p-fade1 { stop-color: var(--panel); stop-opacity: 1; }
+  #show-hints .p-tog { fill: var(--link); }
+  #show-hints .p-tog-mark { fill: var(--panel); }
+  #show-hints .p-results { fill: var(--ink); font: 400 18px 'Source Sans Pro', sans-serif; }
+  /* Lexia italic is the PRODUCT's own header face (Colette 2026-09-01). No Lexia file
+     exists in the repo, so this run stays a live text element and falls back to a slab
+     serif off-machine — the one part of the plate that is not self-contained.
+     NB: never write an angle-bracketed tag name in here. A strict XML parse reads it as
+     an unclosed tag inside the style block; browsers cope, checkers do not. */
+  #show-hints .p-title { fill: var(--on-bar); font: italic 400 23px Lexia, 'Roboto Slab', Georgia, serif; }
+  #show-hints .p-mark { fill: var(--on-bar); }
+  #show-hints .p-chip { fill: var(--chip); }
+  #show-hints .p-chip-t { fill: var(--chip-ink); font: 400 16px 'Source Sans Pro', sans-serif; }
+  #show-hints .p-chip-b { font-weight: 700; }
+  #show-hints .p-btn { fill: var(--panel); stroke: var(--btn-edge); stroke-width: 1; }
+  #show-hints .p-btn-t { fill: var(--link); font: 400 15px 'Source Sans Pro', sans-serif; }
+  #show-hints .p-caret { fill: var(--link); }
+  #show-hints .p-cell { fill: none; stroke: var(--rule); stroke-width: 1.2; }
+  #show-hints .p-pod-title { fill: var(--step); font: 400 14px 'Source Sans Pro', sans-serif; }
+  #show-hints .p-pod-btn { fill: var(--panel); stroke: var(--btn-edge); stroke-width: 1; }
+  #show-hints .p-pod-btn-t { fill: var(--link); font: 400 14px 'Source Sans Pro', sans-serif; }
+  #show-hints .p-pod-btn--on { fill: var(--press); }   /* PRESSED: the action ramp's press step */
+  #show-hints .p-pod-btn--on-t { fill: var(--on-bar); font: 600 14px 'Source Sans Pro', sans-serif; }
+  #show-hints .p-pod-chk { fill: var(--on-bar); }
+  #show-hints .p-callout { fill: var(--callout); stroke: var(--callout-edge); stroke-width: 1; }
+  #show-hints .p-callout-h { fill: var(--link); font: 700 12px 'Source Sans Pro', sans-serif; letter-spacing: .06em; }
+  #show-hints .p-menu { fill: var(--panel); stroke: var(--link); stroke-width: 1; }
+  #show-hints .p-menu-t { fill: var(--ink); font: 400 15px 'Source Sans Pro', sans-serif; }
+</style>
+
+<defs><path id="show-hints-f245" d="M68 0V84L184 94L219 123V1251L184 1280L68 1292V1374H1049V1075H934L905 1249L877 1280H403V762H739L768 791L788 940H885V489H788L768 637L739 668H403V94H952L981 127L1016 334H1122V0Z"/><path id="show-hints-f278" d="M37 985H477V909L383 897L373 877L545 608L731 870L715 897L616 909V985H985V909L870 889L600 530L901 92L1024 76V0H588V76L674 90L684 106L494 412L285 115L295 90L412 76V0H25V76L141 92L436 487L162 887L37 909Z"/><path id="show-hints-f270" d="M362 119Q412 102 455.5 94.0Q499 86 537 86Q689 86 783.0 199.5Q877 313 877 500Q877 673 795.5 775.0Q714 877 578 877Q529 877 477.0 860.0Q425 843 362 807ZM47 -446V-373L158 -362L190 -330V858H47V922L285 995H362V883Q446 946 519.5 976.0Q593 1006 664 1006Q836 1006 946.5 872.0Q1057 738 1057 526Q1057 285 919.0 139.5Q781 -6 553 -6Q514 -6 467.0 -1.5Q420 3 363 12L362 -330L397 -362L528 -373V-446Z"/><path id="show-hints-f261" d="M684 188V549Q427 478 346.5 419.0Q266 360 266 264Q266 187 310.5 141.5Q355 96 430 96Q478 96 540.5 119.0Q603 142 684 188ZM684 119Q585 51 502.5 18.5Q420 -14 348 -14Q229 -14 157.5 58.0Q86 130 86 248Q86 379 193.5 454.0Q301 529 684 621V686Q684 815 642.0 865.0Q600 915 496 915Q457 915 419.0 907.0Q381 899 340 883V711H199Q162 711 148.5 724.5Q135 738 135 774Q135 874 250.5 940.0Q366 1006 549 1006Q710 1006 783.0 936.0Q856 866 856 711V117L891 84L999 74V0H711Z"/><path id="show-hints-f26e" d="M61 0V74L172 84L207 117V858H61V922L299 995H377V883Q500 951 575.0 978.5Q650 1006 707 1006Q841 1006 912.0 926.0Q983 846 983 694V117L1018 84L1128 74V0H680V74L778 84L813 117V659Q813 774 765.5 822.0Q718 870 606 870Q557 870 500.0 853.5Q443 837 377 803V117L412 84L510 74V0Z"/><path id="show-hints-f264" d="M784 182V885Q728 901 683.5 909.5Q639 918 604 918Q447 918 350.5 802.0Q254 686 254 496Q254 319 337.5 215.0Q421 111 561 111Q615 111 670.5 128.5Q726 146 784 182ZM784 1370H627V1434L877 1507H954V117L989 84L1087 74V0H784V106Q704 42 628.0 12.0Q552 -18 469 -18Q297 -18 185.5 116.5Q74 251 74 461Q74 705 220.5 856.5Q367 1008 602 1008Q643 1008 689.0 1002.0Q735 996 784 985Z"/><path id="show-hints-f274" d="M180 862H51V926L186 985L274 1176H350V958H662V862H350V322Q350 189 387.0 143.5Q424 98 520 98Q553 98 588.5 102.0Q624 106 662 115V39Q592 17 524.0 5.5Q456 -6 393 -6Q275 -6 227.5 38.5Q180 83 180 201Z"/><path id="show-hints-f268" d="M289 1507H367V883Q488 950 564.5 978.0Q641 1006 698 1006Q833 1006 904.0 926.0Q975 846 975 694V117L1010 84L1118 74V0H672V74L768 84L803 117V659Q803 774 755.0 822.0Q707 870 596 870Q547 870 490.0 853.5Q433 837 367 803V117L403 84L500 74V0H51V74L162 84L197 117V1370H39V1434Z"/><path id="show-hints-f265" d="M735 625V657Q735 781 680.5 847.0Q626 913 522 913Q420 913 345.5 831.5Q271 750 262 625ZM918 217V104Q827 44 729.0 13.0Q631 -18 532 -18Q329 -18 202.5 121.5Q76 261 76 485Q76 715 208.5 860.5Q341 1006 549 1006Q719 1006 818.5 897.5Q918 789 918 602Q918 577 917.5 564.0Q917 551 915 539H252V516Q252 323 345.0 210.5Q438 98 596 98Q669 98 747.5 127.0Q826 156 918 217Z"/><path id="show-hints-f266" d="M59 0V74L168 84L205 117V862H74V928L205 958V981Q205 1228 319.0 1376.0Q433 1524 621 1524Q690 1524 735.0 1490.5Q780 1457 780 1407Q780 1370 758.0 1342.5Q736 1315 696 1305L510 1427Q444 1397 410.5 1316.5Q377 1236 377 1108V958H662V862H375V117L410 84L537 74V0Z"/><path id="show-hints-f26f" d="M551 918Q423 918 345.5 802.5Q268 687 268 494Q268 301 346.0 185.5Q424 70 551 70Q680 70 758.0 185.0Q836 300 836 494Q836 686 757.5 802.0Q679 918 551 918ZM551 1006Q760 1006 894.0 862.5Q1028 719 1028 494Q1028 269 893.5 125.5Q759 -18 551 -18Q343 -18 209.5 125.0Q76 268 76 494Q76 720 208.5 863.0Q341 1006 551 1006Z"/><path id="show-hints-f26c" d="M57 0V74L178 84L213 117V1370H55V1434L305 1507H383V117L420 84L537 74V0Z"/><path id="show-hints-f277" d="M-4 985H440V909L332 901L307 868L494 203L768 985H893L1135 203L1343 868L1327 901L1217 909V985H1579V909L1464 893L1171 0H1044L797 776L520 0H393L121 897L-4 909Z"/><path id="show-hints-f269" d="M307 995H387V117L422 84L532 74V0H72V74L180 84L215 117V858H72V922ZM315 1450Q365 1450 399.5 1415.0Q434 1380 434 1331Q434 1282 399.5 1248.0Q365 1214 315 1214Q266 1214 231.5 1248.0Q197 1282 197 1331Q197 1381 231.5 1415.5Q266 1450 315 1450Z"/><path id="show-hints-f267" d="M422 61Q339 36 292.5 -17.0Q246 -70 246 -139Q246 -231 324.0 -291.5Q402 -352 524 -352Q655 -352 742.0 -289.0Q829 -226 829 -135Q829 -66 791.0 -33.0Q753 0 621 25ZM504 926Q412 926 357.5 857.5Q303 789 303 674Q303 560 358.5 491.0Q414 422 504 422Q594 422 649.5 491.0Q705 560 705 674Q705 788 650.0 857.0Q595 926 504 926ZM756 948H1049V852H823Q853 807 867.0 761.0Q881 715 881 662Q881 521 772.0 431.5Q663 342 489 342H455Q443 319 437.5 296.0Q432 273 432 250Q432 243 434 220Q436 207 436 201L633 170Q825 141 903.0 83.5Q981 26 981 -82Q981 -141 948.5 -202.5Q916 -264 858 -311Q777 -377 673.0 -411.5Q569 -446 453 -446Q278 -446 180.0 -376.0Q82 -306 82 -182Q82 -83 141.0 -15.0Q200 53 303 72Q293 96 288.0 119.0Q283 142 283 164Q283 203 307.0 251.0Q331 299 381 358Q264 384 195.5 467.5Q127 551 127 668Q127 819 236.5 912.5Q346 1006 524 1006Q583 1006 640.5 991.5Q698 977 756 948Z"/><path id="show-hints-f23a" d="M326 242Q380 242 418.5 203.5Q457 165 457 111Q457 57 418.5 19.5Q380 -18 326 -18Q271 -18 234.0 19.0Q197 56 197 111Q197 166 234.5 204.0Q272 242 326 242ZM326 985Q380 985 418.5 947.5Q457 910 457 856Q457 802 418.0 763.5Q379 725 326 725Q272 725 234.5 763.5Q197 802 197 856Q197 911 234.0 948.0Q271 985 326 985Z"/><path id="show-hints-f228" d="M791 1470V1384Q585 1348 488.0 1153.5Q391 959 391 582Q391 216 489.0 23.0Q587 -170 791 -205V-291Q518 -259 367.5 -30.5Q217 198 217 584Q217 978 365.5 1207.0Q514 1436 791 1470Z"/><path id="show-hints-f378" d="M264 993Q268 993 275.5 994.0Q283 995 287 995Q398 995 488 642Q498 603 504 582Q607 790 703.5 891.5Q800 993 895 993Q944 993 978.0 959.5Q1012 926 1012 879Q1012 842 986.5 813.0Q961 784 911 764L823 844Q753 825 685.0 738.5Q617 652 549 493Q554 476 564 442Q665 88 780 88Q796 88 822.5 93.5Q849 99 889 111V47Q816 18 758.0 3.0Q700 -12 659 -12Q518 -12 424 391L422 399Q320 185 225.0 84.5Q130 -16 31 -16Q-27 -16 -61.5 14.0Q-96 44 -96 94Q-96 135 -70.0 162.0Q-44 189 4 199L98 111Q174 151 249.5 252.0Q325 353 383 494Q339 647 302.5 731.0Q266 815 227 850L57 872V922Z"/><path id="show-hints-f22b" d="M795 1221H913V670H1452V553H913V0H795V553H254V670H795Z"/><path id="show-hints-f233" d="M649 723Q817 711 912.5 623.0Q1008 535 1008 393Q1008 214 862.5 95.5Q717 -23 489 -23Q322 -23 203.0 46.0Q84 115 84 203Q84 247 117.0 277.0Q150 307 199 307Q216 307 231.0 304.5Q246 302 260 297L324 123Q365 98 408.5 86.0Q452 74 498 74Q636 74 727.5 166.5Q819 259 819 397Q819 520 740.5 586.5Q662 653 516 653Q488 653 460.5 651.0Q433 649 408 645V766Q415 766 429.0 765.0Q443 764 451 764Q603 764 685.5 833.0Q768 902 768 1028Q768 1149 697.0 1221.5Q626 1294 508 1294Q453 1294 405.0 1279.5Q357 1265 313 1235V1042Q295 1029 274.5 1022.5Q254 1016 229 1016Q180 1016 149.5 1046.5Q119 1077 119 1126Q119 1236 245.0 1317.5Q371 1399 551 1399Q734 1399 844.0 1305.0Q954 1211 954 1055Q954 935 876.0 850.5Q798 766 649 723Z"/><path id="show-hints-f229" d="M63 1470Q340 1436 488.5 1207.0Q637 978 637 584Q637 198 486.5 -30.5Q336 -259 63 -291V-205Q267 -170 365.0 23.0Q463 216 463 582Q463 959 366.0 1153.5Q269 1348 63 1384Z"/><path id="show-hints-f232" d="M289 162H905L942 336H1034V0H86V129Q534 493 662.5 660.0Q791 827 791 985Q791 1130 718.5 1212.0Q646 1294 518 1294Q470 1294 425.0 1282.0Q380 1270 336 1245V1026Q314 1011 291.0 1003.0Q268 995 244 995Q191 995 160.0 1026.0Q129 1057 129 1110Q129 1225 256.5 1312.0Q384 1399 563 1399Q758 1399 873.5 1293.5Q989 1188 989 1012Q989 850 848.5 673.0Q708 496 289 162Z"/><path id="show-hints-f23d" d="M254 477H1452V360H254ZM254 860H1452V743H254Z"/><linearGradient id="show-hints-fade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="p-fade0"/><stop offset="1" class="p-fade1"/></linearGradient></defs>
+<rect class="p-panel" x="0" y="0" width="533" height="400" fill="var(--panel)"/>
+<rect x="0" y="0" width="533" height="52" fill="var(--bar)"/>
+<g class="p-mark" transform="translate(26 13) scale(1.15)"><path d="M20.5879 2V10.1963C20.5351 10.1784 20.1624 9.93359 20.1104 9.93359C19.8566 9.93072 19.6078 10.0041 19.3965 10.1445V2.88086H4.60938V3.76074H5.47949V5.52246H4.60938V7.2832H5.47949V9.04492H4.60938V10.8057H5.47949V12.5664H4.60938V14.3281H5.47949V16.0898H4.60938V17.8496H5.47949V19.6113H4.60938V20.4912H10.6211L11.5244 21.3721H3.73926V19.6104H2V17.8496H3.73926V16.0889H2V14.3281H3.73926V12.5664H2V10.8057H3.73926V9.04492H2V7.2832H3.73926V5.52246H2V3.76074H3.73926V2H20.5879Z"/><path d="M20.2666 15.667V21.3721H14.3525L15.2656 20.4912H19.3975L19.3965 16.5039L20.2666 15.667Z"/><path d="M20.1895 10.8037C20.2709 10.82 20.3464 10.8605 20.4062 10.9199L21.876 12.3379C21.915 12.3746 21.9465 12.4186 21.9678 12.4678C21.989 12.517 22 12.5704 22 12.624C21.9999 12.6774 21.9889 12.7302 21.9678 12.7793C21.9465 12.8285 21.915 12.8734 21.876 12.9102L13.2393 21.249C13.1596 21.3244 13.053 21.3647 12.9434 21.3623C12.8311 21.3649 12.7216 21.3247 12.6387 21.249L8.20996 16.9775C8.17097 16.94 8.14036 16.8945 8.11914 16.8447C8.09796 16.7949 8.08695 16.7416 8.08691 16.6875C8.08691 16.6332 8.09785 16.5792 8.11914 16.5293C8.1404 16.4795 8.1709 16.434 8.20996 16.3965L9.68066 14.9795C9.76068 14.9039 9.8675 14.8621 9.97754 14.8643L10.0605 14.8711C10.1424 14.8853 10.2191 14.9227 10.2812 14.9795L12.9434 17.5508L19.8057 10.9199C19.8855 10.8407 19.9939 10.7959 20.1064 10.7959L20.1895 10.8037Z"/><path d="M15.9521 13.4473L15.0391 14.3281H10.8379C10.6033 14.1164 10.2989 13.9923 9.97754 13.9922C9.66167 13.9952 9.35728 14.1151 9.12402 14.3281H7.21973V13.4473H15.9521Z"/><path d="M17.6572 10.8057V11.6865H7.21973V10.8057H17.6572Z"/><path d="M17.6572 8.16406V9.04492H7.21973V8.16406H17.6572Z"/><path d="M17.6572 5.52246V6.40234H7.21973V5.52246H17.6572Z"/></g>
+<text class="p-title" x="64" y="35">Wolfram|Alpha Step-by-step solution</text>
+<rect x="0" y="52" width="533" height="52" fill="var(--band)"/>
+<text class="p-results" x="26" y="84">Results:</text>
+<rect class="p-btn" x="415.4" y="63" width="91.6" height="30" rx="4"/><text class="p-btn-t" x="429.4" y="83">Hide hints</text>
+
+
+<text class="p-step" x="26" y="128">STEP 1</text>
+<line class="p-rule" x1="26" y1="138.5" x2="507" y2="138.5"/>
+      <g class="p-ink"><use href="#show-hints-f245" transform="translate(26.0 168.0) scale(0.00879 -0.00879)"/><use href="#show-hints-f278" transform="translate(36.4 168.0) scale(0.00879 -0.00879)"/><use href="#show-hints-f270" transform="translate(45.4 168.0) scale(0.00879 -0.00879)"/><use href="#show-hints-f261" transform="translate(55.3 168.0) scale(0.00879 -0.00879)"/><use href="#show-hints-f26e" transform="translate(64.5 168.0) scale(0.00879 -0.00879)"/><use href="#show-hints-f264" transform="translate(74.7 168.0) scale(0.00879 -0.00879)"/><use href="#show-hints-f274" transform="translate(89.9 168.0) scale(0.00879 -0.00879)"/><use href="#show-hints-f268" transform="translate(95.9 168.0) scale(0.00879 -0.00879)"/><use href="#show-hints-f265" transform="translate(106.0 168.0) scale(0.00879 -0.00879)"/><use href="#show-hints-f266" transform="translate(119.9 168.0) scale(0.00879 -0.00879)"/><use href="#show-hints-f26f" transform="translate(125.6 168.0) scale(0.00879 -0.00879)"/><use href="#show-hints-f26c" transform="translate(135.3 168.0) scale(0.00879 -0.00879)"/><use href="#show-hints-f26c" transform="translate(140.4 168.0) scale(0.00879 -0.00879)"/><use href="#show-hints-f26f" transform="translate(145.5 168.0) scale(0.00879 -0.00879)"/><use href="#show-hints-f277" transform="translate(155.2 168.0) scale(0.00879 -0.00879)"/><use href="#show-hints-f269" transform="translate(169.1 168.0) scale(0.00879 -0.00879)"/><use href="#show-hints-f26e" transform="translate(174.1 168.0) scale(0.00879 -0.00879)"/><use href="#show-hints-f267" transform="translate(184.3 168.0) scale(0.00879 -0.00879)"/><use href="#show-hints-f23a" transform="translate(193.7 168.0) scale(0.00879 -0.00879)"/></g>
+      <g transform="translate(0 204.10) scale(1 1.037) translate(0 -204.10)"><g class="m-ink"><use href="#show-hints-f228" transform="translate(26.0 210.1) scale(0.00977 -0.00977)"/></g></g>
+      <g class="m-ink"><use href="#show-hints-f378" transform="translate(35.1 210.1) scale(0.00977 -0.00977)"/></g>
+      <g class="m-ink"><use href="#show-hints-f22b" transform="translate(51.1 210.1) scale(0.00977 -0.00977)"/></g>
+      <g class="m-ink"><use href="#show-hints-f233" transform="translate(74.1 210.1) scale(0.00977 -0.00977)"/></g>
+      <g transform="translate(0 204.10) scale(1 1.037) translate(0 -204.10)"><g class="m-ink"><use href="#show-hints-f229" transform="translate(86.1 210.1) scale(0.00977 -0.00977)"/></g></g>
+      <g class="m-ink"><use href="#show-hints-f232" transform="translate(94.4 201.7) scale(0.00684 -0.00684)"/></g>
+<text class="p-step" x="26" y="273.22533574661867">STEP 2</text>
+<line class="p-rule" x1="26" y1="283.7" x2="507" y2="283.7"/>
+<rect class="p-chip" x="26" y="305.22533574661867" width="481" height="41" rx="4"/>
+<text class="p-chip-t" x="40" y="330.22533574661867"><tspan class="p-chip-b">Hint:</tspan> Multiply x + 3 and x + 3 together using FOIL.</text>
+      <g transform="translate(0 382.23) scale(1 1.037) translate(0 -382.23)"><g class="m-ink"><use href="#show-hints-f228" transform="translate(26.0 387.0) scale(0.00781 -0.00781)"/></g></g>
+      <g class="m-ink"><use href="#show-hints-f378" transform="translate(33.3 387.0) scale(0.00781 -0.00781)"/></g>
+      <g class="m-ink"><use href="#show-hints-f22b" transform="translate(46.1 387.0) scale(0.00781 -0.00781)"/></g>
+      <g class="m-ink"><use href="#show-hints-f233" transform="translate(64.5 387.0) scale(0.00781 -0.00781)"/></g>
+      <g transform="translate(0 382.23) scale(1 1.037) translate(0 -382.23)"><g class="m-ink"><use href="#show-hints-f229" transform="translate(74.1 387.0) scale(0.00781 -0.00781)"/></g></g>
+      <g transform="translate(0 382.23) scale(1 1.037) translate(0 -382.23)"><g class="m-ink"><use href="#show-hints-f228" transform="translate(83.0 387.0) scale(0.00781 -0.00781)"/></g></g>
+      <g class="m-ink"><use href="#show-hints-f378" transform="translate(90.3 387.0) scale(0.00781 -0.00781)"/></g>
+      <g class="m-ink"><use href="#show-hints-f22b" transform="translate(103.0 387.0) scale(0.00781 -0.00781)"/></g>
+      <g class="m-ink"><use href="#show-hints-f233" transform="translate(121.5 387.0) scale(0.00781 -0.00781)"/></g>
+      <g transform="translate(0 382.23) scale(1 1.037) translate(0 -382.23)"><g class="m-ink"><use href="#show-hints-f229" transform="translate(131.0 387.0) scale(0.00781 -0.00781)"/></g></g>
+      <g class="m-ink"><use href="#show-hints-f23d" transform="translate(142.8 387.0) scale(0.00781 -0.00781)"/></g>
+      <g class="m-ink"><use href="#show-hints-f228" transform="translate(161.3 387.0) scale(0.00781 -0.00781)"/></g>
+      <g class="m-ink"><use href="#show-hints-f378" transform="translate(168.6 387.0) scale(0.00781 -0.00781)"/></g>
+      <g class="m-ink"><use href="#show-hints-f229" transform="translate(176.8 387.0) scale(0.00781 -0.00781)"/></g>
+      <g class="m-ink"><use href="#show-hints-f228" transform="translate(185.8 387.0) scale(0.00781 -0.00781)"/></g>
+      <g class="m-ink"><use href="#show-hints-f378" transform="translate(193.1 387.0) scale(0.00781 -0.00781)"/></g>
+      <g class="m-ink"><use href="#show-hints-f229" transform="translate(201.3 387.0) scale(0.00781 -0.00781)"/></g>
+      <g class="m-ink"><use href="#show-hints-f22b" transform="translate(213.1 387.0) scale(0.00781 -0.00781)"/></g>
+      <g class="m-ink"><use href="#show-hints-f228" transform="translate(231.6 387.0) scale(0.00781 -0.00781)"/></g>
+      <g class="m-ink"><use href="#show-hints-f378" transform="translate(238.9 387.0) scale(0.00781 -0.00781)"/></g>
+      <g class="m-ink"><use href="#show-hints-f229" transform="translate(247.2 387.0) scale(0.00781 -0.00781)"/></g>
+      <g transform="translate(0 382.23) scale(1 1.037) translate(0 -382.23)"><g class="m-ink"><use href="#show-hints-f228" transform="translate(256.1 387.0) scale(0.00781 -0.00781)"/></g></g>
+      <g class="m-ink"><use href="#show-hints-f233" transform="translate(263.4 387.0) scale(0.00781 -0.00781)"/></g>
+      <g transform="translate(0 382.23) scale(1 1.037) translate(0 -382.23)"><g class="m-ink"><use href="#show-hints-f229" transform="translate(272.9 387.0) scale(0.00781 -0.00781)"/></g></g>
+      <g class="m-ink"><use href="#show-hints-f22b" transform="translate(284.7 387.0) scale(0.00781 -0.00781)"/></g>
+      <g transform="translate(0 382.23) scale(1 1.037) translate(0 -382.23)"><g class="m-ink"><use href="#show-hints-f228" transform="translate(303.2 387.0) scale(0.00781 -0.00781)"/></g></g>
+      <g class="m-ink"><use href="#show-hints-f233" transform="translate(310.5 387.0) scale(0.00781 -0.00781)"/></g>
+      <g transform="translate(0 382.23) scale(1 1.037) translate(0 -382.23)"><g class="m-ink"><use href="#show-hints-f229" transform="translate(320.0 387.0) scale(0.00781 -0.00781)"/></g></g>
+      <g class="m-ink"><use href="#show-hints-f228" transform="translate(328.9 387.0) scale(0.00781 -0.00781)"/></g>
+      <g class="m-ink"><use href="#show-hints-f378" transform="translate(336.2 387.0) scale(0.00781 -0.00781)"/></g>
+      <g class="m-ink"><use href="#show-hints-f229" transform="translate(344.5 387.0) scale(0.00781 -0.00781)"/></g>
+      <g class="m-ink"><use href="#show-hints-f22b" transform="translate(356.3 387.0) scale(0.00781 -0.00781)"/></g>
+      <g transform="translate(0 382.23) scale(1 1.037) translate(0 -382.23)"><g class="m-ink"><use href="#show-hints-f228" transform="translate(374.7 387.0) scale(0.00781 -0.00781)"/></g></g>
+      <g class="m-ink"><use href="#show-hints-f233" transform="translate(382.1 387.0) scale(0.00781 -0.00781)"/></g>
+      <g transform="translate(0 382.23) scale(1 1.037) translate(0 -382.23)"><g class="m-ink"><use href="#show-hints-f229" transform="translate(391.6 387.0) scale(0.00781 -0.00781)"/></g></g>
+      <g transform="translate(0 382.23) scale(1 1.037) translate(0 -382.23)"><g class="m-ink"><use href="#show-hints-f228" transform="translate(400.5 387.0) scale(0.00781 -0.00781)"/></g></g>
+      <g class="m-ink"><use href="#show-hints-f233" transform="translate(407.8 387.0) scale(0.00781 -0.00781)"/></g>
+      <g transform="translate(0 382.23) scale(1 1.037) translate(0 -382.23)"><g class="m-ink"><use href="#show-hints-f229" transform="translate(417.4 387.0) scale(0.00781 -0.00781)"/></g></g>
+      <g class="m-ink"><use href="#show-hints-f23a" transform="translate(424.0 387.0) scale(0.00781 -0.00781)"/></g>
+      <g class="m-ink"><use href="#show-hints-f378" transform="translate(26.0 435.5) scale(0.00977 -0.00977)"/></g>
+      <g class="m-ink"><use href="#show-hints-f378" transform="translate(38.3 435.5) scale(0.00977 -0.00977)"/></g>
+      <g class="m-ink"><use href="#show-hints-f22b" transform="translate(54.3 435.5) scale(0.00977 -0.00977)"/></g>
+      <g class="m-ink"><use href="#show-hints-f233" transform="translate(77.3 435.5) scale(0.00977 -0.00977)"/></g>
+      <g class="m-ink"><use href="#show-hints-f378" transform="translate(91.3 435.5) scale(0.00977 -0.00977)"/></g>
+      <g class="m-ink"><use href="#show-hints-f22b" transform="translate(107.2 435.5) scale(0.00977 -0.00977)"/></g>
+      <g class="m-ink"><use href="#show-hints-f233" transform="translate(130.3 435.5) scale(0.00977 -0.00977)"/></g>
+      <g class="m-ink"><use href="#show-hints-f378" transform="translate(144.2 435.5) scale(0.00977 -0.00977)"/></g>
+      <g class="m-ink"><use href="#show-hints-f22b" transform="translate(160.1 435.5) scale(0.00977 -0.00977)"/></g>
+      <g class="m-ink"><use href="#show-hints-f233" transform="translate(183.2 435.5) scale(0.00977 -0.00977)"/></g>
+      <g class="m-ink"><use href="#show-hints-f233" transform="translate(197.1 435.5) scale(0.00977 -0.00977)"/></g>
+<rect class="p-fade" x="0" y="344" width="533" height="56" fill="url(#show-hints-fade)"/>
+</svg>

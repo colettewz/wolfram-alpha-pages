@@ -1,0 +1,249 @@
+<svg id="wa-anim-partial" viewBox="-28.5 0 826 616" xmlns="http://www.w3.org/2000/svg" role="img"
+     aria-label="Wolfram|Alpha Pro's step-by-step solution for the partial-fraction decomposition of 1/(x³ + 2x² − x − 2), with the answer.">
+<!-- PARTIAL FRACTIONS — a content variant of compute-mode.svg. Shares its palette,
+     class names, reduced-motion contract and pod/input geometry; only the id scope
+     and keyframe prefix differ, so both may sit on one page. NO entrance sequence
+     (Colette): the scene is composed on load and only floats.
+
+     Three constraints the geometry cannot express:
+     · The ANSWER CARD overlaps the pod's right edge at mid-height (the master's
+       motif). Its left edge sits at x=414, right of every text and math run in the
+       pod — it may occlude a math box's empty fill, never ink. Move it left and
+       that stops being true.
+     · A math expression may break only on an OPERATOR (§ ILLUSTRATION), never inside
+       a term. STEP 1's text wraps at 587px against its 437 box; STEP 2's math drops
+       the `1/((x−1)(x+1)(x+2)) =` prefix the box above it already states.
+     · Answer runs ONE LINE, no wrap — see the card's own clamp note.
+
+     The viewBox margins are DELIBERATELY UNEQUAL — 94 left, 28 right — and that is
+     what centres this art optically. Centring the BOUNDING BOX does not work here: the
+     pod is 226,088 sq units against the input's 32,949 and the card's 53,250, so it
+     carries 72% of the visual mass and it sits on the LEFT. Area-weighted centre of
+     mass is x=363.9 where the bbox centre is 417.5 — 53.6 units apart, which is why a
+     geometrically-centred frame still read as leaning left.
+     28 on the right is the FLOOR, not a taste value: the answer card's drop-shadow
+     reaches 28 past its own edge and anything tighter clips it. That floor is also why
+     this is a ~60% correction and not a full one — fully centring the mass needs an
+     867-wide box, which shrinks the art 12% inside a fixed 560 column.
+     Re-derive both numbers if any element's x or size changes.
+
+     Maths source: captures of the live step-by-step panel for
+     `partial fractions 1/(x^3+2x^2-x-2)`. Step labels match the product's own
+     numbering (STEP 2 / STEP 3). -->
+<style>
+  #wa-anim-partial {
+    --surface: #FFFFFF;            /* comp/card-bg */
+    --orange: #F96932;             /* surface/action */
+    --on-accent: #FFFFFF;          /* text/on-action */
+    --text: #535353;               /* text/primary */
+    --input-bg: #FFFFFF;
+    --input-ring: #FFC845;         /* input/nl-outer */
+    --math-bg: #F5F5F5;
+    --math-border: #EBEBEB;
+    --divider: rgba(0,0,0,0.10);
+    --step-label: #4AA5C7;         /* PRODUCTION CANON (Colette 2026-08-24): the results-page pair #4AA5C7 ↔ #92C7DD. The capture set lacks results pages (queue #09) — 0× there ≠ not production */
+    --answer-bg: #E8FAFF;          /* production answer fill */
+    --answer-border: #85C2DB;      /* production answer blue */
+    --answer-inner-bg: #FFFFFF;
+    --answer-tick: #FFFFFF;
+    --sh-input: rgba(0,0,0,0.10);
+    --sh-pod: rgba(0,0,0,0.10);
+    --sh-answer: rgba(0,0,0,0.18);
+    font-family: 'Source Sans Pro', sans-serif;
+  }
+  #wa-anim-partial.dark,
+  [data-theme="dark"] #wa-anim-partial,
+  [data-theme="pro-dark"] #wa-anim-partial {
+    --surface: #333333;
+    --orange: #FFA32C;
+    --on-accent: #282828;
+    --text: #EBEBEB;
+    --input-bg: #333333;
+    --input-ring: #FEB94C;
+    --math-bg: #3D3D3D;
+    --math-border: #444444;
+    --divider: rgba(255,255,255,0.10);
+    --step-label: #92C7DD;         /* the results-page dark twin (Colette 2026-08-24) */
+    --answer-bg: #444444;
+    --answer-border: #98D5DE;      /* production answer blue, dark (= teal/250) */
+    --answer-inner-bg: #333333;
+    --answer-tick: #333333;        /* tick = the surface pair, all checks */
+    --sh-input: rgba(0,0,0,0.40);
+    --sh-pod: rgba(0,0,0,0.45);
+    --sh-answer: rgba(0,0,0,0.55);
+  }
+
+  /* ── input row ── */
+  #wa-anim-partial .i-shadow { filter: drop-shadow(0 2px 4px var(--sh-input)); }
+  #wa-anim-partial .i-ring   { fill: none; stroke: var(--input-ring); stroke-width: 3; }
+  #wa-anim-partial .i-field  { fill: var(--input-bg); stroke: var(--orange); stroke-width: 2; }
+  #wa-anim-partial .i-text   { fill: var(--text); font-size: 26px; font-weight: 400; letter-spacing: 0.26px; }
+  #wa-anim-partial .i-btn    { fill: var(--orange); }
+  #wa-anim-partial .i-btn-glyph { fill: var(--on-accent); }
+
+  /* ── pod ── */
+  #wa-anim-partial .g-pod { filter: drop-shadow(0 8px 20px var(--sh-pod)); }
+  #wa-anim-partial .p-frame  { fill: var(--surface); stroke: var(--orange); stroke-width: 1; }
+  #wa-anim-partial .p-title  { fill: var(--orange); }
+  #wa-anim-partial .p-title-text { fill: var(--on-accent); font-size: 30px; /* the pod HEADER outranks the input bar's 26 content tier */ font-weight: 600; letter-spacing: 0.26px; }
+  #wa-anim-partial .p-title-icon { fill: var(--on-accent); }
+  #wa-anim-partial .p-divider { stroke: var(--divider); stroke-width: 1; }
+  #wa-anim-partial .s-label  { fill: var(--step-label); font-size: 21px; font-weight: 700; letter-spacing: 1.2px; }
+  #wa-anim-partial .s-text   { fill: var(--text); font-size: 21px; font-weight: 400; }
+  #wa-anim-partial .s-math-box { fill: var(--math-bg); stroke: var(--math-border); stroke-width: 1; }
+  #wa-anim-partial .m-rule   { stroke: var(--text); stroke-width: 1.5; }
+  #wa-anim-partial .a-rule   { stroke: var(--text); stroke-width: 1.5; }
+  #wa-anim-partial .s-math   { fill: var(--text); font-size: 21px; font-weight: 400; }   /* stacked fractions: smaller so the rule + two rows fit the box */
+
+  /* ── answer card ── */
+  #wa-anim-partial .g-answer { filter: drop-shadow(0 12px 28px var(--sh-answer)); }
+  #wa-anim-partial .a-card   { fill: var(--answer-bg); }
+  #wa-anim-partial .a-ring   { fill: none; stroke: var(--answer-border); stroke-width: 1; }
+  #wa-anim-partial .a-disc   { fill: var(--answer-border); }
+  #wa-anim-partial .a-tick   { fill: var(--answer-tick); stroke: var(--answer-tick); stroke-width: 100;
+                               stroke-linejoin: miter; stroke-linecap: square; }
+  #wa-anim-partial .a-label  { fill: var(--text); font-size: 31px; font-weight: 700; letter-spacing: -0.31px; }
+  #wa-anim-partial .a-well   { fill: var(--answer-inner-bg); stroke: var(--answer-border); stroke-width: 1; }
+  #wa-anim-partial .a-value  { fill: var(--text); font-size: 18px; font-weight: 700; letter-spacing: 0.24px; }
+
+  /* ── AMBIENT FLOAT ──
+     A settled drift under the entrance choreography, on its own OUTER group per
+     element: a CSS `transform` overrides an SVG `transform` ATTRIBUTE on the same
+     node, so the float can never share a node with .g-input-fit / .g-pod-fit.
+
+     ONE amplitude, ONE period, ONE easing — the three differ only in PHASE
+     (Colette 2026-09-01). Three unrelated periods was the earlier build and it read
+     as chaos: with no shared beat the elements drift in and out of relation forever.
+     Offsetting one rhythm reads as three things on the same breeze.
+     Travel is symmetric 50/50 about the rest position, `ease-in-out` on both halves.
+
+     12 is USER UNITS on an 800-wide viewBox; the hero draws it at 560, so it renders
+     at 0.70× = 8.4px. Amplitude must clear the perception floor AFTER that scale —
+     2/3/4 rendered 1.4/2.1/2.8px, under the floor for MOTION but inside the range
+     where glyph antialiasing re-resolves, so it read as the text vibrating.
+
+     will-change promotes each group to its own layer so the translate composites a
+     rasterized bitmap instead of re-rasterizing type every frame — without it the
+     shimmer survives any amplitude. */
+  #wa-anim-partial .f-input,
+  #wa-anim-partial .f-pod,
+  #wa-anim-partial .f-answer { will-change: transform; }
+  /* THE POD DOES NOT MOVE, and that is the whole fix for the shimmer: it holds every
+     line of type in the scene, and SVG text re-rasterizes at each new sub-pixel
+     position, so smooth motion makes glyph edges crawl. Measured mean glyph residual
+     across 8 fractional phases: pod still 0.000 · translateY 3.076 · translate3d 3.964
+     (3d is WORSE, and will-change changes nothing — this is not a layer-promotion
+     problem). The pod is also the anchor the other two orbit, so this reads better
+     besides. Only the INPUT and the ANSWER float, offset half a period. */
+  #wa-anim-partial .f-input,
+  #wa-anim-partial .f-answer { animation: wap-float 8s infinite ease-in-out; }
+  #wa-anim-partial .f-answer { animation-delay: -4s; }
+  @keyframes wap-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+
+  @media (prefers-reduced-motion: reduce) {
+    #wa-anim-partial .f-input, #wa-anim-partial .f-pod,
+    #wa-anim-partial .f-answer { animation: none; }
+  }
+</style>
+
+<defs>
+  <clipPath id="wap-pod-clip"><rect x="65" y="86" width="480" height="457" rx="10"/></clipPath>
+</defs>
+
+<!-- INPUT ROW — NL chrome, orange inner + yellow halo (§ ILLUSTRATION § NL Input).
+     .g-input-fit's translate sets the canvas top margin; .f-input floats it. -->
+<g class="f-input">
+<g class="g-input-fit" transform="translate(0 19.5)">
+<g class="i-shadow">
+  <rect class="i-ring"  x="138.5" y="8.5" width="523" height="63" rx="16.5"/>
+  <rect class="i-field" x="141"   y="11"   width="518" height="58" rx="14"/>
+</g>
+<text class="i-text" x="164" y="49">Partial fractions 1/(x^3+2x^2-x-2)</text>
+<g class="g-btn">
+  <rect class="i-btn" x="613" y="24" width="32" height="32" rx="7"/>
+  <path class="i-btn-glyph" transform="translate(619.9 30.9) scale(0.757)"
+        d="M19 9.5H5v-3h14v3zm0 8H5v-3h14v3z"/>
+</g>
+</g></g><!-- /g-input-fit -->
+
+<!-- POD — 1:1. The translate keeps its top clear of the input row above. -->
+<g class="f-pod">
+<g class="g-pod-fit" transform="translate(0 27)">
+<g class="g-pod">
+  <rect class="p-frame" x="65.5" y="86.5" width="479" height="456" rx="9.5"/>
+  <g clip-path="url(#wap-pod-clip)">
+    <rect class="p-title" x="66" y="87" width="478" height="70"/>
+    <line class="p-divider" x1="66" y1="156.5" x2="544" y2="156.5"/>
+  </g>
+  <g class="p-title-icon" transform="translate(83.2 105.6) scale(1.4)">
+    <path d="M20.5879 2V10.1963C20.5351 10.1784 20.1624 9.93359 20.1104 9.93359C19.8566 9.93072 19.6078 10.0041 19.3965 10.1445V2.88086H4.60938V3.76074H5.47949V5.52246H4.60938V7.2832H5.47949V9.04492H4.60938V10.8057H5.47949V12.5664H4.60938V14.3281H5.47949V16.0898H4.60938V17.8496H5.47949V19.6113H4.60938V20.4912H10.6211L11.5244 21.3721H3.73926V19.6104H2V17.8496H3.73926V16.0889H2V14.3281H3.73926V12.5664H2V10.8057H3.73926V9.04492H2V7.2832H3.73926V5.52246H2V3.76074H3.73926V2H20.5879Z"/>
+    <path d="M20.2666 15.667V21.3721H14.3525L15.2656 20.4912H19.3975L19.3965 16.5039L20.2666 15.667Z"/>
+    <path d="M20.1895 10.8037C20.2709 10.82 20.3464 10.8605 20.4062 10.9199L21.876 12.3379C21.915 12.3746 21.9465 12.4186 21.9678 12.4678C21.989 12.517 22 12.5704 22 12.624C21.9999 12.6774 21.9889 12.7302 21.9678 12.7793C21.9465 12.8285 21.915 12.8734 21.876 12.9102L13.2393 21.249C13.1596 21.3244 13.053 21.3647 12.9434 21.3623C12.8311 21.3649 12.7216 21.3247 12.6387 21.249L8.20996 16.9775C8.17097 16.94 8.14036 16.8945 8.11914 16.8447C8.09796 16.7949 8.08695 16.7416 8.08691 16.6875C8.08691 16.6332 8.09785 16.5792 8.11914 16.5293C8.1404 16.4795 8.1709 16.434 8.20996 16.3965L9.68066 14.9795C9.76068 14.9039 9.8675 14.8621 9.97754 14.8643L10.0605 14.8711C10.1424 14.8853 10.2191 14.9227 10.2812 14.9795L12.9434 17.5508L19.8057 10.9199C19.8855 10.8407 19.9939 10.7959 20.1064 10.7959L20.1895 10.8037Z"/>
+    <path d="M15.9521 13.4473L15.0391 14.3281H10.8379C10.6033 14.1164 10.2989 13.9923 9.97754 13.9922C9.66167 13.9952 9.35728 14.1151 9.12402 14.3281H7.21973V13.4473H15.9521Z"/>
+    <path d="M17.6572 10.8057V11.6865H7.21973V10.8057H17.6572Z"/>
+    <path d="M17.6572 8.16406V9.04492H7.21973V8.16406H17.6572Z"/>
+    <path d="M17.6572 5.52246V6.40234H7.21973V5.52246H17.6572Z"/>
+  </g>
+  <text class="p-title-text" x="122" y="132">Step-by-step solution</text>
+
+  <g class="g-step g-step1">
+    <text class="s-label" x="86" y="186">STEP 2</text>
+    <text class="s-text"  x="86" y="220">Factor the denominator into linear and</text>
+    <text class="s-text"  x="86" y="246">irreducible quadratic terms:</text>
+    <rect class="s-math-box" x="86.5" y="261.5" width="437" height="70" rx="5.5"/>
+    <text class="s-math" text-anchor="middle" x="200.2" y="287.6">1</text>
+    <line class="m-rule" x1="106.0" y1="295.6" x2="294.5" y2="295.6"/>
+    <text class="s-math" text-anchor="middle" x="200.2" y="314.9">(x − 1) (x + 1) (x + 2)</text>
+  </g>
+  <g class="g-step g-step2">
+    <text class="s-label" x="86" y="365.5">STEP 3</text>
+    <text class="s-text"  x="86" y="399.5">Then the partial fraction expansion</text>
+    <text class="s-text"  x="86" y="425.5">is of the form:</text>
+    <rect class="s-math-box" x="86.5" y="441.0" width="437" height="70" rx="5.5"/>
+    <text class="s-math" text-anchor="middle" x="130.7" y="467.1">θ₁</text>
+    <line class="m-rule" x1="106.0" y1="475.1" x2="155.3" y2="475.1"/>
+    <text class="s-math" text-anchor="middle" x="130.7" y="494.4">x − 1</text>
+    <text class="s-math" x="158.3" y="480.3"> + </text>
+    <text class="s-math" text-anchor="middle" x="208.4" y="467.1">θ₂</text>
+    <line class="m-rule" x1="183.7" y1="475.1" x2="233.0" y2="475.1"/>
+    <text class="s-math" text-anchor="middle" x="208.4" y="494.4">x + 1</text>
+    <text class="s-math" x="236.0" y="480.3"> + </text>
+    <text class="s-math" text-anchor="middle" x="286.0" y="467.1">θ₃</text>
+    <line class="m-rule" x1="261.4" y1="475.1" x2="310.7" y2="475.1"/>
+    <text class="s-math" text-anchor="middle" x="286.0" y="494.4">x + 2</text>
+  </g>
+</g>
+
+</g></g><!-- /g-pod-fit -->
+
+<!-- ANSWER CARD — 355×150, T=34. Overlaps the pod's bottom-right padding by 32,
+     clearing the last math box by 16.
+
+     canon-exempt: answer-card width clamp. § ILLUSTRATION clamps to [8×T, 10×T] =
+     [272, 340]; this card is 355 (10.4×T) because the answer runs ONE LINE and no
+     value of T helps — width and value size both scale with T, so the card holds
+     ~26 characters at any T and this answer is 54. Every other ratio is canon. -->
+<g class="f-answer">
+<g class="g-answer">
+  <rect class="a-card" x="414"   y="266"   width="355" height="150" rx="15"/>
+  <rect class="a-ring" x="413.5" y="265.5" width="356" height="151" rx="15.5"/>
+  <circle class="a-disc" cx="446.5" cy="300.5" r="13.5"/>
+  <path class="a-tick" transform="translate(437.5 309.5) scale(0.01875)"
+        d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/>
+  <text class="a-label" x="470" y="310">Answer</text>
+  <rect class="a-well" x="433.5" y="331.5" width="316" height="65" rx="6.5"/>
+  <text class="a-value" x="449.0" y="367.8">− </text>
+  <text class="a-value" text-anchor="middle" x="502.6" y="356.5">1</text>
+  <line class="a-rule" x1="467.2" y1="363.3" x2="537.9" y2="363.3"/>
+  <text class="a-value" text-anchor="middle" x="502.6" y="379.9">2 (x + 1)</text>
+  <text class="a-value" x="540.9" y="367.8"> + </text>
+  <text class="a-value" text-anchor="middle" x="599.2" y="356.5">1</text>
+  <line class="a-rule" x1="563.9" y1="363.3" x2="634.6" y2="363.3"/>
+  <text class="a-value" text-anchor="middle" x="599.2" y="379.9">3 (x + 2)</text>
+  <text class="a-value" x="637.6" y="367.8"> + </text>
+  <text class="a-value" text-anchor="middle" x="695.9" y="356.5">1</text>
+  <line class="a-rule" x1="660.5" y1="363.3" x2="731.2" y2="363.3"/>
+  <text class="a-value" text-anchor="middle" x="695.9" y="379.9">6 (x − 1)</text>
+</g>
+</g>
+</svg>

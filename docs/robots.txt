@@ -1,0 +1,6 @@
+# Design references, published for review.
+# Crawling is ALLOWED on purpose: every page carries <meta name="robots" content="noindex">,
+# and a crawler must be able to fetch a page to see that directive. Blocking here would
+# leave the URLs eligible to appear in results with no description — the opposite of intent.
+User-agent: *
+Allow: /
