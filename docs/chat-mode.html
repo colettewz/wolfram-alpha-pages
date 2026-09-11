@@ -4756,7 +4756,8 @@
       color: var(--s-input-math-text);
     }
 
-    body[data-mode="chat"] .omni-mobile-opt.active {
+    body[data-mode="chat"] .omni-mobile-opt.active,
+    body.chat-gate-active .omni-mobile-opt.active {
       color: var(--s-input-chat-text);
     }
 
@@ -7489,10 +7490,21 @@
       var band = document.getElementById('chat-gate-band');
       if (band) band.setAttribute('data-theme', document.body.classList.contains('dark') ? 'dark' : 'light');
     }
+
+    var MOBILE_TRIGGER_LABEL = { natural: 'Natural Language', chat: 'Chat', math: 'Math Input', photo: 'Photo Input' };
+    function paintMobileTrigger(mode) {
+      var ic = document.getElementById('omni-mobile-icon'), lb = document.getElementById('omni-mobile-label');
+      if (ic) ic.className = 'mode-icon mask-' + (mode === 'natural' ? 'nl' : mode);
+      if (lb) lb.textContent = MOBILE_TRIGGER_LABEL[mode] || mode;
+      document.querySelectorAll('.omni-mobile-opt').forEach(function (b) {
+        b.classList.toggle('active', b.dataset.mode === mode);
+      });
+    }
     function openChatProGate() {
       document.body.classList.add('chat-gate-active');
       var anchor = getChatGateAnchor();
       if (anchor) anchor.classList.add('gate-open');
+      paintMobileTrigger('chat');
       syncChatGateTheme();
     }
 
@@ -7521,6 +7533,7 @@
       if (!document.body.classList.contains('chat-gate-active')) return;
       document.body.classList.remove('chat-gate-active');
       document.querySelectorAll('.gate-open').forEach(function (el) { el.classList.remove('gate-open'); });
+      paintMobileTrigger(currentMode);
     }
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeChatProGate(); });
     new MutationObserver(syncChatGateTheme).observe(document.body, { attributes: true, attributeFilter: ['class'] });
@@ -7902,7 +7915,7 @@
 
     input.addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSubmit(); } });
 
-    window.addEventListener('load', function () {
+    document.addEventListener('DOMContentLoaded', function () {
       var seed = new URLSearchParams(location.search).get('seed');
       if (!seed) return;
       if (seed === '1' || seed === 'true' || seed === 'gold') seed = 'what is the current price of gold per ounce in usd and euros?';
