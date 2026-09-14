@@ -3303,16 +3303,12 @@
     }
 
     .bot-rating-thanks {
-      display: inline-flex; align-items: center;
+      display: inline-flex; align-items: center; margin-left: 12px;
       font-family: var(--font-sans); font-size: 14px; font-weight: 400;
       color: var(--s-link-primary);   ;
       white-space: nowrap; pointer-events: none;
       opacity: 0; transform: translateY(2px);
       transition: opacity var(--dur-slow) var(--ease), transform var(--dur-slow) var(--ease);
-    }
-    .bot-rating-thanks::before {
-      content: ''; width: 1px; height: 16px; margin-right: 16px;
-      background: var(--s-border-primary);
     }
     .bot-rating-thanks.show {
       opacity: 1; transform: translateY(0);
@@ -3320,8 +3316,7 @@
     }
     @media (max-width: 480px) {
 
-      .bot-rating-thanks { flex-basis: 100%; padding-left: 6px; }
-      .bot-rating-thanks::before { display: none; }
+      .bot-rating-thanks { flex-basis: 100%; margin-left: 0; padding-left: 6px; }
     }
 
     .bot-action-text-btn {
