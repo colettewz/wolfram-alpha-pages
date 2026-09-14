@@ -3253,7 +3253,7 @@
     .bot-action-btn {
       width: 32px;
       height: 32px;
-      border-radius: 8px;
+      border-radius: 6px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -3261,7 +3261,7 @@
       border: none;
       color: inherit;
       cursor: pointer;
-      transition: all 0.15s;
+      transition: background-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
     }
 
     .bot-action-btn:hover {
@@ -3270,7 +3270,6 @@
 
     .bot-action-btn:active {
       background: var(--s-overlay-press);
-      transform: scale(0.96);
     }
 
     .bot-action-btn[aria-pressed="true"] { color: var(--s-link-primary); }
@@ -3340,8 +3339,8 @@
       gap: 8px;
       height: 32px;
       padding: 0 12px;
-      border-radius: 8px;
-      transition: all 0.15s;
+      border-radius: 6px;
+      transition: background-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
     }
 
     .bot-action-text-btn:hover {
@@ -3350,7 +3349,6 @@
 
     .bot-action-text-btn:active {
       background: var(--s-overlay-press);
-      transform: scale(0.96)
     }
 
     .user-action-bar {
@@ -3439,17 +3437,11 @@
       justify-content: center;
       padding: 2px;
       border-radius: 4px;
-      transition: transform 0.15s;
+      transition: background-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
       vertical-align: middle;
     }
 
     .inline-source:not(.open) .sc-pop { display: none; }
-
-    .sc-plus:active,
-    .sc-minus:active,
-    .sc-pop:active {
-      transform: scale(0.96);
-    }
 
     .inline-source:active .sc-plus::before,
     .inline-source:active .sc-plus::after,
