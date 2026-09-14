@@ -460,7 +460,12 @@
     }
 
     body.chat-active .nav-logo,
-    body.results-active .nav-logo,
+    body.results-active .nav-logo {
+      opacity: 1;
+      transform: translate(0, 0) scale(1);
+      position: relative;
+      pointer-events: auto;
+    }
 
     .nav-item {
       appearance: none;
@@ -1132,7 +1137,7 @@
     .chat-gate__feature { display: flex; gap: var(--sp-3); align-items: flex-start; padding-right: var(--sp-1); }
     .chat-gate__feature + .chat-gate__feature { margin-top: var(--sp-5); }
 
-    .chat-gate__feature:last-of-type { margin-bottom: var(--sp-8); }
+    .chat-gate__feature:has(+ .chat-gate__actions) { margin-bottom: var(--sp-8); }
     .chat-gate__icon {
       flex: 0 0 32px; width: 32px; height: 32px; border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
@@ -1145,9 +1150,9 @@
     .chat-gate__feature-title { font-size: 20px; line-height: 25px; font-weight: 600; color: var(--s-text-primary); margin: calc((32px - 25px) / 2) 0 0; }
     .chat-gate__feature-text { font-size: 16px; line-height: 24px; color: var(--s-text-secondary); margin: 0; }
 
-    .chat-gate__actions { margin-top: auto; display: flex; flex-direction: column; align-items: stretch; gap: var(--sp-4); }
+    .chat-gate__actions { margin-top: auto; display: flex; flex-direction: column; align-items: stretch; gap: var(--sp-1); }
     .chat-gate__actions .pro-gate-cta { width: 100%; max-width: none; height: 44px; padding: 0 22px; font-size: 16px; }
-    .chat-gate__actions .pro-gate-link { font-size: 16px; text-align: center; }
+    .chat-gate__actions .pro-gate-link { font-size: 16px; display: flex; align-items: center; justify-content: center; min-height: 44px; }
     .chat-gate__band {
       display: grid; place-items: center; padding: var(--sp-2);
       background: var(--s-surface-primary);
@@ -1156,6 +1161,8 @@
     @media (max-width: 900px) {
       .chat-gate__card { grid-template-columns: minmax(0, 1fr); }
       .chat-gate__band { order: -1; }
+
+      .chat-gate__band > svg { max-height: 480px; }
     }
     @media (max-width: 540px) {
       .chat-gate { padding: var(--sp-4) var(--sp-4) var(--sp-6); }
@@ -1167,6 +1174,37 @@
     body.chat-gate-active #omni-btn-natural.active .mode-icon { background: currentColor; }
     body.chat-gate-active .omni-mobile-trigger .mode-icon { background: var(--s-input-chat-text); }
     body.chat-gate-active .nl-tab-bar, body.chat-gate-active #sub-tabs-container { display: none; }
+
+    .btn {
+      position: relative;
+      display: inline-flex; align-items: center; justify-content: center; gap: var(--sp-2);
+      box-sizing: border-box; height: 40px; padding: 0 20px; border-radius: 7px;
+      font-family: var(--font-sans); font-weight: 600; font-size: 14px; line-height: normal; letter-spacing: .005em;
+      border: 0; cursor: pointer; text-decoration: none; white-space: nowrap; user-select: none;
+      transition: background-color var(--dur-norm) var(--ease), border-color var(--dur-norm) var(--ease), color var(--dur-norm) var(--ease);
+    }
+    .btn::after {
+      content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      width: max(100%, 48px); height: max(100%, 48px);
+    }
+    .btn--md { height: 40px; padding: 0 20px; font-size: 14px; border-radius: 7px; }
+    .btn--sm { height: 32px; padding: 0 16px; font-size: 13px; border-radius: 6px; }
+    .btn:focus-visible { outline: 2px solid var(--s-focus-ring); outline-offset: 2px; }
+    .btn--primary { background: var(--s-surface-action); color: var(--s-text-on-action); }
+    .btn--primary:hover { background: var(--s-surface-action-hover); }
+    .btn--primary:active { background: var(--s-surface-action-press); }
+    .btn--secondary { background: transparent; color: var(--s-surface-action); border: 1px solid var(--s-surface-action); }
+    .btn--secondary:hover { background: color-mix(in srgb, var(--s-surface-action) 8%, transparent); color: var(--s-surface-action-hover); border-color: var(--s-surface-action-hover); }
+    .btn--secondary:active { background: color-mix(in srgb, var(--s-surface-action) 14%, transparent); color: var(--s-surface-action-press); border-color: var(--s-surface-action-press); }
+
+    .nav-cta-group { display: inline-flex; align-items: center; gap: var(--sp-3); order: -1; margin-right: var(--sp-1); }
+    .nav-mobile-cta { margin: var(--sp-2) var(--sp-4) 0; }
+    .nav-mobile-cta .btn { width: 100%; }
+    body[data-pro="false"] .nav-pro-item { display: none; }
+    body:not([data-pro="false"]) .nav-cta-group,
+    body:not([data-pro="false"]) .nav-mobile-cta { display: none; }
+
+    .nav-mobile-menu { max-height: calc(100vh - var(--header-h)); overflow-y: auto; }
 
     .ac-dropdown {
       position: absolute;
@@ -2812,22 +2850,14 @@
     }
 
     .global-footer {
-      border-top: none !important;
       width: 100%;
-      margin-top: 48px;
-      padding: 24px 40px;
-      background: #FFFFFF;
-      border-top: 1px solid var(--s-border-primary);
+      padding: 48px 40px;
+      background: var(--s-surface-page);
       text-align: center;
       display: flex;
       flex-direction: column;
       gap: 12px;
       align-items: center;
-    }
-
-    body.dark .global-footer {
-      background: var(--s-surface-page);
-      border-color: var(--s-border-secondary);
     }
 
     .gf-row {
@@ -2984,34 +3014,19 @@
       fill: #EE3322;
     }
 
-    @media (max-width: 768px) {
-      .global-footer {
-        padding: 24px 20px;
-      }
-
-      .gf-hide-tablet {
-        display: none;
-      }
-
-      .gf-wolfram-row {
-        display: none;
-      }
+    .gf-wolfram-row a:active {
+      color: var(--s-surface-action-hover);
     }
 
-    @media (max-width: 540px) {
+    @media (max-width: 767px) {
       .global-footer {
-        padding: 20px 16px;
-        gap: 8px;
+        padding: 32px 20px;
+        width: auto;
+        margin-inline: calc(-1 * var(--page-gutter));
       }
 
-      .gf-hide-mobile {
-        display: none;
-      }
-
-      .gf-social a svg {
-        width: 20px;
-        height: 20px;
-      }
+      .gf-hide-tablet { display: none; }
+      .gf-hide-mobile { display: none; }
     }
 
     .chat-stream-inner {
@@ -3316,7 +3331,6 @@
       transition: opacity var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
     }
     .bot-rating-thanks.show { opacity: 1; transform: translateY(0); }
-    .bot-rating-thanks svg { width: 16px; height: 16px; flex: 0 0 auto; }
 
     .bot-action-text-btn {
       text-decoration: none;
@@ -5812,7 +5826,8 @@
       </button>
 
       <div class="nav-right">
-        <button class="nav-item" type="button">PRO <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+        <span class="nav-cta-group"><a class="btn btn--secondary btn--sm" href="#">Pro Features</a><a class="btn btn--primary btn--sm" href="#">Upgrade to Pro</a></span>
+        <button class="nav-item nav-pro-item" type="button">PRO <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
             <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
           </svg></button>
         <div class="nav-dropdown-wrap">
@@ -5891,7 +5906,7 @@
   </header>
 
   <div class="nav-mobile-menu" id="nav-mobile-menu">
-    <button class="nav-item" type="button">
+    <button class="nav-item nav-pro-item" type="button">
       <span class="nav-item-left">PRO</span>
       <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
         <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
@@ -5941,6 +5956,8 @@
         <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
       </svg>
     </button>
+    <div class="nav-mobile-cta"><a class="btn btn--primary btn--md" href="#">Upgrade to Pro</a></div>
+    <div class="nav-mobile-cta"><a class="btn btn--secondary btn--md" href="#">Pro Features</a></div>
   </div>
 
   <main>
@@ -6552,57 +6569,41 @@
       </div>
 
       <footer class="global-footer" id="global-footer">
-        <div class="gf-row">
-          <a href="#">Pro</a><span class="gf-sep">|</span>
-          <a href="#">Mobile Apps</a><span class="gf-sep gf-hide-mobile">|</span>
-          <a href="#" class="gf-hide-mobile">Products</a><span class="gf-sep gf-hide-mobile">|</span>
-          <a href="#" class="gf-hide-mobile">Business</a><span class="gf-sep gf-hide-mobile">|</span>
-          <a href="#" class="gf-hide-mobile">API & Developer Solutions</a><span class="gf-sep gf-hide-mobile">|</span>
-          <a href="#" class="gf-hide-mobile">LLM Solutions</a>
-        </div>
-        <div class="gf-row">
-          <a href="#" class="gf-hide-mobile">Resources & Tools</a><span class="gf-sep gf-hide-mobile">|</span>
-          <a href="#">About</a><span class="gf-sep">|</span>
-          <a href="#">Contact</a><span class="gf-sep">|</span>
-          <span>Connect</span>
-          <span class="gf-social">
-            <a href="#" aria-label="Facebook"><svg viewBox="0 0 14 14">
-                <path
-                  d="M12.5 0C12.8978 0 13.2792 0.158149 13.5605 0.439453C13.8419 0.720758 14 1.10218 14 1.5V12.5C14 12.8978 13.8419 13.2792 13.5605 13.5605C13.2792 13.8419 12.8978 14 12.5 14H9.83398V8.46289H11.7275L12 6.34961H9.83398V5C9.83398 4.38803 10.004 3.97172 10.8809 3.97168H12V2.08398C11.4583 2.02647 10.9139 1.99845 10.3691 2C8.75616 2 7.65041 2.98398 7.65039 4.79395V6.35352H5.75V8.46582H7.65332V14H1.5C1.10218 14 0.720758 13.8419 0.439453 13.5605C0.158149 13.2792 0 12.8978 0 12.5V1.5C0 1.10218 0.158149 0.720758 0.439453 0.439453C0.720758 0.158149 1.10218 0 1.5 0H12.5Z" />
-              </svg></a>
-            <a href="#" aria-label="X"><svg viewBox="0 0 14 14">
-                <path d="M10.6201 11.1611H9.32715L3.37207 2.5498H4.66602L10.6201 11.1611Z" />
-                <path fill-rule="evenodd" clip-rule="evenodd"
-                  d="M12.5 0C12.8978 0 13.2792 0.158149 13.5605 0.439453C13.8419 0.720758 14 1.10218 14 1.5V12.5C14 12.8978 13.8419 13.2792 13.5605 13.5605C13.2792 13.8419 12.8978 14 12.5 14H1.5C1.10218 14 0.720758 13.8419 0.439453 13.5605C0.158149 13.2792 0 12.8978 0 12.5V1.5C0 1.10218 0.158149 0.720758 0.439453 0.439453C0.720758 0.158149 1.10218 0 1.5 0H12.5ZM7.53418 5.53516L5.07031 1.90918H2.22656L5.9541 7.39258L2.22656 11.7734H3.06934L6.32715 7.94336L8.92969 11.7734H11.7725L7.9082 6.08496L11.4619 1.9082H10.6201L7.53418 5.53516Z" />
-              </svg></a>
-            <a href="#" aria-label="Instagram"><svg viewBox="0 0 14 14">
-                <path
-                  d="M7 5.33313C6.67035 5.33325 6.34814 5.43112 6.07411 5.61435C5.80007 5.79758 5.58652 6.05796 5.46046 6.36255C5.33439 6.66714 5.30147 7.00228 5.36586 7.32558C5.43024 7.64888 5.58905 7.94583 5.82219 8.17888C6.05533 8.41194 6.35234 8.57063 6.67566 8.63489C6.99899 8.69916 7.33411 8.66612 7.63866 8.53993C7.9432 8.41375 8.20349 8.20011 8.38663 7.926C8.56976 7.6519 8.6675 7.32965 8.6675 7C8.66717 6.55791 8.49136 6.13403 8.1787 5.82149C7.86603 5.50894 7.44209 5.33329 7 5.33313ZM10.8972 4.05188C10.8123 3.83683 10.6842 3.64151 10.5207 3.47804C10.3572 3.31456 10.1619 3.18642 9.94688 3.10156C9.29063 2.8425 7.72813 2.90063 7 2.90063C6.27188 2.90063 4.71094 2.84031 4.05281 3.10156C3.83776 3.18642 3.64244 3.31456 3.47897 3.47804C3.3155 3.64151 3.18736 3.83683 3.1025 4.05188C2.84375 4.70813 2.90156 6.27219 2.90156 6.99969C2.90156 7.72719 2.84375 9.28937 3.10375 9.94777C3.18861 10.1629 3.31675 10.3582 3.48022 10.5217C3.64369 10.6851 3.83901 10.8133 4.05406 10.8981C4.71031 11.1572 6.27281 11.0991 7.00125 11.0991C7.72969 11.0991 9.29 11.1594 9.94813 10.8981C10.1632 10.8133 10.3585 10.6851 10.522 10.5217C10.6854 10.3582 10.8136 10.1629 10.8984 9.94777C11.1594 9.29157 11.0994 7.7275 11.0994 7C11.0994 6.2725 11.1594 4.71063 10.8984 4.05219L10.8972 4.05188ZM7 9.56247C6.49319 9.56247 5.99775 9.41217 5.57635 9.13057C5.15495 8.84907 4.82651 8.44886 4.63256 7.98063C4.43861 7.51239 4.38786 6.99716 4.48674 6.50008C4.58561 6.00301 4.82967 5.54641 5.18804 5.18804C5.54641 4.82967 6.00301 4.58561 6.50008 4.48674C6.99716 4.38787 7.51239 4.43861 7.98063 4.63256C8.44886 4.82651 8.84907 5.15495 9.13064 5.57635C9.41221 5.99775 9.5625 6.49319 9.5625 7C9.56291 7.33663 9.49691 7.67003 9.36828 7.98111C9.23965 8.2922 9.05091 8.57485 8.81288 8.81288C8.57485 9.05091 8.2922 9.23957 7.98111 9.36827C7.67003 9.49687 7.33663 9.56287 7 9.56247ZM9.66813 4.92813C9.54982 4.92819 9.43414 4.89316 9.33574 4.82748C9.23734 4.76179 9.16063 4.6684 9.11531 4.55911C9.06999 4.44982 9.0581 4.32955 9.08114 4.21351C9.10419 4.09746 9.16113 3.99086 9.24476 3.90717C9.3284 3.82349 9.43498 3.7665 9.55101 3.74339C9.66704 3.72029 9.78732 3.73212 9.89663 3.77738C10.0059 3.82264 10.0994 3.8993 10.1651 3.99767C10.2309 4.09604 10.2659 4.21169 10.2659 4.33C10.2663 4.40857 10.2511 4.48643 10.2213 4.55911C10.1914 4.6318 10.1475 4.69788 10.0921 4.75356C10.0367 4.80925 9.97082 4.85344 9.89827 4.88362C9.82573 4.91379 9.74794 4.92934 9.66938 4.92938L9.66813 4.92813ZM12.5 0H1.5C1.10218 0 0.720645 0.15804 0.43934 0.43934C0.158036 0.72065 0 1.10218 0 1.5V12.5C0 12.8978 0.158036 13.2794 0.43934 13.5607C0.720645 13.842 1.10218 14 1.5 14H12.5C12.8978 14 13.2794 13.842 13.5607 13.5607C13.842 13.2794 14 12.8978 14 12.5V1.5C14 1.10218 13.842 0.72065 13.5607 0.43934C13.2794 0.15804 12.8978 0 12.5 0ZM11.965 9.06247C11.9247 9.86337 11.7419 10.5731 11.1572 11.1563C10.5725 11.7394 9.86344 11.9259 9.06344 11.9641C8.23813 12.0106 5.76375 12.0106 4.93844 11.9641C4.1375 11.9238 3.43031 11.7406 2.84469 11.1563C2.25906 10.5719 2.075 9.86187 2.03688 9.06247C1.99031 8.23688 1.99031 5.76219 2.03688 4.9375C2.07719 4.13656 2.25781 3.42688 2.84469 2.84375C3.43156 2.26063 4.14063 2.07625 4.93844 2.03813C5.76375 1.99156 8.23813 1.99156 9.06344 2.03813C9.86438 2.07844 10.5738 2.26156 11.1572 2.84594C11.7406 3.43032 11.9269 4.14031 11.965 4.94125C12.0116 5.76375 12.0116 8.23625 11.965 9.06247Z" />
-              </svg></a>
-            <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 14 14">
-                <path fill-rule="evenodd" clip-rule="evenodd"
-                  d="M13 0C13.5499 0 13.9999 0.451873 14 1.00977V12.9902C13.9999 13.5471 13.5499 14 13 14H0.99707C0.447147 14 0.000125269 13.5481 0 12.9902V1.00977C0.000125367 0.452873 0.447147 0 0.99707 0H13ZM9.51562 5.15625C8.50583 5.15639 7.82777 5.70944 7.5498 6.23438H7.52148V5.32227H5.53125V12.0029H7.60645V8.69727C7.60645 7.82539 7.77195 6.98169 8.85254 6.98145C9.91551 6.98145 9.93066 7.97794 9.93066 8.75293V12.0029H12.0059V8.34082C12.0058 6.59719 11.6399 5.24314 9.70801 5.16016L9.51562 5.15625ZM2.15625 5.31348V11.9941H4.23145L4.23438 11.9932V5.31348H2.15625ZM3.2041 2C3.04201 1.99332 2.88025 2.01975 2.72852 2.07715C2.57687 2.13453 2.43832 2.22178 2.32129 2.33398C2.20421 2.4463 2.11055 2.58124 2.04688 2.73047C1.98326 2.87957 1.95031 3.04004 1.9502 3.20215C1.95013 3.36439 1.98333 3.52553 2.04688 3.6748C2.11042 3.82397 2.20339 3.95895 2.32031 4.07129C2.43728 4.18365 2.57589 4.27158 2.72754 4.3291C2.87917 4.38658 3.04109 4.41279 3.20312 4.40625L3.2041 4.40723C3.51722 4.39818 3.8149 4.26762 4.0332 4.04297C4.25153 3.81825 4.37305 3.51644 4.37305 3.20312C4.37295 2.88997 4.25141 2.58888 4.0332 2.36426C3.8149 2.13957 3.51725 2.00905 3.2041 2Z" />
-              </svg></a>
-          </span>
-        </div>
-        <div class="gf-row gf-row-legal">
-          <span>&copy;2026 Wolfram Alpha LLC</span><span class="gf-sep">|</span>
-          <a href="#">Terms</a><span class="gf-sep">|</span>
-          <a href="#">Privacy</a>
-        </div>
-        <div class="gf-row gf-wolfram-row gf-hide-mobile">
-          <a href="#" class="gf-wolfram-brand"><svg viewBox="0 0 39 39">
-              <path
-                d="M31.81 19.46L37.22 13.42L29.29 11.71L30.1 3.69L22.71 6.93L18.65 0L14.6 6.94L7.12 3.69L7.93 11.71L0 13.42L5.41 19.46L0 25.5L7.93 27.21L7.12 35.23L14.51 31.99L18.56 38.93L22.61 31.99L30 35.23L29.19 27.21L37.12 25.5L31.8 19.46H31.81ZM33.16 23.33L29.65 22.16L27.22 19.01L30.37 20.18L33.16 23.33ZM21.63 30.81L19.38 34.59V30.63L21.72 27.3L21.63 30.81ZM16.4 11.08L12.62 9.73L10.46 6.76L14.42 8.47L16.4 11.08ZM22.89 8.56L26.85 6.85L24.69 9.82L20.91 11.17L22.89 8.56ZM27.67 12.07L25.78 14.77L25.87 10.63L28.12 7.57L27.67 12.07ZM18.66 29.1L15.69 24.78L18.66 20.73L21.63 24.78L18.66 29.1ZM13.07 16.76L12.89 11.53L17.85 13.33V18.47L13.07 16.76ZM19.38 13.25L24.34 11.45L24.16 16.77L19.38 18.39V13.25ZM9.56 12.08L9.11 7.67L11.36 10.73L11.45 14.87L9.56 12.08ZM17.4 19.83L14.43 23.88L9.38 22.35L12.62 18.21L17.4 19.83ZM15.51 27.31L17.85 30.64V34.6L15.6 30.82L15.51 27.31ZM19.83 19.83L24.61 18.21L27.85 22.35L22.8 23.88L19.83 19.83ZM34.25 14.42L30.56 18.56L26.14 16.94L28.75 13.16L34.25 14.42ZM21.46 7.84L18.67 11.44L15.88 7.84L18.67 2.98L21.46 7.84ZM2.97 14.32L8.47 13.15L11.08 16.93L6.66 18.55L2.97 14.32ZM6.93 20.09L10.08 18.92L7.56 22.16L3.96 23.42L6.93 20.09ZM4.32 24.86L8.01 23.6L11.97 24.77L8.73 25.76L4.31 24.86H4.32ZM9.46 27.2L13.97 25.76L14.06 30.53L8.92 32.78L9.46 27.19V27.2ZM23.16 30.53L23.25 25.76L27.76 27.2L28.3 32.79L23.16 30.54V30.53ZM28.48 25.85L25.15 24.77L29.11 23.6L32.8 24.86L28.48 25.85Z" />
-            </svg><span>WOLFRAM</span></a>
-          <a href="#">wolfram.com</a><span class="gf-sep">|</span>
-          <a href="#">Wolfram Language</a><span class="gf-sep">|</span>
-          <a href="#">Mathematica</a><span class="gf-sep gf-hide-tablet">|</span>
-          <a href="#" class="gf-hide-tablet">Wolfram Demonstrations</a><span class="gf-sep gf-hide-tablet">|</span>
-          <a href="#" class="gf-hide-tablet">Wolfram for Education</a><span class="gf-sep gf-hide-tablet">|</span>
-          <a href="#" class="gf-hide-tablet">MathWorld</a>
-        </div>
-      </footer>
+          <div class="gf-row">
+            <a href="/pro">Pro</a><span aria-hidden="true" class="gf-sep">|</span>
+            <a href="/mobile">Mobile Apps</a><span aria-hidden="true" class="gf-sep gf-hide-mobile">|</span>
+            <a href="/products" class="gf-hide-mobile">Products</a><span aria-hidden="true" class="gf-sep gf-hide-mobile">|</span>
+            <a href="/business" class="gf-hide-mobile">Business</a><span aria-hidden="true" class="gf-sep gf-hide-mobile">|</span>
+            <a href="/api" class="gf-hide-mobile">API &amp; Developer Solutions</a><span aria-hidden="true" class="gf-sep gf-hide-mobile">|</span>
+            <a href="/llm" class="gf-hide-mobile">LLM Solutions</a>
+          </div>
+          <div class="gf-row">
+            <a href="/resources" class="gf-hide-mobile">Resources &amp; Tools</a><span aria-hidden="true" class="gf-sep gf-hide-mobile">|</span>
+            <a href="/about">About</a><span aria-hidden="true" class="gf-sep">|</span>
+            <a href="/contact">Contact</a><span aria-hidden="true" class="gf-sep">|</span>
+            <span>Connect</span>
+            <span class="gf-social">
+              <a href="#" aria-label="Facebook"><svg viewBox="0 0 14 14"><path d="M12.5 0C12.8978 0 13.2792 0.158149 13.5605 0.439453C13.8419 0.720758 14 1.10218 14 1.5V12.5C14 12.8978 13.8419 13.2792 13.5605 13.5605C13.2792 13.8419 12.8978 14 12.5 14H9.83398V8.46289H11.7275L12 6.34961H9.83398V5C9.83398 4.38803 10.004 3.97172 10.8809 3.97168H12V2.08398C11.4583 2.02647 10.9139 1.99845 10.3691 2C8.75616 2 7.65041 2.98398 7.65039 4.79395V6.35352H5.75V8.46582H7.65332V14H1.5C1.10218 14 0.720758 13.8419 0.439453 13.5605C0.158149 13.2792 0 12.8978 0 12.5V1.5C0 1.10218 0.158149 0.720758 0.439453 0.439453C0.720758 0.158149 1.10218 0 1.5 0H12.5Z"/></svg></a>
+              <a href="#" aria-label="X"><svg viewBox="0 0 14 14"><path d="M10.6201 11.1611H9.32715L3.37207 2.5498H4.66602L10.6201 11.1611Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M12.5 0C12.8978 0 13.2792 0.158149 13.5605 0.439453C13.8419 0.720758 14 1.10218 14 1.5V12.5C14 12.8978 13.8419 13.2792 13.5605 13.5605C13.2792 13.8419 12.8978 14 12.5 14H1.5C1.10218 14 0.720758 13.8419 0.439453 13.5605C0.158149 13.2792 0 12.8978 0 12.5V1.5C0 1.10218 0.158149 0.720758 0.439453 0.439453C0.720758 0.158149 1.10218 0 1.5 0H12.5ZM7.53418 5.53516L5.07031 1.90918H2.22656L5.9541 7.39258L2.22656 11.7734H3.06934L6.32715 7.94336L8.92969 11.7734H11.7725L7.9082 6.08496L11.4619 1.9082H10.6201L7.53418 5.53516Z"/></svg></a>
+              <a href="#" aria-label="Instagram"><svg viewBox="0 0 14 14"><path d="M7 5.33313C6.67035 5.33325 6.34814 5.43112 6.07411 5.61435C5.80007 5.79758 5.58652 6.05796 5.46046 6.36255C5.33439 6.66714 5.30147 7.00228 5.36586 7.32558C5.43024 7.64888 5.58905 7.94583 5.82219 8.17888C6.05533 8.41194 6.35234 8.57063 6.67566 8.63489C6.99899 8.69916 7.33411 8.66612 7.63866 8.53993C7.9432 8.41375 8.20349 8.20011 8.38663 7.926C8.56976 7.6519 8.6675 7.32965 8.6675 7C8.66717 6.55791 8.49136 6.13403 8.1787 5.82149C7.86603 5.50894 7.44209 5.33329 7 5.33313ZM10.8972 4.05188C10.8123 3.83683 10.6842 3.64151 10.5207 3.47804C10.3572 3.31456 10.1619 3.18642 9.94688 3.10156C9.29063 2.8425 7.72813 2.90063 7 2.90063C6.27188 2.90063 4.71094 2.84031 4.05281 3.10156C3.83776 3.18642 3.64244 3.31456 3.47897 3.47804C3.3155 3.64151 3.18736 3.83683 3.1025 4.05188C2.84375 4.70813 2.90156 6.27219 2.90156 6.99969C2.90156 7.72719 2.84375 9.28937 3.10375 9.94777C3.18861 10.1629 3.31675 10.3582 3.48022 10.5217C3.64369 10.6851 3.83901 10.8133 4.05406 10.8981C4.71031 11.1572 6.27281 11.0991 7.00125 11.0991C7.72969 11.0991 9.29 11.1594 9.94813 10.8981C10.1632 10.8133 10.3585 10.6851 10.522 10.5217C10.6854 10.3582 10.8136 10.1629 10.8984 9.94777C11.1594 9.29157 11.0994 7.7275 11.0994 7C11.0994 6.2725 11.1594 4.71063 10.8984 4.05219L10.8972 4.05188ZM7 9.56247C6.49319 9.56247 5.99775 9.41217 5.57635 9.13057C5.15495 8.84907 4.82651 8.44886 4.63256 7.98063C4.43861 7.51239 4.38786 6.99716 4.48674 6.50008C4.58561 6.00301 4.82967 5.54641 5.18804 5.18804C5.54641 4.82967 6.00301 4.58561 6.50008 4.48674C6.99716 4.38787 7.51239 4.43861 7.98063 4.63256C8.44886 4.82651 8.84907 5.15495 9.13064 5.57635C9.41221 5.99775 9.5625 6.49319 9.5625 7C9.56291 7.33663 9.49691 7.67003 9.36828 7.98111C9.23965 8.2922 9.05091 8.57485 8.81288 8.81288C8.57485 9.05091 8.2922 9.23957 7.98111 9.36827C7.67003 9.49687 7.33663 9.56287 7 9.56247ZM9.66813 4.92813C9.54982 4.92819 9.43414 4.89316 9.33574 4.82748C9.23734 4.76179 9.16063 4.6684 9.11531 4.55911C9.06999 4.44982 9.0581 4.32955 9.08114 4.21351C9.10419 4.09746 9.16113 3.99086 9.24476 3.90717C9.3284 3.82349 9.43498 3.7665 9.55101 3.74339C9.66704 3.72029 9.78732 3.73212 9.89663 3.77738C10.0059 3.82264 10.0994 3.8993 10.1651 3.99767C10.2309 4.09604 10.2659 4.21169 10.2659 4.33C10.2663 4.40857 10.2511 4.48643 10.2213 4.55911C10.1914 4.6318 10.1475 4.69788 10.0921 4.75356C10.0367 4.80925 9.97082 4.85344 9.89827 4.88362C9.82573 4.91379 9.74794 4.92934 9.66938 4.92938L9.66813 4.92813ZM12.5 0H1.5C1.10218 0 0.720645 0.15804 0.43934 0.43934C0.158036 0.72065 0 1.10218 0 1.5V12.5C0 12.8978 0.158036 13.2794 0.43934 13.5607C0.720645 13.842 1.10218 14 1.5 14H12.5C12.8978 14 13.2794 13.842 13.5607 13.5607C13.842 13.2794 14 12.8978 14 12.5V1.5C14 1.10218 13.842 0.72065 13.5607 0.43934C13.2794 0.15804 12.8978 0 12.5 0ZM11.965 9.06247C11.9247 9.86337 11.7419 10.5731 11.1572 11.1563C10.5725 11.7394 9.86344 11.9259 9.06344 11.9641C8.23813 12.0106 5.76375 12.0106 4.93844 11.9641C4.1375 11.9238 3.43031 11.7406 2.84469 11.1563C2.25906 10.5719 2.075 9.86187 2.03688 9.06247C1.99031 8.23688 1.99031 5.76219 2.03688 4.9375C2.07719 4.13656 2.25781 3.42688 2.84469 2.84375C3.43156 2.26063 4.14063 2.07625 4.93844 2.03813C5.76375 1.99156 8.23813 1.99156 9.06344 2.03813C9.86438 2.07844 10.5738 2.26156 11.1572 2.84594C11.7406 3.43032 11.9269 4.14031 11.965 4.94125C12.0116 5.76375 12.0116 8.23625 11.965 9.06247Z"/></svg></a>
+              <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 14 14"><path fill-rule="evenodd" clip-rule="evenodd" d="M13 0C13.5499 0 13.9999 0.451873 14 1.00977V12.9902C13.9999 13.5471 13.5499 14 13 14H0.99707C0.447147 14 0.000125269 13.5481 0 12.9902V1.00977C0.000125367 0.452873 0.447147 0 0.99707 0H13ZM9.51562 5.15625C8.50583 5.15639 7.82777 5.70944 7.5498 6.23438H7.52148V5.32227H5.53125V12.0029H7.60645V8.69727C7.60645 7.82539 7.77195 6.98169 8.85254 6.98145C9.91551 6.98145 9.93066 7.97794 9.93066 8.75293V12.0029H12.0059V8.34082C12.0058 6.59719 11.6399 5.24314 9.70801 5.16016L9.51562 5.15625ZM2.15625 5.31348V11.9941H4.23145L4.23438 11.9932V5.31348H2.15625ZM3.2041 2C3.04201 1.99332 2.88025 2.01975 2.72852 2.07715C2.57687 2.13453 2.43832 2.22178 2.32129 2.33398C2.20421 2.4463 2.11055 2.58124 2.04688 2.73047C1.98326 2.87957 1.95031 3.04004 1.9502 3.20215C1.95013 3.36439 1.98333 3.52553 2.04688 3.6748C2.11042 3.82397 2.20339 3.95895 2.32031 4.07129C2.43728 4.18365 2.57589 4.27158 2.72754 4.3291C2.87917 4.38658 3.04109 4.41279 3.20312 4.40625L3.2041 4.40723C3.51722 4.39818 3.8149 4.26762 4.0332 4.04297C4.25153 3.81825 4.37305 3.51644 4.37305 3.20312C4.37295 2.88997 4.25141 2.58888 4.0332 2.36426C3.8149 2.13957 3.51725 2.00905 3.2041 2Z"/></svg></a>
+            </span>
+          </div>
+          <div class="gf-row gf-row-legal">
+            <span>&copy;2026 Wolfram Alpha LLC</span><span aria-hidden="true" class="gf-sep">|</span>
+            <a href="/terms">Terms</a><span aria-hidden="true" class="gf-sep">|</span>
+            <a href="/privacy">Privacy</a>
+          </div>
+          <div class="gf-row gf-wolfram-row gf-hide-mobile">
+            <a href="https://wolfram.com" class="gf-wolfram-brand"><svg viewBox="0 0 39 39"><path d="M31.81 19.46L37.22 13.42L29.29 11.71L30.1 3.69L22.71 6.93L18.65 0L14.6 6.94L7.12 3.69L7.93 11.71L0 13.42L5.41 19.46L0 25.5L7.93 27.21L7.12 35.23L14.51 31.99L18.56 38.93L22.61 31.99L30 35.23L29.19 27.21L37.12 25.5L31.8 19.46H31.81ZM33.16 23.33L29.65 22.16L27.22 19.01L30.37 20.18L33.16 23.33ZM21.63 30.81L19.38 34.59V30.63L21.72 27.3L21.63 30.81ZM16.4 11.08L12.62 9.73L10.46 6.76L14.42 8.47L16.4 11.08ZM22.89 8.56L26.85 6.85L24.69 9.82L20.91 11.17L22.89 8.56ZM27.67 12.07L25.78 14.77L25.87 10.63L28.12 7.57L27.67 12.07ZM18.66 29.1L15.69 24.78L18.66 20.73L21.63 24.78L18.66 29.1ZM13.07 16.76L12.89 11.53L17.85 13.33V18.47L13.07 16.76ZM19.38 13.25L24.34 11.45L24.16 16.77L19.38 18.39V13.25ZM9.56 12.08L9.11 7.67L11.36 10.73L11.45 14.87L9.56 12.08ZM17.4 19.83L14.43 23.88L9.38 22.35L12.62 18.21L17.4 19.83ZM15.51 27.31L17.85 30.64V34.6L15.6 30.82L15.51 27.31ZM19.83 19.83L24.61 18.21L27.85 22.35L22.8 23.88L19.83 19.83ZM34.25 14.42L30.56 18.56L26.14 16.94L28.75 13.16L34.25 14.42ZM21.46 7.84L18.67 11.44L15.88 7.84L18.67 2.98L21.46 7.84ZM2.97 14.32L8.47 13.15L11.08 16.93L6.66 18.55L2.97 14.32ZM6.93 20.09L10.08 18.92L7.56 22.16L3.96 23.42L6.93 20.09ZM4.32 24.86L8.01 23.6L11.97 24.77L8.73 25.76L4.31 24.86H4.32ZM9.46 27.2L13.97 25.76L14.06 30.53L8.92 32.78L9.46 27.19V27.2ZM23.16 30.53L23.25 25.76L27.76 27.2L28.3 32.79L23.16 30.54V30.53ZM28.48 25.85L25.15 24.77L29.11 23.6L32.8 24.86L28.48 25.85Z"/></svg><span>WOLFRAM</span></a>
+            <a href="https://wolfram.com">wolfram.com</a><span aria-hidden="true" class="gf-sep">|</span>
+            <a href="https://wolfram.com/language">Wolfram Language</a><span aria-hidden="true" class="gf-sep">|</span>
+            <a href="https://wolfram.com/mathematica">Mathematica</a><span aria-hidden="true" class="gf-sep gf-hide-tablet">|</span>
+            <a href="https://demonstrations.wolfram.com" class="gf-hide-tablet">Wolfram Demonstrations</a><span aria-hidden="true" class="gf-sep gf-hide-tablet">|</span>
+            <a href="https://education.wolfram.com" class="gf-hide-tablet">Wolfram for Education</a><span aria-hidden="true" class="gf-sep gf-hide-tablet">|</span>
+            <a href="https://mathworld.wolfram.com" class="gf-hide-tablet">MathWorld</a>
+          </div>
+        </footer>
 
     </div>
   </main>
@@ -7508,7 +7509,6 @@
       syncChatGateTheme();
     }
 
-    var CHECK_16 = '<svg viewBox="2 2 14 14" fill="currentColor" aria-hidden="true"><path d="M4 9.5L5.75 7.75L7.5 9.5L12.25 5L14 6.75L7.5 13L4 9.5Z"/></svg>';
     function rateChat(btn, dir) {
       var bar = btn.closest('.bot-action-bar');
       var wasOn = btn.getAttribute('aria-pressed') === 'true';
@@ -7521,7 +7521,7 @@
       }
       btn.setAttribute('aria-pressed', 'true');
       if (!note) return;
-      note.innerHTML = CHECK_16 + 'Thanks for your feedback';
+      note.textContent = 'Thanks for your feedback';
       note.hidden = false;
       requestAnimationFrame(function () { note.classList.add('show'); });
       note._t = setTimeout(function () {
