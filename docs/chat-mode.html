@@ -3296,7 +3296,7 @@
     .bot-rating-thanks {
       display: inline-flex; align-items: center;
       font-family: var(--font-sans); font-size: 14px; font-weight: 400;
-      color: var(--s-text-secondary);
+      color: var(--s-link-primary);   ;
       white-space: nowrap; pointer-events: none;
       opacity: 0; transform: translateY(2px);
       transition: opacity var(--dur-slow) var(--ease), transform var(--dur-slow) var(--ease);
@@ -6167,7 +6167,7 @@
             </div>
           </div>
           <div class="chat-gate__feature">
-            <div class="chat-gate__icon chat-gate__icon--sbs"><svg viewBox="1.2 1.2 21.6 21.6" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM17.99 9l-1.41-1.42-6.59 6.59-2.58-2.57-1.42 1.41 4 3.99z"/></svg></div>
+            <div class="chat-gate__icon chat-gate__icon--sbs"><svg viewBox="48 -912 864 864" fill="currentColor"><path d="m424-312 282-282-56-56-226 226-114-114-56 56 170 170ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0-560v560-560Z"/></svg></div>
             <div>
               <h3 class="chat-gate__feature-title">Trusted computational answers</h3>
               <p class="chat-gate__feature-text">Plain-language questions, answered by Wolfram's computational knowledge.</p>
@@ -7487,7 +7487,7 @@
       }
       btn.setAttribute('aria-pressed', 'true');
       if (!note) return;
-      note.textContent = 'Thanks for your feedback';
+      note.textContent = 'Thanks for your feedback!';
       note.hidden = false;
       requestAnimationFrame(function () { note.classList.add('show'); });
       note._t = setTimeout(function () {
