@@ -6634,7 +6634,9 @@
 
   <script>
     (function(){ var q=new URLSearchParams(location.search); if(q.get('nonav')) document.body.classList.add('nonav'); if(q.get('theme')==='dark') document.body.classList.add('dark');
-      document.body.setAttribute('data-pro', q.get('pro')==='false' || q.get('pro')==='0' ? 'false' : 'true');
+      document.body.setAttribute('data-pro', (q.get('pro')==='false' || q.get('pro')==='0' || q.has('gate')) ? 'false' : 'true');
+
+      if (q.has('gate')) window.addEventListener('load', function () { setTimeout(function () { setMode('chat'); }, 0); });
 
       window.addEventListener('message', function(e){ if(e.data && e.data.theme) document.body.classList.toggle('dark', e.data.theme==='dark'); }); })();
     const MATH_ICON_BASE = "https://raw.githubusercontent.com/colettewz/wa-math-input-icons/main/";
