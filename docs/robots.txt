@@ -2,5 +2,17 @@
 # Crawling is ALLOWED on purpose: every page carries <meta name="robots" content="noindex">,
 # and a crawler must be able to fetch a page to see that directive. Blocking here would
 # leave the URLs eligible to appear in results with no description — the opposite of intent.
+#
+# THE ASSET FOLDERS ARE THE EXCEPTION, and for the opposite reason. An SVG or a PNG is not
+# HTML: it cannot carry a robots meta, and GitHub Pages cannot set an X-Robots-Tag header.
+# So for a binary asset, BLOCKING is the only noindex there is — Google Images cannot index
+# what it is not allowed to fetch. The gallery page above them stays crawlable so its own
+# meta is seen, and it is noindex,nofollow, so the assets are never discovered through it.
 User-agent: *
 Allow: /
+Disallow: /plates/svg/
+Disallow: /plates/png/
+# The ten flat /plates/*.svg are the pre-2026-09-15 layout, kept because a direct file URL
+# may have been handed to someone and this repo does not break a review URL. They are exact
+# duplicates of /plates/svg/ and blocked for the same reason.
+Disallow: /plates/*.svg$

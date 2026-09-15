@@ -43,9 +43,30 @@ ROBOTS = """# Design references, published for review.
 # Crawling is ALLOWED on purpose: every page carries <meta name="robots" content="noindex">,
 # and a crawler must be able to fetch a page to see that directive. Blocking here would
 # leave the URLs eligible to appear in results with no description — the opposite of intent.
+#
+# THE ASSET FOLDERS ARE THE EXCEPTION, and for the opposite reason. An SVG or a PNG is not
+# HTML: it cannot carry a robots meta, and GitHub Pages cannot set an X-Robots-Tag header.
+# So for a binary asset, BLOCKING is the only noindex there is — Google Images cannot index
+# what it is not allowed to fetch. The gallery page above them stays crawlable so its own
+# meta is seen, and it is noindex,nofollow, so the assets are never discovered through it.
 User-agent: *
 Allow: /
+Disallow: /plates/svg/
+Disallow: /plates/png/
+# The ten flat /plates/*.svg are the pre-2026-09-15 layout, kept because a direct file URL
+# may have been handed to someone and this repo does not break a review URL. They are exact
+# duplicates of /plates/svg/ and blocked for the same reason.
+Disallow: /plates/*.svg$
 """
+
+# staged asset folder → its folder in docs/. Vectors and rasters keep the split they have
+# in Drive staging, so a dev picks a format by folder rather than out of a mixed listing.
+ASSETS = {
+    "step-by-step/plates/svg": "plates/svg",
+    "step-by-step/plates/png": "plates/png",
+}
+
+GALLERY_TITLE = "Step-by-Step plates"
 
 
 def inject(html: str) -> str:
@@ -86,6 +107,73 @@ def main() -> int:
             else:
                 idx.write_text(want)
                 changed.append("index.html")
+
+    # ── asset folders: copy verbatim, then build a gallery page that IS unindexed ──
+    import shutil
+    gallery_rows = []
+    for src_rel, dst_rel in ASSETS.items():
+        src, dst = STAGING / src_rel, DOCS / dst_rel
+        if not src.exists():
+            problems.append(f"{dst_rel}: staged source missing ({src}) — run its stage.py first")
+            continue
+        files = sorted(f for f in src.iterdir() if f.suffix.lower() in (".svg", ".png"))
+        for f in files:
+            target = dst / f.name
+            same = target.exists() and target.read_bytes() == f.read_bytes()
+            if not same:
+                if check:
+                    problems.append(f"{dst_rel}/{f.name}: docs/ copy differs from the staged source")
+                else:
+                    dst.mkdir(parents=True, exist_ok=True)
+                    shutil.copy2(f, target)
+                    changed.append(f"{dst_rel}/{f.name}")
+        gallery_rows.append((dst_rel, files))
+
+    if gallery_rows and not check:
+        kinds = {k.rsplit("/", 1)[-1]: fs for k, fs in gallery_rows}
+        def cards(fs, folder):
+            return "\n".join(
+                f'<li><a href="{folder}/{f.name}"><img src="{folder}/{f.name}" alt="" loading="lazy">'
+                f'<span>{f.name}<em>{f.stat().st_size // 1024} KB</em></span></a></li>' for f in fs)
+        html = f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
+{META}
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{GALLERY_TITLE}</title>
+<style>
+:root{{color-scheme:light dark}}
+body{{margin:0;padding:40px 24px;font:16px/1.55 "Source Sans Pro",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#fff;color:#1a1a1a}}
+.wrap{{max-width:1080px;margin:0 auto}}
+h1{{font-size:28px;margin:0 0 4px;font-weight:600}}
+h2{{font-size:18px;margin:36px 0 12px;font-weight:600}}
+p.sub{{margin:0 0 8px;color:#5b5b5b}}
+ul{{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}}
+a{{display:block;color:inherit;text-decoration:none;border:1px solid #e3e3e3;border-radius:10px;overflow:hidden;background:#fafafa}}
+a:hover{{border-color:#b8b8b8}}
+img{{display:block;width:100%;height:auto;background:#6C5694}}
+span{{display:block;padding:10px 12px;font-size:13px;font-weight:600}}
+em{{display:block;font-style:normal;font-weight:400;color:#5b5b5b}}
+footer{{margin-top:36px;font-size:14px;color:#5b5b5b}}
+@media (prefers-color-scheme:dark){{body{{background:#1a1a1a;color:#f2f2f2}}a{{background:#232323;border-color:#3a3a3a}}p.sub,em,footer{{color:#a8a8a8}}}}
+</style></head><body><div class="wrap">
+<h1>{GALLERY_TITLE}</h1>
+<p class="sub">Nine product panels and the hero animation. <strong>The SVGs are the deliverable</strong> — inline them; each carries a light and a dark palette in one file. The PNGs are fallbacks for contexts that cannot take an inline SVG.</p>
+<p class="sub">PNGs export at 1440 wide — 2× the plate's widest rendered size (718 CSS px at the tablet breakpoint) — so they stay sharp on retina and are never upscaled. A PNG cannot switch theme, which is why each ships twice.</p>
+<h2>SVG — the deliverable</h2>
+<ul>
+{cards(kinds.get("svg", []), "svg")}
+</ul>
+<h2>PNG — fallbacks</h2>
+<ul>
+{cards(kinds.get("png", []), "png")}
+</ul>
+<footer>Design references, not production code. Unlisted and unindexed.</footer>
+</div></body></html>
+"""
+        gp = DOCS / "plates" / "index.html"
+        if not gp.exists() or gp.read_text() != html:
+            gp.parent.mkdir(parents=True, exist_ok=True)
+            gp.write_text(html)
+            changed.append("plates/index.html")
 
     robots = DOCS / "robots.txt"
     if not robots.exists() or robots.read_text() != ROBOTS:

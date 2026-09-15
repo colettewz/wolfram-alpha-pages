@@ -659,12 +659,12 @@ a:hover { color: var(--s-text-link-hover); }
     .hero__back {
       display: inline-flex; align-items: center; gap: var(--sp-2);
       margin-bottom: var(--sp-3);
-      color: var(--s-text-on-dark-rest);
+      color: var(--s-text-on-dark);
       font-size: var(--fs-body); font-weight: 600; letter-spacing: .005em;
       text-decoration: none; white-space: nowrap;
       transition: color var(--dur-fast) var(--ease);
     }
-    .hero__back:hover, .hero__back:active { color: var(--s-text-on-dark); }
+    .hero__back:hover, .hero__back:active { color: var(--s-text-on-dark-soft); }
     .hero__back:focus-visible { outline: 2px solid var(--s-text-on-dark); outline-offset: 2px; }
 
     .hero .btn:focus-visible, .cta-band .btn:focus-visible { outline-color: var(--s-text-on-dark); }
@@ -882,12 +882,12 @@ a:hover { color: var(--s-text-link-hover); }
     .cta-band__fineprint strong { font-weight: 700; color: var(--s-text-on-dark); }
     .cta-band__more { font-size: var(--fs-body); margin: 0; max-width: var(--measure-body); }
     .cta-band__link {
-      color: var(--s-text-on-dark-rest);
+      color: var(--s-text-on-dark);
       font-weight: 600; text-decoration: none; white-space: nowrap;
       display: inline-block;
       transition: color var(--dur-fast) var(--ease);
     }
-    .cta-band__link:hover, .cta-band__link:active { color: var(--s-text-on-dark); }
+    .cta-band__link:hover, .cta-band__link:active { color: var(--s-text-on-dark-soft); }
     .cta-band__link:focus-visible { outline: 2px solid var(--s-text-on-dark); outline-offset: 2px; }
     @container (max-width: 420px) { .cta-band__row .btn--primary { width: 100%; } }
 
@@ -1184,7 +1184,7 @@ a:hover { color: var(--s-text-link-hover); }
           #wa-anim-cta .expr-dim    { fill: var(--on-dark); font-size: 18px; font-weight: 600; opacity: .62; }
           #wa-anim-cta .answer-card { fill: var(--answer-fill); stroke: var(--answer-stroke); }
           #wa-anim-cta .disc        { fill: var(--answer-stroke); }
-          #wa-anim-cta .tick        { fill: var(--answer-tick); stroke: var(--answer-tick); }
+          #wa-anim-cta .tick        { fill: var(--answer-tick); }
           #wa-anim-cta .title       { fill: var(--ink); font-size: 25.2px; font-weight: 700; letter-spacing: -0.25px; }
           #wa-anim-cta .well        { fill: var(--well); stroke: var(--answer-stroke); }
           #wa-anim-cta .value       { fill: var(--ink); font-size: 20px; font-weight: 700; }
@@ -1220,9 +1220,7 @@ a:hover { color: var(--s-text-link-hover); }
           <rect class="answer-card" x="259.16" y="175.14" width="260.34" height="116.17" rx="16" stroke-width="1"/>
           <g clip-path="url(#wcta-answer-clip)">
           <circle class="disc" cx="286.64" cy="204.22" r="11"/>
-          <svg x="279.64" y="197.22" width="13.98" height="13.98" viewBox="0 -960 960 960">
-            <path class="tick" d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z" stroke-width="100" stroke-linejoin="miter" stroke-linecap="square"/>
-          </svg>
+          <svg x="280.26" y="199.117" width="12.76" height="10.207" viewBox="0 0 13.334 10.666"><path class="tick" d="M0 6L2.334 3.666L4.667 6L11 0L13.334 2.333L4.667 10.666L0 6Z"/></svg>
           <text class="title" x="306.03" y="203.63">Answer</text>
           <rect class="well" x="276.14" y="229.33" width="226.38" height="45" rx="6" stroke-width="1"/>
           <text class="value"     x="288.64" y="251.83">½ sin(x² + 1)</text>
