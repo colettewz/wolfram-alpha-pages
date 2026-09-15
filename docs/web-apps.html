@@ -698,7 +698,7 @@ a:hover { color: var(--s-text-link-hover); }
     .hero__copy { container-type: inline-size; }
     @container (max-width: 420px) { .hero__cta-row .btn--primary { width: 100%; } }
 
-    .hero__visual { position: relative; width: 100%; }
+    .hero__visual { position: relative; width: 100%; container-type: inline-size; }
     @media (max-width: 1023px) {
       .hero__inner { grid-template-columns: 1fr; }
       .hero__visual { max-width: 560px; margin-inline: 0   ; }
@@ -784,7 +784,8 @@ a:hover { color: var(--s-text-link-hover); }
     }
     .app-mock__art svg { width: 100%; height: 100%; display: block; }
 
-    @media (max-width: 899px) { .app-mock__art { display: none; } }
+    @media (max-width: 767px) { .app-mock__art { display: none; } }
+    @container (max-width: 527px) { .app-mock__art { display: none; } }
     .app-mock__pod { padding-top: var(--sp-3); border-top: 1px solid var(--s-border-primary); }
     .app-mock__pod-label { font-size: 13px; line-height: 18px; color: var(--s-text-tertiary); margin-bottom: var(--sp-2); }
     .app-mock__result { font-size: 16px; line-height: 24px; }
