@@ -744,7 +744,11 @@ a:hover { color: var(--s-text-link-hover); }
     }
     .app-mock__card-icon svg { width: 32px; height: 32px; display: block; }
 
-    .app-mock__card-body { position: relative; padding: var(--sp-3) var(--sp-4) var(--sp-4); display: grid; gap: var(--sp-2); justify-items: start; }
+    .app-mock__card-body {
+      position: relative; padding: var(--sp-3) var(--sp-4) var(--sp-4);
+      display: grid; gap: var(--sp-2); justify-items: start;
+      background: var(--s-surface-primary);
+    }
     .app-mock__crumbs { font-size: 16px; line-height: 24px; color: var(--s-text-secondary); }
     .app-mock__crumbs b { color: var(--s-text-link); font-weight: 600; }
 
@@ -752,7 +756,8 @@ a:hover { color: var(--s-text-link-hover); }
     .app-mock__home svg { display: block; width: 14px; height: 14px; }
     .app-mock__home rect { fill: var(--s-surface-action); }
     .app-mock__home path { fill: var(--s-text-on-action); }
-    .app-mock__fields { display: flex; flex-wrap: wrap; gap: var(--sp-4); align-items: end; }
+
+    .app-mock__fields { display: flex; flex-direction: column; gap: var(--sp-2); align-items: start; }
     .app-mock__inline { display: flex; align-items: center; gap: var(--sp-2); }
     .app-mock__inline .app-mock__label { margin: 0; }
     .app-mock__label { display: block; font-size: 13px; line-height: 18px; color: var(--s-text-secondary); margin-bottom: var(--sp-1); }
