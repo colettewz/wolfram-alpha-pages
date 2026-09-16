@@ -310,6 +310,8 @@ a:hover { color: var(--s-text-link-hover); }
 
 .nav-item { display: inline-flex; font-weight: 600; padding: var(--row-nav-pad-y) var(--sp-3); border-radius: 6px; }
 .nav-item--icon { padding: var(--row-nav-icon-pad-y) var(--sp-2); }
+
+.nav-item:not(.nav-item--icon):has(.nav-item__chev) { padding-right: var(--sp-1); gap: var(--sp-1); }
 .nav-item svg { flex-shrink: 0; fill: currentColor; }
 .nav-item__glyph { width: 24px; height: 24px; }
 .nav-items { display: flex; align-items: center; gap: var(--sp-1); }
@@ -933,9 +935,9 @@ a:hover { color: var(--s-text-link-hover); }
     <div class="site-header__inner">
       <nav class="site-nav" aria-label="Primary">
         <span class="nav-cta-group"><a class="btn btn--secondary btn--sm" href="/pro">Pro Features</a><a class="btn btn--primary btn--sm" href="/pricing">Upgrade to Pro</a></span>
-        <a class="nav-signed-out" href="/login">SIGN IN</a>
         <a class="nav-pro-item" href="/pro">PRO <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></a>
         <a href="/pro/apps">APPS <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></a>
+        <a class="nav-signed-out" href="/login">SIGN IN</a>
         <a class="nav-signed-in" href="/account" aria-label="Account"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></a>
         <button class="site-nav__menu-btn" type="button" aria-label="Open menu"
                 aria-expanded="false" aria-controls="mobile-menu">
@@ -956,9 +958,9 @@ a:hover { color: var(--s-text-link-hover); }
       </nav>
       <div class="mobile-menu" id="mobile-menu" hidden>
         <div class="mobile-menu__cta nav-cta-group"><a class="btn btn--secondary btn--md" href="/pro">Pro Features</a><a class="btn btn--primary btn--md" href="/pricing">Upgrade to Pro</a></div>
-        <a class="nav-signed-out" href="/login">Sign in</a>
         <a class="nav-pro-item" href="/pro">Pro</a>
         <a href="/pro/apps">Apps</a>
+        <a class="nav-signed-out" href="/login">Sign in</a>
         <a class="nav-signed-in" href="/account">Account</a>
       </div>
     </div>

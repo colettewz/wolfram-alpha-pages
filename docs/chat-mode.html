@@ -476,6 +476,8 @@
     }
 
         .nav-item[aria-label] { padding: var(--row-nav-icon-pad-y) var(--sp-2); }
+
+    .nav-right .nav-item:not([aria-label]):has(svg) { padding-right: var(--sp-1); gap: var(--sp-1); }
     .nav-item:focus-visible {
       outline: 2px solid var(--s-focus-ring);
       outline-offset: 2px;
