@@ -784,15 +784,16 @@ a:hover { color: var(--s-text-link-hover); }
       border: 1px solid var(--s-border-primary); border-radius: var(--r-xs);
       font-size: 14px; line-height: 20px;
     }
-    .app-mock__table span { padding: var(--sp-1) var(--sp-3); border-top: 1px solid var(--s-border-primary); }
-    .app-mock__table span:nth-child(-n+2) { border-top: 0; }
-    .app-mock__table span:nth-child(odd) { border-right: 1px solid var(--s-border-primary); color: var(--s-text-secondary); }
+
+    .app-mock__table > span { padding: var(--sp-1) var(--sp-3); border-top: 1px solid var(--s-border-primary); }
+    .app-mock__table > span:nth-child(-n+2) { border-top: 0; }
+    .app-mock__table > span:nth-child(odd) { border-right: 1px solid var(--s-border-primary); color: var(--s-text-secondary); }
 
     .app-mock__table--interp { grid-template-columns: auto auto auto; }
-    .app-mock__table--interp span { border-top: 1px solid var(--s-border-primary); border-right: 0; color: var(--s-text-primary); }
-    .app-mock__table--interp span:nth-child(-n+3) { border-top: 0; }
+    .app-mock__table--interp > span { border-top: 1px solid var(--s-border-primary); border-right: 0; color: var(--s-text-primary); }
+    .app-mock__table--interp > span:nth-child(-n+3) { border-top: 0; }
     .app-mock__table--interp .app-mock__table-lead { grid-row: 1 / span 3; grid-column: 1; border-right: 1px solid var(--s-border-primary); font-weight: 600; align-self: stretch; display: flex; align-items: center; }
-    .app-mock__table--interp span:nth-child(2n) { color: var(--s-text-secondary); border-right: 1px solid var(--s-border-primary); }
+    .app-mock__table--interp > span:nth-child(2n) { color: var(--s-text-secondary); border-right: 1px solid var(--s-border-primary); }
 
     .collections { display: grid; row-gap: var(--layout-group-gap); }
     .collection + .collection { border-top: 1px solid var(--s-border-primary); padding-top: var(--layout-group-gap); }
