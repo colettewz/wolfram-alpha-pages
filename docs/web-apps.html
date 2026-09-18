@@ -494,6 +494,8 @@ body.dark .wa-nav__logo .is-dark,  [data-theme="dark"] .wa-nav__logo .is-dark  {
 .nav-sheet__sub { display: none; flex-direction: column; }
 .nav-sheet__sub.is-open { display: flex; }
 .nav-sheet__cta { margin: var(--sp-2) var(--sp-4) 0; }
+
+:not(.nav-sheet__cta) + .nav-sheet__cta { margin-top: var(--sp-7); }
 .nav-sheet__cta .btn { width: 100%; }
 
 @media (prefers-reduced-motion: reduce) {
