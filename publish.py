@@ -40,6 +40,9 @@ PAGES = {
     # frames are SELF-references (`nav.html?embed&…`), and its in-context mock reaches sideways
     # for `chat-mode.html`, which only resolves because this folder is flat.
     "nav/nav.html": "nav.html",
+    # the presentation board: it renders the nav through sibling `nav.html?embed` frames,
+    # so it only works while both sit in this one flat folder.
+    "nav/present.html": "nav-present.html",
 }
 
 META = '<meta name="robots" content="noindex, nofollow">'
