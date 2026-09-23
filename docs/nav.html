@@ -112,6 +112,7 @@
 
   --s-border-primary:#DFDFDF; --s-border-secondary:#CECECE;
   --s-overlay-hover:#F5F5F5; --s-overlay-press:#EBEBEB;
+  --s-wash-on-tint-hover:.08; --s-wash-on-tint-press:.16;
   --s-focus-ring:#3879A0;
 
   --s-surface-on-dark-hover:rgba(255,255,255,.05);
@@ -676,6 +677,7 @@ body.dark .wa-nav__logo .is-dark,  [data-theme="dark"] .wa-nav__logo .is-dark  {
 
   if (q.get('mock')) {
     nav.classList.add('wa-nav--fixed');
+    nav.querySelector('.wa-nav__logo').style.visibility = 'hidden';
     const f = document.createElement('iframe'); f.src = 'chat-mode.html?nonav=1' + (document.body.classList.contains('dark') ? '&theme=dark' : '');
     window.mockFrame = f;
     f.style.cssText = 'position:fixed;top:' + nav.offsetHeight + 'px;left:0;width:100%;height:calc(100% - ' + nav.offsetHeight + 'px);border:0;'; f.title = 'chat-mode homepage';
