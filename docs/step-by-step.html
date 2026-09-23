@@ -271,7 +271,10 @@ a:hover { color: var(--s-text-link-hover); }
   text-align: left; text-decoration: none; white-space: nowrap; cursor: pointer;
   transition: background-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
 }
-.row:hover,  .sheet-row:hover,  .nav-item:hover,  .row.is-hover, .sheet-row.is-hover, .nav-item.is-hover { background: var(--s-overlay-hover); color: var(--s-text-primary); }
+
+.row:hover, .sheet-row:hover, .nav-item:hover { color: var(--s-text-primary); }
+@media (hover: hover) { .row:hover, .nav-item:hover { background: var(--s-overlay-hover); } }
+.row.is-hover, .nav-item.is-hover { background: var(--s-overlay-hover); color: var(--s-text-primary); }
 .row:active, .sheet-row:active, .nav-item:active, .row.is-press, .sheet-row.is-press, .nav-item.is-press { background: var(--s-overlay-press); color: var(--s-text-primary); }
 .row:focus-visible, .sheet-row:focus-visible { outline: 2px solid var(--s-focus-ring); outline-offset: 2px; }
 .nav-item:focus-visible, .nav-item.is-focus { outline: 2px solid var(--s-focus-ring); outline-offset: 2px; }
@@ -471,7 +474,7 @@ body.dark .wa-nav__logo .is-dark,  [data-theme="dark"] .wa-nav__logo .is-dark  {
 }
 .nav-hamburger::after { content: ''; position: absolute; inset: -4px; }
 .nav-hamburger svg { width: 24px; height: 24px; fill: currentColor; }
-.nav-hamburger:hover  { background: var(--s-overlay-hover); }
+@media (hover: hover) { .nav-hamburger:hover { background: var(--s-overlay-hover); } }
 .nav-hamburger:active { background: var(--s-overlay-press); }
 .nav-hamburger:focus-visible { outline: 2px solid var(--s-focus-ring); outline-offset: 2px; }
 .nav-hamburger .nav-hamburger__close { display: none; }
