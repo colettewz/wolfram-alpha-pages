@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!-- Derivative — do not edit. Regenerate from the design source; this copy is
+     self-contained (stylesheets and artwork inlined). -->
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Site Header</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+
+  html, body { margin: 0; height: 100%; }
+  body { display: flex; flex-direction: column; background: #F0F0F0; color: #333; font-family: 'Source Sans Pro', system-ui, sans-serif; }
+  .bar { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; padding: 12px 16px; background: #FFF; border-bottom: 1px solid #DFDFDF; }
+  .bar__title { margin: 0 auto 0 0; font-size: 16px; line-height: 24px; font-weight: 700; color: #333; }
+  .seg { display: inline-flex; border: 1px solid #CECECE; border-radius: 8px; overflow: hidden; background: #FFF; }
+  .seg button { font: inherit; font-size: 14px; line-height: 20px; font-weight: 600; padding: 6px 12px; border: 0; background: transparent; color: #444; cursor: pointer; white-space: nowrap; }
+  .seg button + button { border-left: 1px solid #CECECE; }
+  .seg button[aria-pressed="true"] { background: #444; color: #FFF; }
+  .stage { flex: 1; min-height: 0; }
+  .stage iframe { display: block; width: 100%; height: 100%; border: 0; }
+</style>
+</head>
+<body>
+<div class="bar">
+  <h1 class="bar__title">Site header</h1>
+  <div class="seg" data-key="user" role="group" aria-label="Account"><button type="button" data-v="out">Signed out</button><button type="button" data-v="free">Signed in · no Pro</button><button type="button" data-v="pro">Signed in · Pro</button></div>
+  <div class="seg" data-key="theme" role="group" aria-label="Theme"><button type="button" data-v="light">Light</button><button type="button" data-v="dark">Dark</button></div>
+</div>
+<div class="stage"><iframe id="header" title="Site header"></iframe></div>
+<script>
+(function () {
+  const q = new URLSearchParams(location.search);
+  const state = { user: ['free', 'pro'].includes(q.get('user')) ? q.get('user') : 'out', theme: q.get('theme') === 'dark' ? 'dark' : 'light' };
+  const frame = document.getElementById('header');
+  function render() {
+    document.querySelectorAll('.seg').forEach(seg => seg.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(state[seg.dataset.key] === b.dataset.v))));
+    frame.src = 'nav.html?embed&user=' + state.user + '&theme=' + state.theme;
+    try { history.replaceState(null, '', location.pathname + '?user=' + state.user + '&theme=' + state.theme); } catch (e) {  }
+  }
+  document.querySelectorAll('.seg').forEach(seg => seg.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; state[seg.dataset.key] = b.dataset.v; render(); }));
+  render();
+})();
+</script>
+</body>
+</html>

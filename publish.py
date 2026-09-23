@@ -44,6 +44,8 @@ PAGES = {
     # the presentation board: it renders the nav through sibling `nav.html?embed` frames,
     # so it only works while both sit in this one flat folder.
     "nav/present.html": "nav-present.html",
+    # the interactive header prototype: one frame of the sibling `nav.html?embed`, same flat-folder rule
+    "nav/header.html": "nav-header.html",
 }
 
 META = '<meta name="robots" content="noindex, nofollow">'
