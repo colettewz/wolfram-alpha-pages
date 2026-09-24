@@ -11,6 +11,7 @@ https://colettewz.github.io/wolfram-alpha-pages/
 | Step-by-Step Solutions | https://colettewz.github.io/wolfram-alpha-pages/step-by-step.html |
 | Chat mode | https://colettewz.github.io/wolfram-alpha-pages/chat-mode.html?seed=gold |
 | Site header (interactive) | https://colettewz.github.io/wolfram-alpha-pages/nav-header.html |
+| Pro page animations (CSS + SVG and Lottie) | https://colettewz.github.io/wolfram-alpha-pages/pro-animations.html |
 
 ## About the files
 

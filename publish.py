@@ -37,6 +37,7 @@ PAGES = {
     "problem-generator/problem-generator.html": "problem-generator.html",
     "chat-mode/chat-mode.html": "chat-mode.html",
     "products/products.html": "products.html",
+    "pro/animations-preview.html": "pro-animations.html",
     # The nav's own dev page. It must keep the name `nav.html` — its ~30 breakpoint and state
     # frames are SELF-references (`nav.html?embed&…`), and its in-context mock reaches sideways
     # for `chat-mode.html`, which only resolves because this folder is flat.
