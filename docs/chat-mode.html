@@ -2968,13 +2968,17 @@
       color: var(--s-surface-action-hover);
     }
 
+    @media (max-width: 1117px) {
+      .global-footer { padding-block: 44px; }
+    }
     @media (max-width: 767px) {
       .global-footer {
-        padding: 32px 20px;
         width: auto;
         margin-inline: calc(-1 * var(--page-gutter));
       }
-
+    }
+    @media (max-width: 645px) {
+      .global-footer { padding: 40px 20px; }
       .gf-hide-tablet { display: none; }
       .gf-hide-mobile { display: none; }
     }
@@ -6203,15 +6207,15 @@
   #wa-anim-chat-gate .s-math-box,  #wa-anim-chat-gate .step-div,
   #wa-anim-chat-gate .a-ring,      #wa-anim-chat-gate .a-well { vector-effect: non-scaling-stroke; }
 
-  #wa-anim-chat-gate .g-scroll { animation: wch-scroll 12s infinite cubic-bezier(0.65, 0, 0.35, 1); }
-  @keyframes wch-scroll {
+  #wa-anim-chat-gate .g-scroll { animation: wcg-scroll 12s infinite cubic-bezier(0.65, 0, 0.35, 1); }
+  @keyframes wcg-scroll {
     0%, 32.5%   { transform: translateY(0); }
     43.33%, 98%  { transform: translateY(-416px); }
     99%, 100% { transform: translateY(0); }
   }
 
-  #wa-anim-chat-gate .g-user { animation: wch-user 12s infinite cubic-bezier(0.22, 1, 0.36, 1); }
-  @keyframes wch-user {
+  #wa-anim-chat-gate .g-user { animation: wcg-user 12s infinite cubic-bezier(0.22, 1, 0.36, 1); }
+  @keyframes wcg-user {
     0%       { opacity: 0; transform: translateY(15px); }
     6.667%, 94%  { opacity: 1; transform: translateY(0); }
     98%, 100%{ opacity: 0; transform: translateY(-15px); }
@@ -6219,8 +6223,8 @@
   #wa-anim-chat-gate .user-bubble { fill: var(--user-bg); stroke: var(--user-border); stroke-width: 1; }
   #wa-anim-chat-gate .user-text   { fill: var(--text); font-size: 24px; font-weight: 600; }
 
-  #wa-anim-chat-gate .g-avatar { animation: wch-avatar 12s infinite cubic-bezier(0.22, 1, 0.36, 1); }
-  @keyframes wch-avatar {
+  #wa-anim-chat-gate .g-avatar { animation: wcg-avatar 12s infinite cubic-bezier(0.22, 1, 0.36, 1); }
+  @keyframes wcg-avatar {
     0%, 5%   { opacity: 0; transform: translateY(15px); }
     11.67%, 91% { opacity: 1; transform: translateY(0); }
     98%, 100%{ opacity: 0; transform: translateY(-15px); }
@@ -6228,8 +6232,8 @@
   #wa-anim-chat-gate .avatar-disc { fill: var(--avatar-bg); }
   #wa-anim-chat-gate .avatar-glyph { fill: #FFFFFF; }
 
-  #wa-anim-chat-gate .g-greeting { animation: wch-greet 12s infinite cubic-bezier(0.22, 1, 0.36, 1); }
-  @keyframes wch-greet {
+  #wa-anim-chat-gate .g-greeting { animation: wcg-greet 12s infinite cubic-bezier(0.22, 1, 0.36, 1); }
+  @keyframes wcg-greet {
     0%, 11.67%  { opacity: 0; transform: translateY(15px); }
     18.33%, 91% { opacity: 1; transform: translateY(0); }
     98%, 100%{ opacity: 0; transform: translateY(-15px); }
@@ -6241,8 +6245,8 @@
   #wa-anim-chat-gate .vtick      { fill: var(--chip-tick); stroke: var(--chip-tick); stroke-width: 100;
                               stroke-linejoin: miter; stroke-linecap: square; }
 
-  #wa-anim-chat-gate .g-pill { animation: wch-pill 12s infinite cubic-bezier(0.22, 1, 0.36, 1); }
-  @keyframes wch-pill {
+  #wa-anim-chat-gate .g-pill { animation: wcg-pill 12s infinite cubic-bezier(0.22, 1, 0.36, 1); }
+  @keyframes wcg-pill {
     0%, 17.5%  { opacity: 0; transform: translateY(15px); }
     24.17%, 91% { opacity: 1; transform: translateY(0); }
     98%, 100%{ opacity: 0; transform: translateY(-15px); }
@@ -6250,9 +6254,9 @@
   #wa-anim-chat-gate .pill-text { fill: var(--accent); font-size: 24px; font-weight: 600; }
   #wa-anim-chat-gate .g-plus {
     transform-box: fill-box; transform-origin: 50% 50%;
-    animation: wch-plusbounce 12s infinite cubic-bezier(0.22, 1, 0.36, 1);
+    animation: wcg-plusbounce 12s infinite cubic-bezier(0.22, 1, 0.36, 1);
   }
-  @keyframes wch-plusbounce {
+  @keyframes wcg-plusbounce {
     0%, 29.17%  { transform: scale(1); }
     30%, 30.83% { transform: scale(0.75); }
     32.5%      { transform: scale(1.05); }
@@ -6264,9 +6268,9 @@
                                  stroke-linecap: butt; stroke-linejoin: miter; }
   #wa-anim-chat-gate .plus-v {
     transform-box: fill-box; transform-origin: 50% 50%;
-    animation: wch-vbar 12s infinite cubic-bezier(0.65, 0, 0.35, 1);
+    animation: wcg-vbar 12s infinite cubic-bezier(0.65, 0, 0.35, 1);
   }
-  @keyframes wch-vbar {
+  @keyframes wcg-vbar {
     0%, 30%  { transform: scaleY(1); opacity: 1; }
     30.83%, 91% { transform: scaleY(0); opacity: 0; }
     98%, 100%{ transform: scaleY(1); opacity: 1; }
@@ -6274,9 +6278,9 @@
 
   #wa-anim-chat-gate .g-pod {
     transform-box: fill-box; transform-origin: 50% 0%;
-    animation: wch-pod 12s infinite cubic-bezier(0.22, 1, 0.36, 1);
+    animation: wcg-pod 12s infinite cubic-bezier(0.22, 1, 0.36, 1);
   }
-  @keyframes wch-pod {
+  @keyframes wcg-pod {
     0%, 31.67%  { opacity: 0; transform: scale(0.85); }
     40%, 91% { opacity: 1; transform: scale(1); }
     97%      { opacity: 0; transform: scale(1); }
@@ -6291,10 +6295,10 @@
   #wa-anim-chat-gate .s-math-box { fill: var(--math-bg); stroke: var(--math-border); stroke-width: 1; }
   #wa-anim-chat-gate .s-math  { fill: var(--text); font-size: 23px; font-weight: 400; }
   #wa-anim-chat-gate .g-step  { opacity: 0; transform: translateY(15px);
-                           animation: wch-step 12s infinite cubic-bezier(0.34, 1.56, 0.64, 1); }
+                           animation: wcg-step 12s infinite cubic-bezier(0.34, 1.56, 0.64, 1); }
   #wa-anim-chat-gate .g-step2 { animation-delay: 0.15s; }
   #wa-anim-chat-gate .g-step3 { animation-delay: 0.3s; }
-  @keyframes wch-step {
+  @keyframes wcg-step {
     0%, 34.17%  { opacity: 0; transform: translateY(15px); }
     39.17%, 91% { opacity: 1; transform: translateY(0); }
     97%      { opacity: 1; transform: translateY(-15px); }
@@ -6303,9 +6307,9 @@
 
   #wa-anim-chat-gate .g-answer {
     transform-box: fill-box; transform-origin: 50% 50%;
-    animation: wch-answer 12s infinite cubic-bezier(0.65, 0, 0.35, 1);
+    animation: wcg-answer 12s infinite cubic-bezier(0.65, 0, 0.35, 1);
   }
-  @keyframes wch-answer {
+  @keyframes wcg-answer {
     0%, 41.67%  { opacity: 0; transform: scale(0.88) translateY(8px); }
     44.17%      { opacity: 1; transform: scale(1.05) translateY(0); }
     46.67%, 85% { opacity: 1; transform: scale(1)    translateY(0); }
@@ -6321,9 +6325,9 @@
   #wa-anim-chat-gate .a-well  { fill: var(--answer-well); stroke: var(--answer-blue); stroke-width: 1; }
   #wa-anim-chat-gate .a-value { fill: var(--text); font-size: 33.6px; font-weight: 700; }
 
-  #wa-anim-chat-gate .g-cursor { animation: wch-cursor 12s infinite cubic-bezier(0.22, 1, 0.36, 1); }
+  #wa-anim-chat-gate .g-cursor { animation: wcg-cursor 12s infinite cubic-bezier(0.22, 1, 0.36, 1); }
   #wa-anim-chat-gate .cursor-path { fill: #000; stroke: #fff; stroke-width: 2; stroke-linejoin: round; }
-  @keyframes wch-cursor {
+  @keyframes wcg-cursor {
     0%, 25%  { opacity: 0; transform: translate(254px, 317px) scale(0.9); }
     28.33%      { opacity: 1; transform: translate(214px, 302px) scale(1); }
     30%, 30.83% { opacity: 1; transform: translate(214px, 302px) scale(0.85); }
@@ -6335,14 +6339,14 @@
   #wa-anim-chat-gate .input-halo { fill: none; stroke: var(--input-ring); stroke-width: 3; }
 
   #wa-anim-chat-gate .eq-text  { fill: var(--text); font-size: 23px; font-weight: 600; }
-  #wa-anim-chat-gate .send-btn { animation: wch-send 12s infinite ease-out;
+  #wa-anim-chat-gate .send-btn { animation: wcg-send 12s infinite ease-out;
                             transform-box: fill-box; transform-origin: 50% 50%; }
-  #wa-anim-chat-gate .send-face { fill: var(--teal-btn); animation: wch-send-fill 12s infinite ease-out; }
+  #wa-anim-chat-gate .send-face { fill: var(--teal-btn); animation: wcg-send-fill 12s infinite ease-out; }
   #wa-anim-chat-gate .send-glyph { fill: #FFFFFF; }
-  @keyframes wch-send {
+  @keyframes wcg-send {
     0%   { transform: scale(1); } 0.8333%, 1.667% { transform: scale(0.85); } 3.333%, 100% { transform: scale(1); }
   }
-  @keyframes wch-send-fill {
+  @keyframes wcg-send-fill {
     0%   { fill: var(--teal-btn); } 0.8333%, 1.667% { fill: var(--teal-deep); } 3.333%, 100% { fill: var(--teal-btn); }
   }
 
@@ -6361,18 +6365,18 @@
 </style>
 
 <defs>
-    <clipPath id="wch-body-clip"><rect x="0" y="0" width="640" height="676"/></clipPath>
-  <radialGradient id="wch-wash-t" cx="0.1" cy="0.2" r="0.42">
+    <clipPath id="wcg-body-clip"><rect x="0" y="0" width="640" height="676"/></clipPath>
+  <radialGradient id="wcg-wash-t" cx="0.1" cy="0.2" r="0.42">
     <stop offset="0" style="stop-color: var(--wash-teal)"/><stop offset="1" stop-color="rgba(0,120,130,0)"/>
   </radialGradient>
-  <radialGradient id="wch-wash-p" cx="0.9" cy="0.8" r="0.42">
+  <radialGradient id="wcg-wash-p" cx="0.9" cy="0.8" r="0.42">
     <stop offset="0" style="stop-color: var(--wash-purple)"/><stop offset="1" stop-color="rgba(61,26,92,0)"/>
   </radialGradient>
 </defs>
 
 <g>
   
-  <g clip-path="url(#wch-body-clip)">
+  <g clip-path="url(#wcg-body-clip)">
     <g class="g-scroll"><g transform="scale(1.3)">
 
       <g class="g-user">
@@ -6412,7 +6416,7 @@
 
       <g class="g-pod">
         <rect class="pod-face" x="24.5" y="330" width="443" height="560.6" rx="8"/>
-        <g clip-path="url(#wch-pod-clip)">
+        <g clip-path="url(#wcg-pod-clip)">
           <rect class="pod-title" x="25" y="330.5" width="442" height="70"/>
         </g>
         <g class="pod-title-icon" transform="translate(43 353)">
@@ -6482,7 +6486,7 @@
   </g>
   </g>
 </g>
-<defs><clipPath id="wch-pod-clip"><rect x="25" y="330.5" width="442" height="559.6" rx="7.5"/></clipPath></defs>
+<defs><clipPath id="wcg-pod-clip"><rect x="25" y="330.5" width="442" height="559.6" rx="7.5"/></clipPath></defs>
 </svg>
         </div>
         </div>

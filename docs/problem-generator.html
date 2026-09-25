@@ -124,6 +124,7 @@
 
   --s-border-primary:#DFDFDF; --s-border-secondary:#CECECE;
   --s-overlay-hover:#F5F5F5; --s-overlay-press:#EBEBEB;
+  --s-wash-on-tint-hover:.08; --s-wash-on-tint-press:.16;
   --s-focus-ring:#3879A0;
 
   --s-surface-on-dark-hover:rgba(255,255,255,.05);
@@ -164,11 +165,11 @@ body.dark, [data-theme="dark"] {
   --s-cat-math:#CBB3FF; --s-cat-sci:#00B373; --s-cat-soc:#FF7878;
 }
 
-@media (max-width: 1023px) {
-  :root { --fs-hero: 40px; --fs-section-lg: 34px; --fs-row: 28px; --r-media: 24px; --r-xl: 20px; --r-2xl: 24px; }
+@media (max-width: 1117px) {
+  :root { --fs-hero: 40px; --fs-section-lg: 32px; --fs-row: 24px; --fs-card-lg: 22px; --r-media: 24px; --r-xl: 20px; --r-2xl: 24px; }
 }
-@media (max-width: 767px) {
-  :root { --fs-hero: 34px; --fs-section-lg: 28px; --fs-row: 24px; --r-media: 12px; --r-xl: 16px; --r-2xl: 20px; --header-h: 48px; }
+@media (max-width: 645px) {
+  :root { --fs-hero: 34px; --fs-section-lg: 28px; --fs-row: 20px; --fs-card-lg: 20px; --r-media: 12px; --r-xl: 16px; --r-2xl: 20px; --header-h: 48px; }
 }
 </style>
   <style>
@@ -198,7 +199,7 @@ a  { color: var(--s-text-link); text-decoration: none; }
 a:hover { color: var(--s-text-link-hover); }
 
 .wrap { max-width: calc(var(--page-max) + 2*var(--page-pad-x, 24px)); margin: 0 auto; padding: 0 var(--page-pad-x, 24px); }
-@media (max-width: 767px) { :root { --page-pad-x: 16px; } }
+@media (max-width: 645px) { :root { --page-pad-x: 16px; } }
 
 .mi {
   font-family: 'Material Symbols Outlined';
@@ -362,8 +363,11 @@ a:hover { color: var(--s-text-link-hover); }
 .gf-wolfram-brand { display: inline-flex; align-items: center; gap: 4px; margin-right: 4px; text-decoration: none; }
 .gf-wolfram-brand svg { width: 18px; height: 18px; fill: var(--s-brand-red); flex-shrink: 0; }
 .gf-wolfram-brand span { font-family: var(--font-sans); font-weight: 700; font-size: 14px; letter-spacing: 0; color: var(--s-text-secondary); }
-@media (max-width: 767px) {
-  .global-footer { padding: 32px 20px; }
+@media (max-width: 1117px) {
+  .global-footer { padding-block: 44px; }
+}
+@media (max-width: 645px) {
+  .global-footer { padding: 40px 20px; }
   .gf-hide-tablet, .gf-hide-mobile { display: none; }
 }
 
@@ -502,7 +506,7 @@ body.dark .wa-nav__logo .is-dark,  [data-theme="dark"] .wa-nav__logo .is-dark  {
   .wa-nav, .wa-nav *, .nav-menu, .nav-sheet { transition: none !important; animation: none !important; }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 645px) {
   .wa-nav { --nav-gutter: var(--sp-4); }
   .wa-nav__logo { --logo-h: 20px; }
   .wa-nav__items { display: none; }
@@ -514,12 +518,13 @@ body.dark .wa-nav__logo .is-dark,  [data-theme="dark"] .wa-nav__logo .is-dark  {
 
     :root {
       --layout-gutter: 24px;
-      --state-py: 96px;
+      --state-py: 80px;
+      --fs-state-title: 28px;
       --column-max: 560px;
       --art-h: 200px;
     }
-    @media (max-width: 1023px) { :root { --state-py: 80px; } }
-    @media (max-width: 767px)  { :root { --layout-gutter: 16px; --state-py: 64px; --art-h: 160px; } }
+    @media (max-width: 1117px) { :root { --state-py: 72px; --fs-state-title: 24px; } }
+    @media (max-width: 645px)  { :root { --layout-gutter: 16px; --state-py: 64px; --fs-state-title: 22px; --art-h: 160px; } }
 
     body { min-height: 100vh; display: flex; flex-direction: column; background: var(--s-surface-page);
            transition: background-color var(--dur-norm) var(--ease), color var(--dur-norm) var(--ease); }
@@ -542,14 +547,14 @@ body.dark .wa-nav__logo .is-dark,  [data-theme="dark"] .wa-nav__logo .is-dark  {
 
     .offline__art .ink-trouser { fill: var(--p-n-550); }
 
-    .offline h1 { font-size: var(--fs-row); line-height: var(--lh-heading); letter-spacing: -0.02em; text-wrap: balance; }
+    .offline h1 { font-size: var(--fs-state-title); line-height: var(--lh-heading); letter-spacing: -0.02em; text-wrap: balance; }
     .offline .lede {
       font-size: var(--fs-lede); line-height: 1.5; color: var(--s-text-secondary);
       max-width: var(--measure-lede); margin: 0 auto;
     }
 
     .offline__actions { display: flex; justify-content: center; margin-top: var(--sp-8); }
-    @media (max-width: 480px) {
+    @media (max-width: 645px) {
       .offline__actions .btn { width: 100%; }
     }
   </style>

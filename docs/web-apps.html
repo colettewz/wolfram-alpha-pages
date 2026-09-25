@@ -132,6 +132,7 @@
 
   --s-border-primary:#DFDFDF; --s-border-secondary:#CECECE;
   --s-overlay-hover:#F5F5F5; --s-overlay-press:#EBEBEB;
+  --s-wash-on-tint-hover:.08; --s-wash-on-tint-press:.16;
   --s-focus-ring:#3879A0;
 
   --s-surface-on-dark-hover:rgba(255,255,255,.05);
@@ -172,11 +173,11 @@ body.dark, [data-theme="dark"] {
   --s-cat-math:#CBB3FF; --s-cat-sci:#00B373; --s-cat-soc:#FF7878;
 }
 
-@media (max-width: 1023px) {
-  :root { --fs-hero: 40px; --fs-section-lg: 34px; --fs-row: 28px; --r-media: 24px; --r-xl: 20px; --r-2xl: 24px; }
+@media (max-width: 1117px) {
+  :root { --fs-hero: 40px; --fs-section-lg: 32px; --fs-row: 24px; --fs-card-lg: 22px; --r-media: 24px; --r-xl: 20px; --r-2xl: 24px; }
 }
-@media (max-width: 767px) {
-  :root { --fs-hero: 34px; --fs-section-lg: 28px; --fs-row: 24px; --r-media: 12px; --r-xl: 16px; --r-2xl: 20px; --header-h: 48px; }
+@media (max-width: 645px) {
+  :root { --fs-hero: 34px; --fs-section-lg: 28px; --fs-row: 20px; --fs-card-lg: 20px; --r-media: 12px; --r-xl: 16px; --r-2xl: 20px; --header-h: 48px; }
 }
 </style>
   <style>
@@ -206,7 +207,7 @@ a  { color: var(--s-text-link); text-decoration: none; }
 a:hover { color: var(--s-text-link-hover); }
 
 .wrap { max-width: calc(var(--page-max) + 2*var(--page-pad-x, 24px)); margin: 0 auto; padding: 0 var(--page-pad-x, 24px); }
-@media (max-width: 767px) { :root { --page-pad-x: 16px; } }
+@media (max-width: 645px) { :root { --page-pad-x: 16px; } }
 
 .mi {
   font-family: 'Material Symbols Outlined';
@@ -370,8 +371,11 @@ a:hover { color: var(--s-text-link-hover); }
 .gf-wolfram-brand { display: inline-flex; align-items: center; gap: 4px; margin-right: 4px; text-decoration: none; }
 .gf-wolfram-brand svg { width: 18px; height: 18px; fill: var(--s-brand-red); flex-shrink: 0; }
 .gf-wolfram-brand span { font-family: var(--font-sans); font-weight: 700; font-size: 14px; letter-spacing: 0; color: var(--s-text-secondary); }
-@media (max-width: 767px) {
-  .global-footer { padding: 32px 20px; }
+@media (max-width: 1117px) {
+  .global-footer { padding-block: 44px; }
+}
+@media (max-width: 645px) {
+  .global-footer { padding: 40px 20px; }
   .gf-hide-tablet, .gf-hide-mobile { display: none; }
 }
 
@@ -510,7 +514,7 @@ body.dark .wa-nav__logo .is-dark,  [data-theme="dark"] .wa-nav__logo .is-dark  {
   .wa-nav, .wa-nav *, .nav-menu, .nav-sheet { transition: none !important; animation: none !important; }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 645px) {
   .wa-nav { --nav-gutter: var(--sp-4); }
   .wa-nav__logo { --logo-h: 20px; }
   .wa-nav__items { display: none; }
@@ -564,21 +568,24 @@ body.dark .wa-nav__logo .is-dark,  [data-theme="dark"] .wa-nav__logo .is-dark  {
       --s-card-bg: var(--s-surface-elevated);
       --nl-halo: var(--p-yellow-150);
     }
-    @media (max-width: 1023px) {
+    @media (max-width: 1117px) {
       :root {
+        --layout-section-gap: 72px;
+        --layout-band-py: 44px;
         --layout-hero-py: 56px;
+        --layout-group-gap: 28px;
         --display-md-size: 40px;
-        --card-padding: 20px;
       }
     }
-    @media (max-width: 767px) {
+    @media (max-width: 645px) {
       :root {
         --layout-gutter: 16px;
-        --layout-section-gap: 40px;
-        --layout-band-py: 32px;
-        --layout-hero-py: 40px;
-        --layout-group-gap: 20px;
+        --layout-section-gap: 64px;
+        --layout-band-py: 40px;
+        --layout-hero-py: 48px;
+        --layout-group-gap: 24px;
         --display-md-size: 34px;
+        --card-padding: 20px;
         --header-h: 48px;
       }
     }
@@ -645,7 +652,7 @@ body.dark .wa-nav__logo .is-dark,  [data-theme="dark"] .wa-nav__logo .is-dark  {
     .sticky-cta__price { font-size: 16px; }
     .sticky-cta__price strong { font-weight: 700; }
     .sticky-cta .btn--primary, .sticky-cta .btn--primary:hover, .sticky-cta .btn--primary:active { color: var(--s-text-on-action); }
-    @media (max-width: 767px) {
+    @media (max-width: 645px) {
       .sticky-cta__name  { display: none; }
       .sticky-cta__right { width: 100%; justify-content: space-between; }
     }
@@ -732,7 +739,7 @@ body.dark .wa-nav__logo .is-dark,  [data-theme="dark"] .wa-nav__logo .is-dark  {
 
       .app-mock     { width: 560px; zoom: calc(100cqw / 560px); }
     }
-    @media (max-width: 1023px) {
+    @media (max-width: 1117px) {
       .hero__inner { grid-template-columns: 1fr; }
       .hero__visual { max-width: 560px; margin-inline: 0   ; }
     }
@@ -886,7 +893,7 @@ body.dark .wa-nav__logo .is-dark,  [data-theme="dark"] .wa-nav__logo .is-dark  {
     .app:hover  .app__icon { background: var(--s-surface-action-hover); }
     .app:active .app__icon { background: var(--s-surface-action-press); }
     .app:focus-visible { outline: 2px solid var(--s-focus-ring); outline-offset: 2px; border-radius: var(--r-sm); }
-    @media (max-width: 767px) {
+    @media (max-width: 645px) {
       .app-grid { gap: var(--sp-6) var(--sp-4); }
     }
 
@@ -897,7 +904,7 @@ body.dark .wa-nav__logo .is-dark,  [data-theme="dark"] .wa-nav__logo .is-dark  {
       text-align: left;
     }
     .cta-band__copy { max-width: 560px; container-type: inline-size; }
-    @media (max-width: 900px) {
+    @media (max-width: 1117px) {
       .cta-band__inner { grid-template-columns: 1fr; text-align: center; gap: var(--sp-8); }
       .cta-band__copy { max-width: 600px; width: 100%; margin-inline: auto; }
       .cta-band__row { justify-content: center; }
@@ -941,7 +948,7 @@ body.dark .wa-nav__logo .is-dark,  [data-theme="dark"] .wa-nav__logo .is-dark  {
     }
     .review__group button + button { border-left: 1px solid var(--s-border-primary); }
     .review__group button[aria-pressed="true"] { background: var(--s-surface-primary); color: var(--s-text-primary); }
-    @media (max-width: 767px) { .review { left: var(--sp-4); justify-content: space-between; } .review__tag { display: none; } }
+    @media (max-width: 645px) { .review { left: var(--sp-4); justify-content: space-between; } .review__tag { display: none; } }
 
     [data-state="pro"] .hero__lead,
     [data-state="pro"] .hero__sub,
@@ -1148,7 +1155,7 @@ body.dark .wa-nav__logo .is-dark,  [data-theme="dark"] .wa-nav__logo .is-dark  {
 
         .cta-band__visual { position: relative; width: 100%; max-width: 520px; justify-self: end; }
         .cta-band__visual > svg { display: block; width: 100%; height: auto; overflow: visible; }
-        @media (max-width: 900px) {
+        @media (max-width: 1117px) {
           .cta-band__visual { margin: 0 auto; justify-self: center; order: -1; }
         }
         </style>
