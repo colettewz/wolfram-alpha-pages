@@ -30,24 +30,12 @@ HERE = Path(__file__).resolve().parent
 DOCS = HERE / "docs"
 STAGING = Path.home() / "Drive-staging/wolfram-alpha/pages"
 
-# staged page → its name in docs/. Add a row to publish a new page.
-PAGES = {
-    "step-by-step/step-by-step.html": "step-by-step.html",
-    "web-apps/web-apps.html": "web-apps.html",
-    "problem-generator/problem-generator.html": "problem-generator.html",
-    "chat-mode/chat-mode.html": "chat-mode.html",
-    "products/products.html": "products.html",
-    "pro/animations-preview.html": "pro-animations.html",
-    # The nav's own dev page. It must keep the name `nav.html` — its ~30 breakpoint and state
-    # frames are SELF-references (`nav.html?embed&…`), and its in-context mock reaches sideways
-    # for `chat-mode.html`, which only resolves because this folder is flat.
-    "nav/nav.html": "nav.html",
-    # the presentation board: it renders the nav through sibling `nav.html?embed` frames,
-    # so it only works while both sit in this one flat folder.
-    "nav/present.html": "nav-present.html",
-    # the interactive header prototype: one frame of the sibling `nav.html?embed`, same flat-folder rule
-    "nav/header.html": "nav-header.html",
-}
+# staged page → its name in docs/: the registry's `publish` column (design-system/checks/pages.py). Add a page there.
+# nav.html keeps its name: its ~30 breakpoint and state frames are SELF-references (`nav.html?embed&…`), its
+# in-context mock reaches sideways for `chat-mode.html`, and nav-present / nav-header frame the sibling
+# `nav.html?embed` — all of which only resolve because docs/ is one flat folder.
+sys.path.insert(0, str(HERE.parent / "design-system/checks"))
+from pages import PUBLISH as PAGES  # noqa: E402
 
 META = '<meta name="robots" content="noindex, nofollow">'
 ROBOTS = """# Design references, published for review.
