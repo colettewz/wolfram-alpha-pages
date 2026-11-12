@@ -58,11 +58,13 @@ Disallow: /plates/png/
 Disallow: /plates/*.svg$
 """
 
-# staged asset folder → its folder in docs/. Vectors and rasters keep the split they have
-# in Drive staging, so a dev picks a format by folder rather than out of a mixed listing.
+# docs/ folder → the staged files it publishes. Staging sorts the page's SVGs into
+# step-by-step/assets/panels/ and animations/ (Colette 2026-11-11); the review site keeps its flat
+# /plates/svg and /plates/png URLs, because a direct file URL may have been handed to someone.
+# It publishes the panels and the hero only: the other animations are /pro's.
 ASSETS = {
-    "step-by-step/plates/svg": "plates/svg",
-    "step-by-step/plates/png": "plates/png",
+    "plates/svg": ["step-by-step/assets/panels/*.svg", "step-by-step/assets/animations/partial-fractions.svg"],
+    "plates/png": ["step-by-step/assets/png/*.png"],
 }
 
 GALLERY_TITLE = "Step-by-Step plates"
@@ -110,12 +112,12 @@ def main() -> int:
     # ── asset folders: copy verbatim, then build a gallery page that IS unindexed ──
     import shutil
     gallery_rows = []
-    for src_rel, dst_rel in ASSETS.items():
-        src, dst = STAGING / src_rel, DOCS / dst_rel
-        if not src.exists():
-            problems.append(f"{dst_rel}: staged source missing ({src}) — run its stage.py first")
+    for dst_rel, globs in ASSETS.items():
+        dst = DOCS / dst_rel
+        files = sorted((f for g in globs for f in STAGING.glob(g)), key=lambda f: f.name)
+        if not files:
+            problems.append(f"{dst_rel}: no staged files ({', '.join(globs)}) — run its stage.py first")
             continue
-        files = sorted(f for f in src.iterdir() if f.suffix.lower() in (".svg", ".png"))
         for f in files:
             target = dst / f.name
             same = target.exists() and target.read_bytes() == f.read_bytes()
